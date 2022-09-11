@@ -6,8 +6,17 @@ CREATE TABLE "usuarios" (
     "password" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "permission_id" TEXT NOT NULL,
 
     CONSTRAINT "usuarios_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "permissao" (
+    "id" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+
+    CONSTRAINT "permissao_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -18,7 +27,6 @@ CREATE TABLE "comissao" (
     "sales" DOUBLE PRECISION NOT NULL,
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "user_id" TEXT NOT NULL,
-    "order_id" TEXT NOT NULL,
 
     CONSTRAINT "comissao_pkey" PRIMARY KEY ("id")
 );
@@ -75,10 +83,10 @@ CREATE TABLE "cardapio" (
 );
 
 -- AddForeignKey
-ALTER TABLE "comissao" ADD CONSTRAINT "comissao_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "usuarios"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "usuarios" ADD CONSTRAINT "usuarios_permission_id_fkey" FOREIGN KEY ("permission_id") REFERENCES "permissao"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "comissao" ADD CONSTRAINT "comissao_order_id_fkey" FOREIGN KEY ("order_id") REFERENCES "pedidos"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "comissao" ADD CONSTRAINT "comissao_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "usuarios"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "produtos" ADD CONSTRAINT "produtos_category_id_fkey" FOREIGN KEY ("category_id") REFERENCES "categorias"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
