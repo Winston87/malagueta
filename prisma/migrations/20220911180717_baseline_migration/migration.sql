@@ -92,7 +92,7 @@ ALTER TABLE "comissao" ADD CONSTRAINT "comissao_user_id_fkey" FOREIGN KEY ("user
 ALTER TABLE "produtos" ADD CONSTRAINT "produtos_category_id_fkey" FOREIGN KEY ("category_id") REFERENCES "categorias"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "itens" ADD CONSTRAINT "itens_product_id_fkey" FOREIGN KEY ("product_id") REFERENCES "produtos"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "itens" ADD CONSTRAINT "itens_ordem_id_fkey" FOREIGN KEY ("ordem_id") REFERENCES "pedidos"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "itens" ADD CONSTRAINT "itens_ordem_id_fkey" FOREIGN KEY ("ordem_id") REFERENCES "pedidos"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "itens" ADD CONSTRAINT "itens_product_id_fkey" FOREIGN KEY ("product_id") REFERENCES "produtos"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
