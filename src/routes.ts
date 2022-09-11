@@ -90,6 +90,7 @@ router.get('/menu/product', new ListMenuController().handle); //
 router.post('/menu/upload',ValidAuth, menu.single('file'), new UploadMenuController().handle); // subie um cardapio pdf para o servidor
 
 
+//DATABASE_URL="postgresql://postgres:0000@localhost:5432/rsMalagueta?schema=public"
 
 
 export { router }// exportar router
