@@ -25,7 +25,6 @@ import { GetProductsController } from "./controllers/products/GetProductsControl
 import { RemoveProductsController } from "./controllers/products/RemoveProductsController";
 
 // comission
-import { CreateCommissionController } from "./controllers/commission/CommissionController";////////////////////////////////////////////////////////////
 
 //order
 import { CreateOrdersController } from "./controllers/orders/CreateOrdersController";
@@ -92,7 +91,6 @@ router.post('/menu/upload',ValidAuth, menu.single('file'), new UploadMenuControl
 
 
 
-router.post('/comissao',ValidAuth, new CreateCommissionController().handle); ///////////////////////////////////////////////////////
 
 export { router }// exportar router
 

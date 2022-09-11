@@ -13,13 +13,12 @@ const path_1 = __importDefault(require("path"));
 const routes_1 = require("./routes");
 require("dotenv").config();
 const app = (0, express_1.default)();
-app.use(express_1.default.json()); // fala que o tipo de arquivo e json
+app.use(express_1.default.json());
 app.use((0, cors_1.default)());
-app.use(routes_1.router); // fala que minhas rotas esta dentro de router
+app.use(routes_1.router);
 //crindo uma rota static para mostrar a foto no front
 app.use('/files', express_1.default.static(path_1.default.resolve(__dirname, '..', 'imgBanner')));
 app.use('/files/menu', express_1.default.static(path_1.default.resolve(__dirname, '..', 'imgMenu')));
-//app.use(FileUpload());
 //**** tratamento de erro */
 app.use((err, req, res, next) => {
     if (err instanceof Error) {

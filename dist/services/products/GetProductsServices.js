@@ -15,14 +15,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetProductsServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class GetProductsServices {
-    execute({ id }) {
+    execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const product = prisma_1.default.product.findFirst({
-                where: {
-                    id: id
+            const product = prisma_1.default.product.findMany({
+                select: {
+                    id: true,
+                    name: true,
+                    description: true,
+                    price: true,
+                    banner: true,
+                    category_id: true
                 }
             });
-            return product;
+            return (yield product).reverse();
         });
     }
 }

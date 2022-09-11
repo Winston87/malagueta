@@ -12,25 +12,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateCategoryServeces = void 0;
+exports.ExceptionError = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-const Execeptions_1 = require("../../exceptions/category/Execeptions");
-class CreateCategoryServeces {
-    execute({ name }) {
+const MensegeError_1 = require("../../exceptions/mensege/MensegeError");
+class ExceptionError {
+    idProduct({ product_id }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const categoryExcption = new Execeptions_1.ExceptionCategory();
-            yield categoryExcption.executeCategory({ name });
-            const category = prisma_1.default.category.create({
-                data: {
-                    name: name.toUpperCase()
-                },
-                select: {
-                    id: true,
-                    name: true
+            const id = prisma_1.default.item.findFirst({
+                where: {
+                    product_id: product_id
                 }
             });
-            return category;
+            if ((yield id).product_id === product_id) {
+                throw new MensegeError_1.Mensege(MensegeError_1.erros.EMAIL_EXISTENTE);
+            }
         });
     }
 }
-exports.CreateCategoryServeces = CreateCategoryServeces;
+exports.ExceptionError = ExceptionError;
