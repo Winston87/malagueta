@@ -1,0 +1,121 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+
+    id String @id @default(uuid())
+    name String
+    email String
+    password String
+    created_at DateTime? @default(now())
+    updated_at DateTime? @default(now())
+
+    permission Permission @relation(fields: [permission_id], references: [id])
+    @@map("usuarios")
+
+    permission_id String
+    commission Commission[]
+
+}
+//ALTER TABLE usuarios ADD permission_id VARCHAR(20) NULL
+
+model Permission {
+
+    id String @id @default(uuid())
+    description String
+
+    @@map("permissao")
+
+    user User[]
+}
+
+model Commission {
+
+    id String @id @default(uuid())
+    amount Int
+    price String
+    sales Float
+    created_at DateTime? @default(now())
+
+    user User @relation(fields: [user_id], references: [id])
+    @@map("comissao")
+
+    user_id String
+}
+
+model Category {
+
+    id String @id @default(uuid())
+    name String
+
+    @@map("categorias")
+
+    products Product[]
+
+}
+
+model Product {
+
+    id String @id @default(uuid())
+    name String
+    price String
+    description String
+    banner String
+
+    category Category @relation(fields: [category_id], references: [id])
+
+    @@map("produtos")
+
+    category_id String
+    item Item[] // um produto pode estar dentro de varios items
+
+}
+
+model Order { // lado 1 de muitos na relacão
+
+    id String @id @default(uuid())
+    table Int
+    status Boolean @default(false)
+    draft Boolean @default(true)
+    name String?
+    created_at DateTime? @default(now())
+
+    @@map("pedidos")
+
+    itens Item[]
+}
+
+model Item { // lado muitos na relacão
+
+    id String @id @default(uuid())
+    amount Int
+
+
+    order Order @relation(fields: [ordem_id], references: [id])
+    product Product @relation(fields: [product_id], references: [id])// item tem varios produtos
+
+    @@map("itens")
+
+    ordem_id String
+    product_id String
+
+}
+
+model Menu {
+
+    id String @id @default(uuid())
+    menu_product String
+    created_at DateTime? @default(now())
+
+    @@map("cardapio")
+}
+
