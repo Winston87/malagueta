@@ -13,6 +13,8 @@ const AuthUserCollboratorController_1 = require("./controllers/users/AuthUserCol
 const DetailUserController_1 = require("./controllers/users/DetailUserController");
 //permission
 const CreatePermissionController_1 = require("./controllers/permission/CreatePermissionController");
+const ListPermissionController_1 = require("./controllers/permission/ListPermissionController");
+const DeletetPermissionController_1 = require("./controllers/permission/DeletetPermissionController");
 //validar acesso via token
 const ValidAuthenticated_1 = require("./middleware/ValidAuthenticated");
 //category
@@ -53,7 +55,8 @@ router.post('/session/collaborator', new AuthUserCollboratorController_1.AuthUse
 router.get('/detail', ValidAuthenticated_1.ValidAuth, new DetailUserController_1.DetailUserController().handle); // detalhe usuario
 //permission
 router.post('/permission', new CreatePermissionController_1.CreatePermissionController().handle); // criar permissao
-router.get('/permission/list', new ListProductCategoryController_1.ListProductCategoryController().handle);
+router.get('/permission/list', new ListPermissionController_1.ListPermissionController().handle);
+router.delete('/permission/delete', new DeletetPermissionController_1.DeletetPermissionController().handle);
 //rotas category
 router.post('/category', ValidAuthenticated_1.ValidAuth, new CreateCategoryController_1.CreateCategoryController().handle); // cadastrar categoria
 router.get('/categorys/list', ValidAuthenticated_1.ValidAuth, new ListCategoryController_1.ListCategoryController().handle); // listar categoria

@@ -12,19 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListPermissionServices = void 0;
+exports.DeletePermissionServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-class ListPermissionServices {
-    execute() {
+class DeletePermissionServices {
+    execute({ idd }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const permission = prisma_1.default.permission.findMany({
-                select: {
-                    id: true,
-                    description: true
+            const permission = yield prisma_1.default.permission.delete({
+                where: {
+                    id: idd
                 }
             });
             return permission;
         });
     }
 }
-exports.ListPermissionServices = ListPermissionServices;
+exports.DeletePermissionServices = DeletePermissionServices;

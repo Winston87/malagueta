@@ -10,7 +10,7 @@ import { DetailUserController } from "./controllers/users/DetailUserController";
 //permission
 import { CreatePermissionController } from "./controllers/permission/CreatePermissionController";
 import { ListPermissionController } from "./controllers/permission/ListPermissionController";
-
+import { DeletetPermissionController} from "./controllers/permission/DeletetPermissionController"
 
 //validar acesso via token
 import { ValidAuth } from "./middleware/ValidAuthenticated";
@@ -61,8 +61,8 @@ router.get('/detail',ValidAuth, new DetailUserController().handle ); // detalhe 
 
 //permission
 router.post('/permission', new CreatePermissionController().handle); // criar permissao
-router.get('/permission/list', new ListProductCategoryController().handle)
-
+router.get('/permission/list', new ListPermissionController().handle)
+router.delete('/permission/delete', new DeletetPermissionController().handle);
 //rotas category
 router.post('/category',ValidAuth, new CreateCategoryController().handle); // cadastrar categoria
 router.get('/categorys/list', ValidAuth, new ListCategoryController().handle); // listar categoria

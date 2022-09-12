@@ -1,10 +1,11 @@
 import prismaClient from "../../prisma";
 
+
 class ListPermissionServices {
 
     async execute() {
 
-        const permission = await prismaClient.permission.findMany({
+        const permission =  prismaClient.permission.findMany({
 
             select: {
 

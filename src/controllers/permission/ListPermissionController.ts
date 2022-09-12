@@ -5,6 +5,8 @@ class ListPermissionController {
 
     async handle(req: Request, res: Response) {
 
+       
+
         const permissionServices = new ListPermissionServices();
 
         const permission = await permissionServices.execute();
