@@ -6,6 +6,8 @@ import { CreatUserController } from "./controllers/users/CreateUserController";
 import { AuthUserAdminController } from "./controllers/users/AuthUserAdminController";
 import { AuthUserCollaboratorController } from "./controllers/users/AuthUserCollboratorController";
 import { DetailUserController } from "./controllers/users/DetailUserController";
+import { PutUserController } from "./controllers/users/PutUserController";
+import { ListUserController } from "./controllers/users/ListUserController";
 
 //permission
 import { CreatePermissionController } from "./controllers/permission/CreatePermissionController";
@@ -58,11 +60,13 @@ router.post('/users', new CreatUserController().handle);// cadastrar usuario
 router.post('/session', new AuthUserAdminController().handle);// login usuario
 router.post('/session/collaborator', new AuthUserCollaboratorController().handle);// login garcon
 router.get('/detail',ValidAuth, new DetailUserController().handle ); // detalhe usuario
+router.put('/user/update', ValidAuth, new PutUserController().handle );// atualizar user
+router.get('/user/list', ValidAuth, new ListUserController().handle);// listar user
 
 //permission
 router.post('/permission', new CreatePermissionController().handle); // criar permissao
-router.get('/permission/list', new ListPermissionController().handle)
-router.delete('/permission/delete', new DeletetPermissionController().handle);
+router.get('/permission/list',ValidAuth, new ListPermissionController().handle)
+router.delete('/permission/delete',ValidAuth, new DeletetPermissionController().handle);
 //rotas category
 router.post('/category',ValidAuth, new CreateCategoryController().handle); // cadastrar categoria
 router.get('/categorys/list', ValidAuth, new ListCategoryController().handle); // listar categoria
@@ -71,8 +75,8 @@ router.get('/categorys/list', ValidAuth, new ListCategoryController().handle); /
 router.post('/product', ValidAuth, foto.single('file'), new CreateProductsController().handle); // cadastrar categoria
 router.get('/category/products',ValidAuth, new ListProductCategoryController().handle ); // listar categoria
 router.get('/product/list' ,ValidAuth, new GetProductsController().handle);// buscar produtos
-router.delete('/product/remove' , new RemoveProductsController().handle);// buscar produtos
-router.put('/product/update',foto.single('file'), new PutProductController().handle); // atualizar um produto
+router.delete('/product/remove' ,ValidAuth, new RemoveProductsController().handle);// buscar produtos
+router.put('/product/update',foto.single('file'),ValidAuth, new PutProductController().handle); // atualizar um produto
 
 
 //rotas orders

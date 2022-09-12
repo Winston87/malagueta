@@ -17,10 +17,11 @@ app.use(express.json());
 
 app.use(cors());
 
+
 app.use(router);
 
 
-//crindo uma rota static para mostrar a foto no front
+//criando uma rota static para mostrar a foto no front
 app.use(
     '/files',
     express.static(path.resolve(__dirname, '..', 'imgBanner'))

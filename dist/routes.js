@@ -11,6 +11,8 @@ const CreateUserController_1 = require("./controllers/users/CreateUserController
 const AuthUserAdminController_1 = require("./controllers/users/AuthUserAdminController");
 const AuthUserCollboratorController_1 = require("./controllers/users/AuthUserCollboratorController");
 const DetailUserController_1 = require("./controllers/users/DetailUserController");
+const PutUserController_1 = require("./controllers/users/PutUserController");
+const ListUserController_1 = require("./controllers/users/ListUserController");
 //permission
 const CreatePermissionController_1 = require("./controllers/permission/CreatePermissionController");
 const ListPermissionController_1 = require("./controllers/permission/ListPermissionController");
@@ -53,10 +55,12 @@ router.post('/users', new CreateUserController_1.CreatUserController().handle); 
 router.post('/session', new AuthUserAdminController_1.AuthUserAdminController().handle); // login usuario
 router.post('/session/collaborator', new AuthUserCollboratorController_1.AuthUserCollaboratorController().handle); // login garcon
 router.get('/detail', ValidAuthenticated_1.ValidAuth, new DetailUserController_1.DetailUserController().handle); // detalhe usuario
+router.put('/user/update', ValidAuthenticated_1.ValidAuth, new PutUserController_1.PutUserController().handle); // atualizar user
+router.get('/user/list', ValidAuthenticated_1.ValidAuth, new ListUserController_1.ListUserController().handle); // listar user
 //permission
 router.post('/permission', new CreatePermissionController_1.CreatePermissionController().handle); // criar permissao
-router.get('/permission/list', new ListPermissionController_1.ListPermissionController().handle);
-router.delete('/permission/delete', new DeletetPermissionController_1.DeletetPermissionController().handle);
+router.get('/permission/list', ValidAuthenticated_1.ValidAuth, new ListPermissionController_1.ListPermissionController().handle);
+router.delete('/permission/delete', ValidAuthenticated_1.ValidAuth, new DeletetPermissionController_1.DeletetPermissionController().handle);
 //rotas category
 router.post('/category', ValidAuthenticated_1.ValidAuth, new CreateCategoryController_1.CreateCategoryController().handle); // cadastrar categoria
 router.get('/categorys/list', ValidAuthenticated_1.ValidAuth, new ListCategoryController_1.ListCategoryController().handle); // listar categoria
@@ -64,8 +68,8 @@ router.get('/categorys/list', ValidAuthenticated_1.ValidAuth, new ListCategoryCo
 router.post('/product', ValidAuthenticated_1.ValidAuth, foto.single('file'), new CreateProductsController_1.CreateProductsController().handle); // cadastrar categoria
 router.get('/category/products', ValidAuthenticated_1.ValidAuth, new ListProductCategoryController_1.ListProductCategoryController().handle); // listar categoria
 router.get('/product/list', ValidAuthenticated_1.ValidAuth, new GetProductsController_1.GetProductsController().handle); // buscar produtos
-router.delete('/product/remove', new RemoveProductsController_1.RemoveProductsController().handle); // buscar produtos
-router.put('/product/update', foto.single('file'), new PutProductController_1.PutProductController().handle); // atualizar um produto
+router.delete('/product/remove', ValidAuthenticated_1.ValidAuth, new RemoveProductsController_1.RemoveProductsController().handle); // buscar produtos
+router.put('/product/update', foto.single('file'), ValidAuthenticated_1.ValidAuth, new PutProductController_1.PutProductController().handle); // atualizar um produto
 //rotas orders
 router.post('/order', ValidAuthenticated_1.ValidAuth, new CreateOrdersController_1.CreateOrdersController().handle); // abrir pedido mesa
 router.delete('/order/remover/table', ValidAuthenticated_1.ValidAuth, new RemoveOrdersController_1.RemoveOrdersController().handle); // deletar mesa

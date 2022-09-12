@@ -16,7 +16,7 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.use(routes_1.router);
-//crindo uma rota static para mostrar a foto no front
+//criando uma rota static para mostrar a foto no front
 app.use('/files', express_1.default.static(path_1.default.resolve(__dirname, '..', 'imgBanner')));
 app.use('/files/menu', express_1.default.static(path_1.default.resolve(__dirname, '..', 'imgMenu')));
 //**** tratamento de erro */
