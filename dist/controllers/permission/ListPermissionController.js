@@ -8,23 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetPermissionServices = void 0;
-const prisma_1 = __importDefault(require("../../prisma"));
-class GetPermissionServices {
-    execute() {
+exports.ListPermissionController = void 0;
+const ListPermissionServices_1 = require("../../services/permission/ListPermissionServices");
+class ListPermissionController {
+    handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const permission = yield prisma_1.default.permission.findMany({
-                select: {
-                    id: true,
-                    description: true
-                }
-            });
-            return permission;
+            const permissionServices = new ListPermissionServices_1.ListPermissionServices();
+            const permission = yield permissionServices.execute();
+            return res.json(permission);
         });
     }
 }
-exports.GetPermissionServices = GetPermissionServices;
+exports.ListPermissionController = ListPermissionController;

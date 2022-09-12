@@ -6,7 +6,6 @@ class GetPermissionController {
     async handle(req: Request, res: Response) {
 
         const permissionServices = new GetPermissionServices();
-
         const permission = await permissionServices.execute();
 
         return res.json(permission);
@@ -16,3 +15,4 @@ class GetPermissionController {
 }
 
 export { GetPermissionController }
+

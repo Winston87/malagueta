@@ -53,6 +53,7 @@ router.post('/session/collaborator', new AuthUserCollboratorController_1.AuthUse
 router.get('/detail', ValidAuthenticated_1.ValidAuth, new DetailUserController_1.DetailUserController().handle); // detalhe usuario
 //permission
 router.post('/permission', new CreatePermissionController_1.CreatePermissionController().handle); // criar permissao
+router.get('/permission/list', new ListProductCategoryController_1.ListProductCategoryController().handle);
 //rotas category
 router.post('/category', ValidAuthenticated_1.ValidAuth, new CreateCategoryController_1.CreateCategoryController().handle); // cadastrar categoria
 router.get('/categorys/list', ValidAuthenticated_1.ValidAuth, new ListCategoryController_1.ListCategoryController().handle); // listar categoria

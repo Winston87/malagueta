@@ -1,6 +1,6 @@
 import prismaClient from "../../prisma";
 
-class GetPermissionServices {
+class ListPermissionServices {
 
     async execute() {
 
@@ -17,4 +17,4 @@ class GetPermissionServices {
     }
 }
 
-export { GetPermissionServices }
+export { ListPermissionServices }
