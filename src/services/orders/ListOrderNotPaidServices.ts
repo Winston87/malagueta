@@ -1,19 +1,14 @@
 import prismaClient from "../../prisma";
 
-interface GetTableOrder {
-
-    table: number
-}
 
 class ListOrderNotPaidService {
 
-    async execute({table}: GetTableOrder) {
+    async execute() {
 
-        const orders = await prismaClient.order.findFirst({
+        const orders = await prismaClient.order.findMany({
 
             where: {
 
-                table: table = 14,
                 status: false,
                 draft: false
 

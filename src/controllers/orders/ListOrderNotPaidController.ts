@@ -6,13 +6,11 @@ class ListOrderNotPaidController {
 
     async handle(req: Request, res: Response) {
 
-        const { table } = req.body;
+        const { order_id } = req.body;
 
         const ordersServices = new ListOrderNotPaidService();
 
-        const listAll = await ordersServices.execute({
-            table
-        });
+        const listAll = await ordersServices.execute();
 
         if(listAll === null) {
              return res.status(200).json('vazio')

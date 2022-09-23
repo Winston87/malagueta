@@ -14,11 +14,9 @@ const ListOrderNotPaidServices_1 = require("../../services/orders/ListOrderNotPa
 class ListOrderNotPaidController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { table } = req.body;
+            const { order_id } = req.body;
             const ordersServices = new ListOrderNotPaidServices_1.ListOrderNotPaidService();
-            const listAll = yield ordersServices.execute({
-                table
-            });
+            const listAll = yield ordersServices.execute();
             if (listAll === null) {
                 return res.status(200).json('vazio');
             }

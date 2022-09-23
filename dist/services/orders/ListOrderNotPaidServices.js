@@ -15,11 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListOrderNotPaidService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class ListOrderNotPaidService {
-    execute({ table }) {
+    execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const orders = yield prisma_1.default.order.findFirst({
+            const orders = yield prisma_1.default.order.findMany({
                 where: {
-                    table: table = 14,
                     status: false,
                     draft: false
                 },
