@@ -1,25 +1,31 @@
 import { Request, Response } from "express";
 import { AddItemOrdersServices } from "../../services/orders/AddItemOrdersServices";
-import { CreateCommissionServices } from '../../services/commission/CreateCommissionServices';
+import { CreateCommissionServices } from "../../services/commission/CreateCommissionServices";
+
+
 class AddItemController {
 
     async handle(req: Request, res: Response) {
 
         const {  ordem_id, product_id, amount } = req.body;
-        const user_id = req.user_id
+        const user_id = req.user_id;
 
         const addItemServices = new AddItemOrdersServices();
         const commissionServices = new CreateCommissionServices();
+
+        //const getAll = await addItemServices.get(ordem_id);
+
+        
 
         const itens = await addItemServices.execute({
 
             ordem_id,
             product_id,
-            amount
+            amount// (getAll.ordem_id === ordem_id && getAll.product_id === product_id) ?  getAll.amount += amount: amount
 
         });
 
-        console.log(user_id)
+        
 
         // adicionar venda na comissao
         let sum = (parseFloat( itens.product.price) * amount);
@@ -39,7 +45,7 @@ class AddItemController {
             commission: sum_commission
         }
 
-         return res.json(response);
+         return res.status(201).json(response);
 
 
     }

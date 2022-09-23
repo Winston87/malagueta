@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthUserAdminController = void 0;
 const authUserService_1 = require("../../services/users/authUserService");
 const GetValidPermissionServices_1 = require("../../services/permission/GetValidPermissionServices");
+const MensegeError_1 = require("../../exceptions/mensege/MensegeError");
 class AuthUserAdminController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -23,7 +24,7 @@ class AuthUserAdminController {
             });
             const permission = yield permissionServices.execute();
             if (auth.permission_id !== permission.id) {
-                throw new Error("Usuario não permitido para login! ");
+                throw new MensegeError_1.Mensege(MensegeError_1.erros.USUARIO_NAO_PERMITIDO);
             }
             return res.json(auth);
         });

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { CreateProductsServices } from "../../services/products/CreateProductsServices";
-import { Mensege, erros } from '../../exceptions/mensege/MensegeError'
+import { Mensege, erros } from "../../exceptions/mensege/MensegeError";
 
 
 class CreateProductsController {
@@ -19,7 +19,7 @@ class CreateProductsController {
 
         }else{
 
-            const { originalname, filename: banner } = req.file
+            const { originalname, filename: banner } = req.file;
 
             const product = await productServices.execute({
                 name,
@@ -29,7 +29,7 @@ class CreateProductsController {
                 category_id
             });
 
-            return res.json(product);
+            return res.status(201).json(product);
         }
 
     }

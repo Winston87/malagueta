@@ -5,7 +5,7 @@ class RemoveProductsController {
 
     async handle(req: Request, res: Response) {
 
-        const product_id = req.query.product_id as string
+        const product_id = req.query.product_id as string;
 
         const productServices = new RemoveProductsServices();
 
@@ -14,7 +14,7 @@ class RemoveProductsController {
             product_id
         });
 
-        return res.status(200).json(product);
+        return res.status(204).json(product);
 
 
         }

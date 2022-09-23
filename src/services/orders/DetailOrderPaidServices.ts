@@ -1,51 +1,45 @@
-import prismaClient from "../../prisma";
+import prismaClient from "../../prisma";// detalhe pedido pago
 
 interface DetailOrder {
 
     order_id: string
 }
 
-class DetailOrderServices {
+class DetailOrderPaidServices {
 
     async execute({order_id}: DetailOrder) {
 
-
         const orders = await prismaClient.item.findMany({
 
-
             where: {
-                ordem_id: order_id
+                
+                ordem_id: order_id,
+                order: {
+                    status: true
+                }    
             },
             select: {
-                id: true,
-                amount: true,
-                order: {
-                    select: {
-                        status: true
-                    }
-                },
-
+    
                 product: {
                     select: {
                         id: true,
                         name: true,
                         description: true,
                         price: true,
-                        banner: true,
+                        banner: true
 
                     }
-                }
+                },
+                amount: true,
             },
 
         });
-
-
 
         return orders;
     }
 }
 
-export { DetailOrderServices }
+export { DetailOrderPaidServices }
 
 ///SELECT DISTINCT * FROM  itens WHERE ordem_id = 'f2a8253f-45c8-412f-a367-67c9ad60573d'
 // SELECT * FROM itens WHERE product_id = '9415daa1-550d-4893-a83b-bcedde21491c'

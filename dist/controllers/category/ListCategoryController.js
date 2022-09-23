@@ -16,7 +16,7 @@ class ListCategoryController {
         return __awaiter(this, void 0, void 0, function* () {
             const CategoriaServices = new ListCategoryServices_1.ListcategoryServices();
             const categorias = yield CategoriaServices.execute();
-            return res.json(categorias);
+            return res.status(200).json(categorias);
         });
     }
 }

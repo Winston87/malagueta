@@ -34,7 +34,7 @@ class PutOrderItemController {
                 amount,
                 sales: sum
             });
-            return res.json(item);
+            return res.status(201).json(item);
         });
     }
 }

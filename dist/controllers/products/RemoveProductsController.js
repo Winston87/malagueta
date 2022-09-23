@@ -19,7 +19,7 @@ class RemoveProductsController {
             const product = yield productServices.execute({
                 product_id
             });
-            return res.status(200).json(product);
+            return res.status(204).json(product);
         });
     }
 }

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ListProductCategoryServices }  from '../../services/products/ListProductCategoryServices';
+import { ListProductCategoryServices }  from "../../services/products/ListProductCategoryServices";
 
 class ListProductCategoryController {
 
@@ -13,7 +13,7 @@ class ListProductCategoryController {
             category_id
         });
 
-        return res.json(products);
+        return res.status(200).json(products);
 
 
     }

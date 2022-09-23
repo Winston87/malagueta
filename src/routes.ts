@@ -35,9 +35,9 @@ import { CreateOrdersController } from "./controllers/orders/CreateOrdersControl
 import { RemoveOrdersController } from "./controllers/orders/RemoveOrdersController";
 import { AddItemController } from "./controllers/orders/AddItemOrdersController";
 import { RemoveItemController } from "./controllers/orders/RemoveItemController";
-import { PutOrdersController } from "./controllers/orders/PutOrdersController";
-import { ListOrderController } from "./controllers/orders/ListOrderController";
-import { DetailOrderController } from "./controllers/orders/DetailOrderController";
+import { PutOrderSubmitController } from "./controllers/orders/PutOrderSubmitController";
+import { ListOrderNotPaidController } from "./controllers/orders/ListOrderNotPaidController";
+import { DetailOrderPaidController } from "./controllers/orders/DetailOrderPaidController";
 import { FinishOrderController } from "./controllers/orders/FinishOrderController";
 import { PutOrderItemController } from "./controllers/orders/PutOrderItemController";
 
@@ -67,6 +67,7 @@ router.get('/user/list', ValidAuth, new ListUserController().handle);// listar u
 router.post('/permission', new CreatePermissionController().handle); // criar permissao
 router.get('/permission/list',ValidAuth, new ListPermissionController().handle)
 router.delete('/permission/delete',ValidAuth, new DeletetPermissionController().handle);
+
 //rotas category
 router.post('/category',ValidAuth, new CreateCategoryController().handle); // cadastrar categoria
 router.get('/categorys/list', ValidAuth, new ListCategoryController().handle); // listar categoria
@@ -84,11 +85,12 @@ router.post('/order', ValidAuth, new CreateOrdersController().handle); // abrir 
 router.delete('/order/remover/table', ValidAuth, new RemoveOrdersController().handle ); // deletar mesa
 router.post('/order/add', ValidAuth, new AddItemController().handle);  // add um item a mesa
 router.delete('/order/remover/item', ValidAuth, new RemoveItemController().handle); // deletar um item da mesa
-router.put('/order/make', ValidAuth, new PutOrdersController().handle );  // enviar pedido
-router.get('/order/listAll', ValidAuth, new ListOrderController().handle); // listar pedidos feitos
-router.get('/order/detail', ValidAuth, new  DetailOrderController().handler); // detalhe do pedido
-router.put('/order/finish', ValidAuth, new FinishOrderController().handler); // libera pedido para a mesa
+router.put('/order/make', ValidAuth, new PutOrderSubmitController().handle );  // enviar pedido
+router.get('/order/listAll', ValidAuth, new ListOrderNotPaidController().handle); // listar pedidos feitos nao pagos
+router.get('/order/detail', ValidAuth, new  DetailOrderPaidController().handler); // detalhe do pedido pago*
+router.put('/order/finish', ValidAuth, new FinishOrderController().handler); // libera mesa pedido pago (baixa do valor total da mesa )
 router.put('/order/item',ValidAuth, new PutOrderItemController().handle);// atualizar quantidade do item no pedido
+
 
 
 // rota menu
@@ -98,7 +100,7 @@ router.post('/menu/upload',ValidAuth, menu.single('file'), new UploadMenuControl
 
 
 //DATABASE_URL="postgresql://postgres:0000@localhost:5432/rsMalagueta?schema=public"
-
+//postgresql-symmetrical-42473
 
 export { router }// exportar router
 

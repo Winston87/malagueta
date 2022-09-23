@@ -9,7 +9,8 @@ enum erros  {
     SENHA_EM_BRANCO = "Campo senha esta em branco!",
     FALHA_SALVA_IMAGEM = "Falha em salvar imagem!",
     VALIDA_TOKEM = "Usuario não autorizado!",
-    TOKEM_INVALIDO = "usuario não esta logado!"
+    TOKEM_INVALIDO = "usuario não esta logado!",
+    USUARIO_NAO_PERMITIDO = "Usuario não permitido para login! "
 }
 
 class Mensege extends Error {

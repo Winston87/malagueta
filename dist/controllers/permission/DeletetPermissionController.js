@@ -17,7 +17,7 @@ class DeletetPermissionController {
             const { idd } = req.body;
             const permissionServices = new DeletePermissionServices_1.DeletePermissionServices();
             const permission = yield permissionServices.execute({ idd });
-            return res.json(permission);
+            return res.status(204).json(permission);
         });
     }
 }

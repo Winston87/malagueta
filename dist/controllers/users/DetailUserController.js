@@ -17,7 +17,7 @@ class DetailUserController {
             const user_id = req.user_id;
             const datailUserServices = new DetailUserService_1.DetailUserService();
             const user = yield datailUserServices.execute(user_id);
-            return res.json(user);
+            return res.status(200).json(user);
         });
     }
 }

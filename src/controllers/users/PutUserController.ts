@@ -16,7 +16,7 @@ class PutUserController {
             permission_id
         });
 
-        return res.json(user);
+        return res.status(201).json(user);
 
 
     }

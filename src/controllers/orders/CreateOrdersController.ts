@@ -17,7 +17,7 @@ class CreateOrdersController {
 
         });
 
-        return res.json(orders);
+        return res.status(201).json(orders);
 
 
     }

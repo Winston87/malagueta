@@ -17,7 +17,7 @@ class CreateCategoryController {
             const { name } = req.body;
             const categoryServeces = new CreateCategoryServices_1.CreateCategoryServeces();
             const category = yield categoryServeces.execute({ name });
-            return res.json(category);
+            return res.status(201).json(category);
         });
     }
 }

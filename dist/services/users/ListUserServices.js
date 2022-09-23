@@ -17,13 +17,12 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class ListUserServices {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = yield prisma_1.default.user.findMany({
+            const user = prisma_1.default.user.findMany({
                 select: {
                     id: true,
                     name: true,
                     email: true,
-                    permission_id: true,
-                    permission: true
+                    permission_id: true
                 }
             });
             return user;

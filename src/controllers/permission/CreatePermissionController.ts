@@ -14,7 +14,7 @@ class CreatePermissionController {
             description
         });
 
-        return res.json(permission);
+        return res.status(201).json(permission);
 
     }
 

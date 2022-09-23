@@ -1,8 +1,8 @@
 //alterar quantidade de itens pedido
 import { Request, Response } from "express";
-import { PutOrderItemService } from '../../services/orders/PutOrderItemServices';
-import { DataItemCommission } from '../../services/commission/CreateCommissionServices';
-import { PutCommissionServices } from '../../services/commission/PutCommissionServices';
+import { PutOrderItemService } from "../../services/orders/PutOrderItemServices";
+import { DataItemCommission } from "../../services/commission/CreateCommissionServices";
+import { PutCommissionServices } from "../../services/commission/PutCommissionServices";
 
 
 class PutOrderItemController {
@@ -36,7 +36,7 @@ class PutOrderItemController {
             sales: sum
         });
 
-        return res.json(item);
+        return res.status(201).json(item);
 
     }
 

@@ -11,7 +11,7 @@ class DetailUserController {
 
         const user = await datailUserServices.execute(user_id);
 
-        return res.json(user);
+        return res.status(200).json(user);
 
 
     }

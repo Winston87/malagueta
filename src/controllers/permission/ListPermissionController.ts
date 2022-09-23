@@ -5,13 +5,11 @@ class ListPermissionController {
 
     async handle(req: Request, res: Response) {
 
-       
-
         const permissionServices = new ListPermissionServices();
 
         const permission = await permissionServices.execute();
 
-        return res.json(permission);
+        return res.status(200).json(permission);
     }
 
 }

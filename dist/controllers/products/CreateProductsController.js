@@ -29,7 +29,7 @@ class CreateProductsController {
                     banner,
                     category_id
                 });
-                return res.json(product);
+                return res.status(201).json(product);
             }
         });
     }

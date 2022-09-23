@@ -5,7 +5,7 @@ interface PutOrder {
     ordem_id: string
 }
 
-class PutOrdersServices {
+class PutOrderSubmitServices {
 
     async execute({ordem_id}: PutOrder ) {
 
@@ -25,4 +25,4 @@ class PutOrdersServices {
 
 }
 
-export { PutOrdersServices }
+export { PutOrderSubmitServices }

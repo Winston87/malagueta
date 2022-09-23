@@ -14,6 +14,7 @@ var erros;
     erros["FALHA_SALVA_IMAGEM"] = "Falha em salvar imagem!";
     erros["VALIDA_TOKEM"] = "Usuario n\u00E3o autorizado!";
     erros["TOKEM_INVALIDO"] = "usuario n\u00E3o esta logado!";
+    erros["USUARIO_NAO_PERMITIDO"] = "Usuario n\u00E3o permitido para login! ";
 })(erros || (erros = {}));
 exports.erros = erros;
 class Mensege extends Error {

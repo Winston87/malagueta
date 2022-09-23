@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateCategoryServeces }  from '../../services/category/CreateCategoryServices'
+import { CreateCategoryServeces }  from "../../services/category/CreateCategoryServices";
 
 class CreateCategoryController {
 
@@ -12,7 +12,7 @@ class CreateCategoryController {
         const category = await categoryServeces.execute({name});
 
 
-        return res.json(category);
+        return res.status(201).json(category);
     }
 
 

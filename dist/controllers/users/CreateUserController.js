@@ -17,7 +17,7 @@ class CreatUserController {
             const { name, email, permission_id, password } = req.body; // recebendo requisição
             const userServices = new CreateUserServices_1.CreateUserServices();
             const user = yield userServices.execute({ name, email, permission_id, password });
-            return res.json(user);
+            return res.status(201).json(user);
         });
     }
 }

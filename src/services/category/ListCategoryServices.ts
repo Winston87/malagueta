@@ -5,7 +5,7 @@ class ListcategoryServices {
     async execute() {
 
 
-        const categotias = await prismaClient.category.findMany({
+        const categotias =  prismaClient.category.findMany({
 
             select: {
                 id: true,

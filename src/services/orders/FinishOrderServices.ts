@@ -1,4 +1,4 @@
-import prismaClient from "../../prisma";
+import prismaClient from "../../prisma";// finalizar mesa para paga
 
 interface FinishOrder {
 
@@ -13,6 +13,7 @@ class FinishOrderServices {
 
             where: {
                 id: order_id
+                
             },
             data: {
                 status: true

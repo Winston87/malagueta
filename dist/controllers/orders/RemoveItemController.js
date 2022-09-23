@@ -25,7 +25,7 @@ class RemoveItemController {
             yield commissionRemoveServices.execute({
                 item_id: remove.id
             });
-            return res.status(202).json(remove);
+            return res.status(204).json(remove);
         });
     }
 }

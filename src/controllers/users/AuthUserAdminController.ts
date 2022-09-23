@@ -1,6 +1,7 @@
-import { Request, Response } from "express";
+import { json, Request, Response } from "express";
 import { AuthUserServie } from "../../services/users/authUserService";
 import { GetValidPermissionServices } from "../../services/permission/GetValidPermissionServices";
+import { erros, Mensege } from "../../exceptions/mensege/MensegeError"
 
 class AuthUserAdminController {
 
@@ -19,7 +20,9 @@ class AuthUserAdminController {
 
        if(auth.permission_id !== permission.id) {
 
-        throw new Error("Usuario não permitido para login! ")
+        
+
+        throw new  Mensege(erros.USUARIO_NAO_PERMITIDO);
        }
 
 

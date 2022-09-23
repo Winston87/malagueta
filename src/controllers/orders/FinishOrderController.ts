@@ -15,7 +15,7 @@ class FinishOrderController {
             order_id
         });
 
-        return res.json(FinishOrder);
+        return res.status(200).json(FinishOrder);
 
 
     }

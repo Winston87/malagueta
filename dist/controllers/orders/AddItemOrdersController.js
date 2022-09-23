@@ -19,12 +19,12 @@ class AddItemController {
             const user_id = req.user_id;
             const addItemServices = new AddItemOrdersServices_1.AddItemOrdersServices();
             const commissionServices = new CreateCommissionServices_1.CreateCommissionServices();
+            //const getAll = await addItemServices.get(ordem_id);
             const itens = yield addItemServices.execute({
                 ordem_id,
                 product_id,
-                amount
+                amount // (getAll.ordem_id === ordem_id && getAll.product_id === product_id) ?  getAll.amount += amount: amount
             });
-            console.log(user_id);
             // adicionar venda na comissao
             let sum = (parseFloat(itens.product.price) * amount);
             let sum_commission = ((5.8 * sum) / 100);
@@ -39,7 +39,7 @@ class AddItemController {
                 itens,
                 commission: sum_commission
             };
-            return res.json(response);
+            return res.status(201).json(response);
         });
     }
 }

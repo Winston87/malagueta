@@ -19,7 +19,7 @@ class RemoveOrdersController {
             const order = yield removeOrderServices.execute({
                 order_id
             });
-            return res.json(order);
+            return res.status(204).json(order);
         });
     }
 }

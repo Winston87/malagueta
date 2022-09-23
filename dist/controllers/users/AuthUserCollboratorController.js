@@ -19,7 +19,7 @@ class AuthUserCollaboratorController {
             const auth = yield authUserService.execute({
                 email, password
             });
-            return res.json(auth);
+            return res.status(201).json(auth);
         });
     }
 }

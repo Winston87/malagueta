@@ -6,7 +6,7 @@ class PutProductController {
 
     async handle(req: Request, res: Response) {
 
-        const {product_id, name, price, description, category_id } = req.body
+        const {product_id, name, price, description, category_id } = req.body;
 
         const productServices = new PutProductServices();
 
@@ -17,7 +17,7 @@ class PutProductController {
 
         }else{
 
-            const { originalname, filename: banner } = req.file
+            const { originalname, filename: banner } = req.file;
 
             const product =  await productServices.execute({
 
@@ -30,7 +30,7 @@ class PutProductController {
 
             });
 
-            return res.json(product);
+            return res.status(201).json(product);
         }
 
     }

@@ -19,7 +19,7 @@ class ListProductCategoryController {
             const products = yield categoryServices.execute({
                 category_id
             });
-            return res.json(products);
+            return res.status(200).json(products);
         });
     }
 }

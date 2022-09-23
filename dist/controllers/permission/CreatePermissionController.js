@@ -19,7 +19,7 @@ class CreatePermissionController {
             const permission = yield permissionServices.execute({
                 description
             });
-            return res.json(permission);
+            return res.status(201).json(permission);
         });
     }
 }

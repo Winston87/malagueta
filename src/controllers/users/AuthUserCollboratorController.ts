@@ -13,7 +13,7 @@ class AuthUserCollaboratorController {
            email, password
        });
 
-       return res.json(auth);
+       return res.status(201).json(auth);
     }
 
 }

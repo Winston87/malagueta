@@ -19,7 +19,7 @@ class FinishOrderController {
             const FinishOrder = yield ordersServices.exeute({
                 order_id
             });
-            return res.json(FinishOrder);
+            return res.status(200).json(FinishOrder);
         });
     }
 }

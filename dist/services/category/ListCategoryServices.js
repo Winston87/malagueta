@@ -17,7 +17,7 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class ListcategoryServices {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const categotias = yield prisma_1.default.category.findMany({
+            const categotias = prisma_1.default.category.findMany({
                 select: {
                     id: true,
                     name: true

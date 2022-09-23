@@ -4,14 +4,13 @@ class ListUserServices {
 
     async execute() {
 
-        const user = await prismaClient.user.findMany({
+        const user =  prismaClient.user.findMany({
 
             select: {
                 id: true,
                 name: true,
                 email: true,
-                permission_id: true,
-                permission: true
+                permission_id: true
 
             }
         });
