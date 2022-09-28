@@ -5,9 +5,8 @@ enum erros  {
     SENHA_MENOR = "Campo senha deve conter pelo menos 6 caracteres!",
     NOME_EM_BRANCO = "Campo nome esta em branco!",
     EMAIL_EM_BRANCO = "Campo e-mail esta em branco!",
-    VALIDA_TIPO_EMAIL = '[a-z0-9]+@[a-z]+\.[a-z]{2,3}',
     SENHA_EM_BRANCO = "Campo senha esta em branco!",
-    FALHA_SALVA_IMAGEM = "Falha em salvar imagem!",
+    FALHA_SALVA_IMAGEM = "Falha em salvar imagem, salve em jpeg ou png!",
     VALIDA_TOKEM = "Usuario não autorizado!",
     TOKEM_INVALIDO = "usuario não esta logado!",
     USUARIO_NAO_PERMITIDO = "Usuario não permitido para login! "

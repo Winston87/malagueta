@@ -16,6 +16,10 @@ exports.InternalError = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 const bcryptjs_1 = require("bcryptjs");
 const MensegeError_1 = require("../../exceptions/mensege/MensegeError");
+// interface ValidarLogout  {
+//     email: string
+//     password: string
+// }
 class InternalError {
     //validar campos de cadastro
     execute({ email, name, password }) {
@@ -39,7 +43,7 @@ class InternalError {
                 throw new MensegeError_1.Mensege(MensegeError_1.erros.EMAIL_EXISTENTE);
             }
             // validar email
-            let regex = new RegExp(MensegeError_1.erros.VALIDA_TIPO_EMAIL);
+            let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
             const valid = regex.test(email);
             if (!valid) {
                 throw new MensegeError_1.Mensege(MensegeError_1.erros.EMAIL_NAO_VALIDO + `${email}`);
@@ -64,7 +68,7 @@ class InternalError {
                 }
             });
             if (!senhas) {
-                throw new MensegeError_1.Mensege(MensegeError_1.erros.EMAIL_NAO_VALIDO);
+                throw new MensegeError_1.Mensege(MensegeError_1.erros.EMAIL_NAO_VALIDO + `${email}`);
             }
             const validSenha = yield (0, bcryptjs_1.compare)(password, senhas === null || senhas === void 0 ? void 0 : senhas.password);
             if (!validSenha) {

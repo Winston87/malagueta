@@ -26,7 +26,7 @@ class CreateUserServices {
             const salvarUser = yield prisma_1.default.user.create({
                 data: {
                     name: name.toUpperCase(),
-                    email: email,
+                    email: email.toLowerCase(),
                     permission_id: permission_id,
                     password: passwordHash,
                 },

@@ -17,7 +17,7 @@ class PutUserServices {
                 id: user_id
             },
             data: {
-                 name: name,
+                 name: name.toUpperCase(),
                  permission_id: permission_id
             },
             select: {

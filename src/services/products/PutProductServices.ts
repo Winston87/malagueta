@@ -23,7 +23,7 @@ class PutProductServices {
             },
             data: {
 
-                name: name.toUpperCase() ,
+                name: name.toUpperCase(),
                 price: price,
                 description: description.toLowerCase(),
                 banner: banner,

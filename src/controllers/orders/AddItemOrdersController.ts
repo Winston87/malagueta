@@ -14,9 +14,7 @@ class AddItemController {
         const commissionServices = new CreateCommissionServices();
 
         //const getAll = await addItemServices.get(ordem_id);
-
         
-
         const itens = await addItemServices.execute({
 
             ordem_id,

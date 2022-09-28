@@ -15,18 +15,26 @@ class ListProductCategoryServices {
             where: {
                 category_id: category_id
 
+            },
+            select: {
+                id: true,
+                name: true,
+                price: true,
+                description: true,
+                banner: true
             }
         });
 
 
 
 
-        const query = await prismaClient.$queryRaw(Prisma.sql`SELECT name, price, description, banner FROM produtos WHERE category_id = ${category_id}`)
+        //const query = await prismaClient.$queryRaw(Prisma.sql`SELECT name, price, description, banner FROM produtos WHERE category_id = ${category_id}`)
 
-        console.log(query)
-        return (await query);
+        //console.log(query)
+        return (ProductsAll);
 
     }
 }
 
 export { ListProductCategoryServices }
+

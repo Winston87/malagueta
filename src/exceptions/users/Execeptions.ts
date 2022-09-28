@@ -5,16 +5,16 @@ import { Mensege, erros } from '../../exceptions/mensege/MensegeError'
 
 interface ValidaUser {
 
-    name: string
-    email: string
-    password: string
+    name?: string
+    email?: string
+    password?: string
 }
 
-interface ValidarLogout  {
+// interface ValidarLogout  {
 
-    email: string
-    password: string
-}
+//     email: string
+//     password: string
+// }
 
 class InternalError {
     //validar campos de cadastro
@@ -45,7 +45,7 @@ class InternalError {
         }
 
         // validar email
-        let regex = new RegExp(erros.VALIDA_TIPO_EMAIL);
+        let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
 
         const valid =  regex.test(email);
 
@@ -57,7 +57,7 @@ class InternalError {
     }
 
     // validar campos de login
-    async executeLogout({email, password}:  ValidarLogout) {
+    async executeLogout({email, password}:  ValidaUser) {
 
         if(!email.trim()){
             throw new Mensege(erros.EMAIL_EM_BRANCO);
@@ -78,7 +78,7 @@ class InternalError {
         });
 
         if(!senhas) {
-            throw new Mensege(erros.EMAIL_NAO_VALIDO);
+            throw new Mensege(erros.EMAIL_NAO_VALIDO + `${email}`);
         }
 
         const validSenha = await compare(password, senhas?.password);

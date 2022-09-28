@@ -17,11 +17,11 @@ class CreateProductsController {
         return __awaiter(this, void 0, void 0, function* () {
             const { name, price, description, category_id } = req.body;
             const productServices = new CreateProductsServices_1.CreateProductsServices();
-            if (!req.file) {
+            const { originalname, filename: banner } = req.file;
+            if (req.file.path.substr(-5) !== '.jpeg' && req.file.path.substr(-4) !== '.png') {
                 throw new MensegeError_1.Mensege(MensegeError_1.erros.FALHA_SALVA_IMAGEM);
             }
             else {
-                const { originalname, filename: banner } = req.file;
                 const product = yield productServices.execute({
                     name,
                     price,

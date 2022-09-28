@@ -24,7 +24,7 @@ class CreateUserServices {
         const salvarUser = await prismaClient.user.create({
             data: {
                 name: name.toUpperCase(),
-                email: email,
+                email: email.toLowerCase(),
                 permission_id:  permission_id,
                 password: passwordHash,
 

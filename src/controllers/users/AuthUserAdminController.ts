@@ -20,9 +20,8 @@ class AuthUserAdminController {
 
        if(auth.permission_id !== permission.id) {
 
-        
-
         throw new  Mensege(erros.USUARIO_NAO_PERMITIDO);
+
        }
 
 

@@ -8,18 +8,14 @@ class CreateProductsController {
     async handle(req: Request, res: Response) {
 
         const { name, price, description, category_id } = req.body;
-
-
-
         const productServices = new CreateProductsServices();
+        const { originalname, filename: banner } = req.file;
 
-        if(!req.file) {
+        if(req.file.path.substr(-5) !== '.jpeg' && req.file.path.substr(-4) !== '.png') {
 
             throw new Mensege(erros.FALHA_SALVA_IMAGEM);
 
         }else{
-
-            const { originalname, filename: banner } = req.file;
 
             const product = await productServices.execute({
                 name,

@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListProductCategoryServices = void 0;
-const client_1 = require(".prisma/client");
 const prisma_1 = __importDefault(require("../../prisma"));
 class ListProductCategoryServices {
     execute({ category_id }) {
@@ -21,11 +20,18 @@ class ListProductCategoryServices {
             const ProductsAll = prisma_1.default.product.findMany({
                 where: {
                     category_id: category_id
+                },
+                select: {
+                    id: true,
+                    name: true,
+                    price: true,
+                    description: true,
+                    banner: true
                 }
             });
-            const query = yield prisma_1.default.$queryRaw(client_1.Prisma.sql `SELECT name, price, description, banner FROM produtos WHERE category_id = ${category_id}`);
-            console.log(query);
-            return (yield query);
+            //const query = await prismaClient.$queryRaw(Prisma.sql`SELECT name, price, description, banner FROM produtos WHERE category_id = ${category_id}`)
+            //console.log(query)
+            return (ProductsAll);
         });
     }
 }
