@@ -7,7 +7,7 @@ class AddItemController {
 
     async handle(req: Request, res: Response) {
 
-        const {  ordem_id, product_id, amount } = req.body;
+        const {  ordem_id,preparation, product_id, amount } = req.body;
         const user_id = req.user_id;
 
         const addItemServices = new AddItemOrdersServices();
@@ -19,6 +19,7 @@ class AddItemController {
 
             ordem_id,
             product_id,
+            preparation,
             amount// (getAll.ordem_id === ordem_id && getAll.product_id === product_id) ?  getAll.amount += amount: amount
 
         });

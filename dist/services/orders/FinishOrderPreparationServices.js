@@ -12,21 +12,27 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FinishOrderServices = void 0;
-const prisma_1 = __importDefault(require("../../prisma")); //finalizar pedido em preparo na cozinha
-class FinishOrderServices {
-    exeute({ order_id }) {
+exports.FinishOrderPreparationServices = void 0;
+const prisma_1 = __importDefault(require("../../prisma"));
+class FinishOrderPreparationServices {
+    execute({ item_id }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const orders = yield prisma_1.default.order.update({
+            // const idItemOrder = await prismaClient.item.findMany({
+            //     where: {
+            //      ordem_id: order_id,
+            //      preparation: false
+            //     }
+            // });
+            const preparation = yield prisma_1.default.item.update({
                 where: {
-                    id: order_id,
+                    id: item_id
                 },
                 data: {
-                    status: true,
-                },
+                    preparation: true
+                }
             });
-            return orders;
+            return preparation;
         });
     }
 }
-exports.FinishOrderServices = FinishOrderServices;
+exports.FinishOrderPreparationServices = FinishOrderPreparationServices;

@@ -1,14 +1,14 @@
 //listar pedidos feitos
 import { Request, Response } from "express";
-import { ListOrderNotPaidService } from "../../services/orders/ListOrderNotPaidServices"
+import { ListOrderPreparationService } from "../../services/orders/ListOrderPreparationService"
 
-class ListOrderNotPaidController {
+class ListOrderPreparationController {
 
     async handle(req: Request, res: Response) {
 
         const { order_id } = req.body;
 
-        const ordersServices = new ListOrderNotPaidService();
+        const ordersServices = new ListOrderPreparationService();
 
         const listAll = await ordersServices.execute();
 
@@ -20,5 +20,5 @@ class ListOrderNotPaidController {
     }
 }
 
-export { ListOrderNotPaidController }
+export { ListOrderPreparationController }
 

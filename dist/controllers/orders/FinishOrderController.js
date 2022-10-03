@@ -11,15 +11,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FinishOrderController = void 0;
 const FinishOrderServices_1 = require("../../services/orders/FinishOrderServices");
+const FinishOrderPreparationServices_1 = require("../../services/orders/FinishOrderPreparationServices");
 class FinishOrderController {
     handler(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { order_id } = req.body;
+            const { order_id, item_id } = req.body;
             const ordersServices = new FinishOrderServices_1.FinishOrderServices();
-            const FinishOrder = yield ordersServices.exeute({
+            const preparationServices = new FinishOrderPreparationServices_1.FinishOrderPreparationServices();
+            const order = yield ordersServices.exeute({
                 order_id
             });
-            return res.status(200).json(FinishOrder);
+            const prepare = yield preparationServices.execute({
+                item_id
+            });
+            return res.status(200).json(prepare);
         });
     }
 }

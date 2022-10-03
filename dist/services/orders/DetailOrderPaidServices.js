@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DetailOrderPaidServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma")); // detalhe pedido pago
+// class esta bug excluir 
 class DetailOrderPaidServices {
     execute({ order_id }) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -21,7 +22,8 @@ class DetailOrderPaidServices {
                 where: {
                     ordem_id: order_id,
                     order: {
-                        status: true
+                        status: true,
+                        draft: true
                     }
                 },
                 select: {

@@ -1,4 +1,4 @@
-import prismaClient from "../../prisma";// finalizar mesa para paga
+import prismaClient from "../../prisma"; //finalizar pedido em preparo na cozinha
 
 interface FinishOrder {
 
@@ -12,12 +12,15 @@ class FinishOrderServices {
         const orders = await prismaClient.order.update({
 
             where: {
-                id: order_id
-                
+                id: order_id,
+                 
             },
             data: {
-                status: true
-            }
+                status: true,
+                
+                 
+            },
+
         });
 
         return orders;

@@ -15,7 +15,7 @@ const CreateCommissionServices_1 = require("../../services/commission/CreateComm
 class AddItemController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { ordem_id, product_id, amount } = req.body;
+            const { ordem_id, preparation, product_id, amount } = req.body;
             const user_id = req.user_id;
             const addItemServices = new AddItemOrdersServices_1.AddItemOrdersServices();
             const commissionServices = new CreateCommissionServices_1.CreateCommissionServices();
@@ -23,6 +23,7 @@ class AddItemController {
             const itens = yield addItemServices.execute({
                 ordem_id,
                 product_id,
+                preparation,
                 amount // (getAll.ordem_id === ordem_id && getAll.product_id === product_id) ?  getAll.amount += amount: amount
             });
             // adicionar venda na comissao

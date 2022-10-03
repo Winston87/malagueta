@@ -98,6 +98,7 @@ model Item { // lado muitos na relacão
 
     id String @id @default(uuid())
     amount Int
+    preparation Boolean @default(false)
 
 
     order Order @relation(fields: [ordem_id], references: [id])

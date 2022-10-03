@@ -4,7 +4,7 @@ interface DetailOrder {
 
     order_id: string
 }
-
+// class esta bug excluir 
 class DetailOrderPaidServices {
 
     async execute({order_id}: DetailOrder) {
@@ -15,7 +15,8 @@ class DetailOrderPaidServices {
                 
                 ordem_id: order_id,
                 order: {
-                    status: true
+                    status: true,
+                    draft: true
                 }    
             },
             select: {

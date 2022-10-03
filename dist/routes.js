@@ -35,10 +35,14 @@ const RemoveOrdersController_1 = require("./controllers/orders/RemoveOrdersContr
 const AddItemOrdersController_1 = require("./controllers/orders/AddItemOrdersController");
 const RemoveItemController_1 = require("./controllers/orders/RemoveItemController");
 const PutOrderSubmitController_1 = require("./controllers/orders/PutOrderSubmitController");
-const ListOrderNotPaidController_1 = require("./controllers/orders/ListOrderNotPaidController");
+const ListOrderPreparationController_1 = require("./controllers/orders/ListOrderPreparationController");
 const DetailOrderPaidController_1 = require("./controllers/orders/DetailOrderPaidController");
 const FinishOrderController_1 = require("./controllers/orders/FinishOrderController");
 const PutOrderItemController_1 = require("./controllers/orders/PutOrderItemController");
+//report
+const GetPaymentsOrderNotPaidController_1 = require("./controllers/relatorio/GetPaymentsOrderNotPaidController");
+const GetPaymentsOrderPaidController_1 = require("./controllers/relatorio/GetPaymentsOrderPaidController");
+const PaidOrderController_1 = require("./controllers/relatorio/PaidOrderController");
 //menu
 const MenuController_1 = require("./controllers/menu/MenuController");
 const ListMenuController_1 = require("./controllers/menu/ListMenuController");
@@ -76,10 +80,14 @@ router.delete('/order/remover/table', ValidAuthenticated_1.ValidAuth, new Remove
 router.post('/order/add', ValidAuthenticated_1.ValidAuth, new AddItemOrdersController_1.AddItemController().handle); // add um item a mesa
 router.delete('/order/remover/item', ValidAuthenticated_1.ValidAuth, new RemoveItemController_1.RemoveItemController().handle); // deletar um item da mesa
 router.put('/order/make', ValidAuthenticated_1.ValidAuth, new PutOrderSubmitController_1.PutOrderSubmitController().handle); // enviar pedido
-router.get('/order/listAll', ValidAuthenticated_1.ValidAuth, new ListOrderNotPaidController_1.ListOrderNotPaidController().handle); // listar pedidos feitos nao pagos
+router.get('/order/listAll', ValidAuthenticated_1.ValidAuth, new ListOrderPreparationController_1.ListOrderPreparationController().handle); // listar pedidos feitos nao pagos
 router.get('/order/detail', ValidAuthenticated_1.ValidAuth, new DetailOrderPaidController_1.DetailOrderPaidController().handler); // detalhe do pedido pago*
 router.put('/order/finish', ValidAuthenticated_1.ValidAuth, new FinishOrderController_1.FinishOrderController().handler); // libera mesa pedido pago (baixa do valor total da mesa )
 router.put('/order/item', ValidAuthenticated_1.ValidAuth, new PutOrderItemController_1.PutOrderItemController().handle); // atualizar quantidade do item no pedido
+//relatorio
+router.get('/report/payment', new GetPaymentsOrderNotPaidController_1.GetPaymentsOrderNotPaidController().handle);
+router.get('/report/paid', new GetPaymentsOrderPaidController_1.GetPaymentsOrderPaidController().handle);
+router.put('/report', new PaidOrderController_1.PaidOrderController().handle);
 // rota menu
 router.get('/menu', new MenuController_1.MenuController().handle); // visualizar cardapio
 router.get('/menu/product', new ListMenuController_1.ListMenuController().handle); //

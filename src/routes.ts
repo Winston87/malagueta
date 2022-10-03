@@ -36,10 +36,16 @@ import { RemoveOrdersController } from "./controllers/orders/RemoveOrdersControl
 import { AddItemController } from "./controllers/orders/AddItemOrdersController";
 import { RemoveItemController } from "./controllers/orders/RemoveItemController";
 import { PutOrderSubmitController } from "./controllers/orders/PutOrderSubmitController";
-import { ListOrderNotPaidController } from "./controllers/orders/ListOrderNotPaidController";
+import { ListOrderPreparationController } from "./controllers/orders/ListOrderPreparationController";
 import { DetailOrderPaidController } from "./controllers/orders/DetailOrderPaidController";
 import { FinishOrderController } from "./controllers/orders/FinishOrderController";
 import { PutOrderItemController } from "./controllers/orders/PutOrderItemController";
+
+//report
+import { GetPaymentsOrderNotPaidController } from "./controllers/relatorio/GetPaymentsOrderNotPaidController";
+import { GetPaymentsOrderPaidController } from "./controllers/relatorio/GetPaymentsOrderPaidController";
+import { PaidOrderController } from "./controllers/relatorio/PaidOrderController";
+
 
 //menu
 import { MenuController } from "./controllers/menu/MenuController";
@@ -86,11 +92,16 @@ router.delete('/order/remover/table', ValidAuth, new RemoveOrdersController().ha
 router.post('/order/add', ValidAuth, new AddItemController().handle);  // add um item a mesa
 router.delete('/order/remover/item', ValidAuth, new RemoveItemController().handle); // deletar um item da mesa
 router.put('/order/make', ValidAuth, new PutOrderSubmitController().handle );  // enviar pedido
-router.get('/order/listAll', ValidAuth, new ListOrderNotPaidController().handle); // listar pedidos feitos nao pagos
+router.get('/order/listAll', ValidAuth, new ListOrderPreparationController().handle); // listar pedidos feitos nao pagos
 router.get('/order/detail', ValidAuth, new  DetailOrderPaidController().handler); // detalhe do pedido pago*
 router.put('/order/finish', ValidAuth, new FinishOrderController().handler); // libera mesa pedido pago (baixa do valor total da mesa )
 router.put('/order/item',ValidAuth, new PutOrderItemController().handle);// atualizar quantidade do item no pedido
 
+
+//relatorio
+router.get('/report/payment', new GetPaymentsOrderNotPaidController().handle);
+router.get('/report/paid', new GetPaymentsOrderPaidController().handle);
+router.put('/report', new PaidOrderController().handle)
 
 
 // rota menu
@@ -103,5 +114,6 @@ router.post('/menu/upload',ValidAuth, menu.single('file'), new UploadMenuControl
 //postgresql-symmetrical-42473
 
 export { router }// exportar router
+
 
 
