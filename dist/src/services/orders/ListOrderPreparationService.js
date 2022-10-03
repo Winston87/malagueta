@@ -30,6 +30,21 @@ class ListOrderPreparationService {
                     product: true,
                     amount: true
                 }
+                // select: {
+                //     order: {
+                //         select: {
+                //             id: true,
+                //             table: true,
+                //             itens: {
+                //                 select: {
+                //                     id: true,
+                //                     product: true,
+                //                     amount: true
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
             });
             // const query = await prismaClient.$queryRaw(Prisma.sql`SELECT pedidos.id,itens.id as item_id, 
             // pedidos.table, pedidos.status, pedidos.draft, pedidos.name, produtos.name, produtos.price, 

@@ -20,7 +20,7 @@ class AddItemOrdersServices {
                 data: {
                     ordem_id: ordem_id,
                     product_id: product_id,
-                    preparation,
+                    //preparation,
                     amount: amount
 
                 },

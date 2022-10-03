@@ -21,7 +21,23 @@ class ListOrderPreparationService {
                 product: true,
                 amount: true
             }
-            
+            // select: {
+                
+            //     order: {
+            //         select: {
+            //             id: true,
+            //             table: true,
+            //             itens: {
+
+            //                 select: {
+            //                     id: true,
+            //                     product: true,
+            //                     amount: true
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
                
            
         });
