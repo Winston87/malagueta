@@ -35,6 +35,7 @@ class AddItemController {
                 price: itens.product.price,
                 sales: sum
             });
+            //146e4e2d-6a6f-428c-bccc-d2b30a55f3b7"
             const response = {
                 itens,
                 commission: sum_commission
