@@ -31,7 +31,7 @@ class AddItemController {
             yield commissionServices.execute({
                 item_id: itens.id,
                 user_id: user_id,
-                amount,
+                amount: itens.amount,
                 price: itens.product.price,
                 sales: sum
             });
