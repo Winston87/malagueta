@@ -46,9 +46,6 @@ class ListOrderPreparationService {
                 //     }
                 // }
             });
-            // const query = await prismaClient.$queryRaw(Prisma.sql`SELECT pedidos.id,itens.id as item_id, 
-            // pedidos.table, pedidos.status, pedidos.draft, pedidos.name, produtos.name, produtos.price, 
-            // produtos.description, produtos.banner,itens.amount  FROM pedidos, itens, produtos WHERE preparation NOT IN (${true}) AND preparation = false`)
             return orders;
         });
     }
