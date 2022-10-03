@@ -31,7 +31,7 @@ class AddItemController {
 
         await commissionServices.execute({
             item_id: itens.id,
-            user_id,
+            user_id: user_id,
             amount,
             price: itens.product.price,
             sales: sum

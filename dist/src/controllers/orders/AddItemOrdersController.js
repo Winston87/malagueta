@@ -30,7 +30,7 @@ class AddItemController {
             let sum_commission = ((5.8 * sum) / 100);
             yield commissionServices.execute({
                 item_id: itens.id,
-                user_id,
+                user_id: user_id,
                 amount,
                 price: itens.product.price,
                 sales: sum
