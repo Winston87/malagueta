@@ -39,6 +39,7 @@ model Permission {
     user User[]
 }
 
+
 model Commission {
 
     id String @id @default(uuid())
