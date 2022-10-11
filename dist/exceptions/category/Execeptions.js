@@ -22,3 +22,4 @@ class ExceptionCategory {
     }
 }
 exports.ExceptionCategory = ExceptionCategory;
+//# sourceMappingURL=Execeptions.js.map

@@ -28,6 +28,7 @@ class GetPaymentsOrderNotPaidServices {
                     }
                 },
                 select: {
+                    id: true,
                     table: true,
                     draft: true,
                     itens: {
@@ -45,3 +46,4 @@ class GetPaymentsOrderNotPaidServices {
     }
 }
 exports.GetPaymentsOrderNotPaidServices = GetPaymentsOrderNotPaidServices;
+//# sourceMappingURL=GetPaymentsOrderNotPaidServices.js.map

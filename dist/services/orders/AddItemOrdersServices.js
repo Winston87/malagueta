@@ -15,13 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AddItemOrdersServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class AddItemOrdersServices {
-    execute({ ordem_id, product_id, amount }) {
+    execute({ ordem_id, product_id, amount, preparation }) {
         return __awaiter(this, void 0, void 0, function* () {
             const addItem = yield prisma_1.default.item.create({
                 data: {
                     ordem_id: ordem_id,
                     product_id: product_id,
-                    amount: amount
+                    amount: amount,
+                    preparation: preparation
                 },
                 select: {
                     id: true,
@@ -35,3 +36,4 @@ class AddItemOrdersServices {
     }
 }
 exports.AddItemOrdersServices = AddItemOrdersServices;
+//# sourceMappingURL=AddItemOrdersServices.js.map

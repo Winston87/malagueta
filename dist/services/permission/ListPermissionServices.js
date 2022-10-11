@@ -23,8 +23,10 @@ class ListPermissionServices {
                     description: true
                 }
             });
+            console.log(permission);
             return permission;
         });
     }
 }
 exports.ListPermissionServices = ListPermissionServices;
+//# sourceMappingURL=ListPermissionServices.js.map

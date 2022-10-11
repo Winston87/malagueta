@@ -27,3 +27,4 @@ class DeletePermissionServices {
     }
 }
 exports.DeletePermissionServices = DeletePermissionServices;
+//# sourceMappingURL=DeletePermissionServices.js.map

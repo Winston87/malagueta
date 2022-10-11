@@ -9,6 +9,8 @@ class ListPermissionController {
 
         const permission = await permissionServices.execute();
 
+        console.log(permission)
+
         return res.status(200).json(permission);
     }
 

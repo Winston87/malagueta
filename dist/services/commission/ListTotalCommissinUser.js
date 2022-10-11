@@ -22,3 +22,4 @@ class ListTotalComissionUser {
     }
 }
 exports.ListTotalComissionUser = ListTotalComissionUser;
+//# sourceMappingURL=ListTotalCommissinUser.js.map

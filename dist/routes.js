@@ -92,3 +92,4 @@ router.put('/report', new PaidOrderController_1.PaidOrderController().handle);
 router.get('/menu', new MenuController_1.MenuController().handle); // visualizar cardapio
 router.get('/menu/product', new ListMenuController_1.ListMenuController().handle); //
 router.post('/menu/upload', ValidAuthenticated_1.ValidAuth, menu.single('file'), new UploadMenuContreoller_1.UploadMenuController().handle); // subie um cardapio pdf para o servidor
+//# sourceMappingURL=routes.js.map

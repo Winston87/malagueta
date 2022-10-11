@@ -22,3 +22,4 @@ class Mensege extends Error {
     }
 }
 exports.Mensege = Mensege;
+//# sourceMappingURL=MensegeError.js.map

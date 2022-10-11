@@ -14,14 +14,11 @@ const ListOrderPreparationService_1 = require("../../services/orders/ListOrderPr
 class ListOrderPreparationController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { order_id } = req.body;
             const ordersServices = new ListOrderPreparationService_1.ListOrderPreparationService();
             const listAll = yield ordersServices.execute();
-            if (listAll === null) {
-                return res.status(200).json('vazio');
-            }
             return res.status(200).json(listAll);
         });
     }
 }
 exports.ListOrderPreparationController = ListOrderPreparationController;
+//# sourceMappingURL=ListOrderPreparationController.js.map

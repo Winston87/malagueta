@@ -27,7 +27,7 @@ class CreateProductsController {
                     price,
                     description,
                     banner,
-                    category_id
+                    category_id,
                 });
                 return res.status(201).json(product);
             }
@@ -35,3 +35,4 @@ class CreateProductsController {
     }
 }
 exports.CreateProductsController = CreateProductsController;
+//# sourceMappingURL=CreateProductsController.js.map

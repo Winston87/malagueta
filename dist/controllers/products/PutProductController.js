@@ -36,3 +36,4 @@ class PutProductController {
     }
 }
 exports.PutProductController = PutProductController;
+//# sourceMappingURL=PutProductController.js.map

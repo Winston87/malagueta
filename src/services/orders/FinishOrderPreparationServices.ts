@@ -8,16 +8,7 @@ interface PutPreparation {
 class FinishOrderPreparationServices {
 
     async execute({item_id}: PutPreparation) {
-
-        // const idItemOrder = await prismaClient.item.findMany({
-        //     where: {
-        //      ordem_id: order_id,
-        //      preparation: false
-        //     }
-        // });
-
-       
-
+        
        const preparation =  await prismaClient.item.update({
     
             where: {

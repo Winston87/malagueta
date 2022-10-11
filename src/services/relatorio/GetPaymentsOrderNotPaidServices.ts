@@ -20,6 +20,7 @@ class GetPaymentsOrderNotPaidServices {
                
             },
             select: {
+                id: true,
                 table: true,
                 draft: true,
                 itens: {

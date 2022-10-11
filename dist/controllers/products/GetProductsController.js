@@ -21,3 +21,4 @@ class GetProductsController {
     }
 }
 exports.GetProductsController = GetProductsController;
+//# sourceMappingURL=GetProductsController.js.map

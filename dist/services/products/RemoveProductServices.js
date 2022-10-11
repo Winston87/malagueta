@@ -27,3 +27,4 @@ class RemoveProductsServices {
     }
 }
 exports.RemoveProductsServices = RemoveProductsServices;
+//# sourceMappingURL=RemoveProductServices.js.map

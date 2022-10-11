@@ -17,12 +17,6 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class FinishOrderPreparationServices {
     execute({ item_id }) {
         return __awaiter(this, void 0, void 0, function* () {
-            // const idItemOrder = await prismaClient.item.findMany({
-            //     where: {
-            //      ordem_id: order_id,
-            //      preparation: false
-            //     }
-            // });
             const preparation = yield prisma_1.default.item.update({
                 where: {
                     id: item_id
@@ -36,3 +30,4 @@ class FinishOrderPreparationServices {
     }
 }
 exports.FinishOrderPreparationServices = FinishOrderPreparationServices;
+//# sourceMappingURL=FinishOrderPreparationServices.js.map

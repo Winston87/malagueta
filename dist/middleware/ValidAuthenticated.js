@@ -20,3 +20,4 @@ function ValidAuth(req, res, next) {
     }
 }
 exports.ValidAuth = ValidAuth;
+//# sourceMappingURL=ValidAuthenticated.js.map

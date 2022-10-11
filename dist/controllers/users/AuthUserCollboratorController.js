@@ -24,3 +24,4 @@ class AuthUserCollaboratorController {
     }
 }
 exports.AuthUserCollaboratorController = AuthUserCollaboratorController;
+//# sourceMappingURL=AuthUserCollboratorController.js.map

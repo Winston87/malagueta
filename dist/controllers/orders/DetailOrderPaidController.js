@@ -24,3 +24,4 @@ class DetailOrderPaidController {
     }
 }
 exports.DetailOrderPaidController = DetailOrderPaidController;
+//# sourceMappingURL=DetailOrderPaidController.js.map

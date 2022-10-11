@@ -6,11 +6,12 @@ interface AddItemOrders {
     ordem_id: string;
     product_id: string;
     amount: number;
+    preparation: boolean
 }
 
 class AddItemOrdersServices {
 
-    async execute({ ordem_id, product_id, amount }: AddItemOrders ) {
+    async execute({ ordem_id, product_id, amount, preparation }: AddItemOrders ) {
 
 
              const addItem = await prismaClient.item.create({
@@ -19,7 +20,8 @@ class AddItemOrdersServices {
                 data: {
                     ordem_id: ordem_id,
                     product_id: product_id,
-                    amount: amount
+                    amount: amount,
+                    preparation: preparation
 
                 },
                 select: {

@@ -30,3 +30,4 @@ class UploadMenuController {
     }
 }
 exports.UploadMenuController = UploadMenuController;
+//# sourceMappingURL=UploadMenuContreoller.js.map

@@ -55,3 +55,4 @@ exports.DetailOrderPaidServices = DetailOrderPaidServices;
 // WHERE c.ordem_id = 'f2a8253f-45c8-412f-a367-67c9ad60573d'
 // SELECT name, price, amount FROM produtos p  INNER JOIN itens c ON p.id = c.product_id
 // WHERE c.ordem_id = 'f2a8253f-45c8-412f-a367-67c9ad60573d'
+//# sourceMappingURL=DetailOrderPaidServices.js.map

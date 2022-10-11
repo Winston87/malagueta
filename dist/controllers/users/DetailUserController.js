@@ -22,3 +22,4 @@ class DetailUserController {
     }
 }
 exports.DetailUserController = DetailUserController;
+//# sourceMappingURL=DetailUserController.js.map

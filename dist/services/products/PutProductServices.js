@@ -34,3 +34,4 @@ class PutProductServices {
     }
 }
 exports.PutProductServices = PutProductServices;
+//# sourceMappingURL=PutProductServices.js.map

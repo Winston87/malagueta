@@ -17,37 +17,32 @@ const prisma_1 = __importDefault(require("../../prisma")); // listar pedidos par
 class ListOrderPreparationService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const orders = yield prisma_1.default.item.findMany({
+            const itens = yield prisma_1.default.item.findMany({
                 where: {
-                    preparation: false,
-                    NOT: {
-                        preparation: true
-                    }
+                    preparation: false
                 },
                 select: {
                     id: true,
-                    order: true,
-                    product: true,
+                    order: {
+                        select: {
+                            id: true,
+                            table: true
+                        }
+                    },
+                    product: {
+                        select: {
+                            name: true,
+                            description: true,
+                            price: true,
+                            banner: true
+                        }
+                    },
                     amount: true
                 }
-                // select: {
-                //     order: {
-                //         select: {
-                //             id: true,
-                //             table: true,
-                //             itens: {
-                //                 select: {
-                //                     id: true,
-                //                     product: true,
-                //                     amount: true
-                //                 }
-                //             }
-                //         }
-                //     }
-                // }
             });
-            return orders;
+            return itens;
         });
     }
 }
 exports.ListOrderPreparationService = ListOrderPreparationService;
+//# sourceMappingURL=ListOrderPreparationService.js.map

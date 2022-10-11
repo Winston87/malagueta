@@ -24,3 +24,4 @@ class RemoveOrdersController {
     }
 }
 exports.RemoveOrdersController = RemoveOrdersController;
+//# sourceMappingURL=RemoveOrdersController.js.map

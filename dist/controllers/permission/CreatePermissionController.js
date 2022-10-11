@@ -24,3 +24,4 @@ class CreatePermissionController {
     }
 }
 exports.CreatePermissionController = CreatePermissionController;
+//# sourceMappingURL=CreatePermissionController.js.map

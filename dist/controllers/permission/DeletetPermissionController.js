@@ -22,3 +22,4 @@ class DeletetPermissionController {
     }
 }
 exports.DeletetPermissionController = DeletetPermissionController;
+//# sourceMappingURL=DeletetPermissionController.js.map

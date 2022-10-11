@@ -23,7 +23,7 @@ class CreateProductsServices {
                     price: price,
                     description: description.toLowerCase(),
                     banner: banner,
-                    category_id: category_id
+                    category_id: category_id,
                 },
                 select: {
                     name: true,
@@ -38,3 +38,4 @@ class CreateProductsServices {
     }
 }
 exports.CreateProductsServices = CreateProductsServices;
+//# sourceMappingURL=CreateProductsServices.js.map

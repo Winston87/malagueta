@@ -24,3 +24,4 @@ class ListProductCategoryController {
     }
 }
 exports.ListProductCategoryController = ListProductCategoryController;
+//# sourceMappingURL=ListProductCategoryController.js.map

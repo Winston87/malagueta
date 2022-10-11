@@ -22,3 +22,4 @@ class CreateCategoryController {
     }
 }
 exports.CreateCategoryController = CreateCategoryController;
+//# sourceMappingURL=CreateCategoryController.js.map

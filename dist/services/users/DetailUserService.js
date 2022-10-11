@@ -32,3 +32,4 @@ class DetailUserService {
     }
 }
 exports.DetailUserService = DetailUserService;
+//# sourceMappingURL=DetailUserService.js.map
