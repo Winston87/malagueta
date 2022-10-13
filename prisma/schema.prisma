@@ -27,6 +27,7 @@ model User {
     commission Commission[]
 
 }
+
 //ALTER TABLE usuarios ADD permission_id VARCHAR(20) NULL
 
 model Permission {

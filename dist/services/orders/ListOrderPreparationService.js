@@ -17,27 +17,50 @@ const prisma_1 = __importDefault(require("../../prisma")); // listar pedidos par
 class ListOrderPreparationService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            const itens = yield prisma_1.default.item.findMany({
+            // const itens = await prismaClient.item.findMany({
+            //     where: {
+            //      preparation: false
+            //     },
+            //     select: {
+            //        id: true,
+            //         order: {
+            //             select: {
+            //                 id: true,
+            //                 table: true
+            //             }
+            //         },
+            //         product: {
+            //             select: {
+            //                 name: true,
+            //                 description: true,
+            //                 price: true,
+            //                 banner: true
+            //             }
+            //         },
+            //         amount: true
+            //     }
+            // });
+            const itens = yield prisma_1.default.order.findMany({
                 where: {
-                    preparation: false
+                    itens: {
+                        some: {
+                            preparation: false
+                        }
+                    }
                 },
                 select: {
                     id: true,
-                    order: {
+                    table: true,
+                    itens: {
+                        where: {
+                            preparation: false
+                        },
                         select: {
                             id: true,
-                            table: true
+                            product: true,
+                            amount: true
                         }
-                    },
-                    product: {
-                        select: {
-                            name: true,
-                            description: true,
-                            price: true,
-                            banner: true
-                        }
-                    },
-                    amount: true
+                    }
                 }
             });
             return itens;
