@@ -41,10 +41,28 @@ class CreateOrdersServices {
                 },
                 select: {
                     id: true,
-                    table: true
+                    table: true,
+                    status: true,
+                    draft: true
                 }
             });
             return getTable;
+        });
+    }
+    arrayTable({ table }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const orderTable = yield prisma_1.default.order.findMany({
+                where: {
+                    table: table
+                },
+                select: {
+                    id: true,
+                    table: true,
+                    status: true,
+                    draft: true
+                }
+            });
+            return orderTable;
         });
     }
     updatetable(table, ordem_id) {

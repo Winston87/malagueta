@@ -16,11 +16,18 @@ class CreateOrdersController {
         return __awaiter(this, void 0, void 0, function* () {
             const { table, name } = req.body;
             const ordersProductServices = new CreateOrdersServices_1.CreateOrdersServices();
-            const orders = yield ordersProductServices.execute({
-                table,
-                name
-            });
-            return res.status(201).json(orders);
+            const tableExiste = yield ordersProductServices.arrayTable({ table });
+            console.log(tableExiste.length);
+            if (!tableExiste.length) {
+                const orders = yield ordersProductServices.execute({
+                    table,
+                    name
+                });
+                return res.status(201).json(orders);
+            }
+            else {
+                return res.status(201).json(tableExiste);
+            }
         });
     }
 }

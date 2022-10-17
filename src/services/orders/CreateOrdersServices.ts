@@ -41,11 +41,33 @@ class CreateOrdersServices {
            
             select:{
                 id: true,
-                table: true
+                table: true,
+                status: true,
+                draft: true
             }
         });
         return getTable;
 
+    }
+
+    async arrayTable({table}: CreateOrder) {
+
+        const orderTable = await prismaClient.order.findMany({
+
+            where: {
+
+                table: table
+            },
+            select:{
+                id: true,
+                table: true,
+                status: true,
+                draft: true
+            }
+        });
+
+
+        return orderTable;
     }
 
     async updatetable(table: number, ordem_id: string) {

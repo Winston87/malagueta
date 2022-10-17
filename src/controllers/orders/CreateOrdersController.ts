@@ -10,17 +10,29 @@ class CreateOrdersController {
 
         const ordersProductServices = new CreateOrdersServices();
 
-        const orders = await ordersProductServices.execute({
+        
 
-            table,
-            name
+        const tableExiste = await ordersProductServices.arrayTable({table});
+        console.log(tableExiste.length)
 
-        });
+        if(!tableExiste.length) {
+            const orders = await ordersProductServices.execute({
 
-        return res.status(201).json(orders);
+                table,
+                name
+    
+            });
+            return res.status(201).json(orders);
+        }else{ 
+
+            return res.status(201).json(tableExiste);
+
+        }
+
 
 
     }
 }
 
 export { CreateOrdersController }
+
