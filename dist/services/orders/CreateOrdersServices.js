@@ -33,6 +33,33 @@ class CreateOrdersServices {
             return orders;
         });
     }
+    getTable({ table }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const getTable = yield prisma_1.default.order.findFirst({
+                where: {
+                    table: table
+                },
+                select: {
+                    id: true,
+                    table: true
+                }
+            });
+            return getTable;
+        });
+    }
+    updatetable(table, ordem_id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const upTable = yield prisma_1.default.order.update({
+                where: {
+                    id: ordem_id
+                },
+                data: {
+                    table: 0 + table
+                }
+            });
+            return upTable;
+        });
+    }
 }
 exports.CreateOrdersServices = CreateOrdersServices;
 //# sourceMappingURL=CreateOrdersServices.js.map

@@ -10,7 +10,7 @@ class GetPaymentsOrderNotPaidServices {
             where: {
                 
                 //status: true,
-                draft:false,
+               draft:false,
                 itens: {
                     some: {
                         preparation: true
@@ -24,6 +24,7 @@ class GetPaymentsOrderNotPaidServices {
                 table: true,
                 draft: true,
                 itens: {
+                    
                     select: {
                         product: true,
                         amount: true
@@ -31,6 +32,7 @@ class GetPaymentsOrderNotPaidServices {
                     }
                 }
             }
+            
 
             
 

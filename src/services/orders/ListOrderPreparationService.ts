@@ -57,7 +57,6 @@ class ListOrderPreparationService {
                     },
                     
                     select: {
-                    
                         id: true,
                         product: true,
                         amount: true

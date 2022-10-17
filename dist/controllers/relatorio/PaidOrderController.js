@@ -11,14 +11,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PaidOrderController = void 0;
 const PaidOrderServices_1 = require("../../services/relatorio/PaidOrderServices");
+const CreateOrdersServices_1 = require("../../services/orders/CreateOrdersServices");
 class PaidOrderController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { order_id } = req.body;
             const paidOrderServices = new PaidOrderServices_1.PaidOrderServices();
+            const tableServices = new CreateOrdersServices_1.CreateOrdersServices();
             const paymentOrder = yield paidOrderServices.execute({
                 order_id
             });
+            var table;
+            yield tableServices.updatetable(table = 100 + paymentOrder.table, order_id);
             return res.status(201).json(paymentOrder);
         });
     }
