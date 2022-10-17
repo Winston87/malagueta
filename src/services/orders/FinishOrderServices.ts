@@ -20,6 +20,38 @@ class FinishOrderServices {
                 status: true,
                 
             },
+            // select: {
+            //     id: true,
+            //     table: true,
+            //     itens: {
+            //         where: {
+            //             preparation: false
+            //         },
+                    
+            //         select: {
+            //             id: true,
+            //             product: true,
+            //             amount: true
+
+            //         }
+            //     }
+            // }
+            
+
+        });
+
+        const itens = await prismaClient.order.findMany({
+
+            
+            where: {
+                
+                itens: {
+                    some: {
+                        preparation: false
+                    }
+                }
+
+            },
             select: {
                 id: true,
                 table: true,
@@ -37,15 +69,13 @@ class FinishOrderServices {
                 }
             }
             
-
         });
 
-        return orderItemId;
-
+           return itens;
 
     }
 
-
+    
 }
 
 

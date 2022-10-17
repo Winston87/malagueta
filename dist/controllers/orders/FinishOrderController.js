@@ -24,7 +24,13 @@ class FinishOrderController {
             const order = yield ordersServices.exeute({
                 order_id
             });
-            return res.status(200).json(order);
+            console.log(order.length);
+            if (order.length) {
+                return res.status(200).json(order);
+            }
+            else {
+                return res.status(200).end();
+            }
         });
     }
 }

@@ -15,16 +15,22 @@ class FinishOrderController {
         await preparationServices.execute({
                     item_id
                 });
-                
+
         const order = await ordersServices.exeute({
 
             order_id
         });
 
-        
+        console.log(order.length)
+                 
+       if(order.length){
+            return res.status(200).json(order);
 
-        return res.status(200).json(order);
+       }else{
 
+            return res.status(200).end();
+
+       }
 
     }
 }
