@@ -12,6 +12,10 @@ class FinishOrderController {
         const ordersServices = new FinishOrderServices();
         const preparationServices = new FinishOrderPreparationServices();
 
+        await preparationServices.execute({
+                    item_id
+                });
+                
         const order = await ordersServices.exeute({
 
             order_id
@@ -19,11 +23,7 @@ class FinishOrderController {
 
         
 
-        const prepare = await preparationServices.execute({
-            item_id
-        });
-
-        return res.status(200).json(prepare);
+        return res.status(200).json(order);
 
 
     }

@@ -9,24 +9,43 @@ class FinishOrderServices {
 
     async exeute({order_id}: FinishOrder) {
 
-        const orders = await prismaClient.order.update({
+        const orderItemId =  await prismaClient.order.update({
 
             where: {
                 id: order_id,
-                 
+                
+    
             },
             data: {
                 status: true,
                 
-                 
             },
+            select: {
+                id: true,
+                table: true,
+                itens: {
+                    where: {
+                        preparation: false
+                    },
+                    
+                    select: {
+                        id: true,
+                        product: true,
+                        amount: true
+
+                    }
+                }
+            }
+            
 
         });
 
-        return orders;
+        return orderItemId;
 
 
     }
+
+
 }
 
 

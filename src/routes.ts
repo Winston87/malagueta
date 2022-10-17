@@ -98,6 +98,7 @@ router.put('/order/finish', ValidAuth, new FinishOrderController().handler); // 
 router.put('/order/item',ValidAuth, new PutOrderItemController().handle);// atualizar quantidade do item no pedido
 
 
+
 //relatorio
 router.get('/report/payment', new GetPaymentsOrderNotPaidController().handle);
 router.get('/report/paid', new GetPaymentsOrderPaidController().handle);

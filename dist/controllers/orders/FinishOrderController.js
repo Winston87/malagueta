@@ -18,13 +18,13 @@ class FinishOrderController {
             const { order_id, item_id } = req.body;
             const ordersServices = new FinishOrderServices_1.FinishOrderServices();
             const preparationServices = new FinishOrderPreparationServices_1.FinishOrderPreparationServices();
+            yield preparationServices.execute({
+                item_id
+            });
             const order = yield ordersServices.exeute({
                 order_id
             });
-            const prepare = yield preparationServices.execute({
-                item_id
-            });
-            return res.status(200).json(prepare);
+            return res.status(200).json(order);
         });
     }
 }

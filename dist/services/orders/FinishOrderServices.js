@@ -17,15 +17,29 @@ const prisma_1 = __importDefault(require("../../prisma")); //finalizar pedido em
 class FinishOrderServices {
     exeute({ order_id }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const orders = yield prisma_1.default.order.update({
+            const orderItemId = yield prisma_1.default.order.update({
                 where: {
                     id: order_id,
                 },
                 data: {
                     status: true,
                 },
+                select: {
+                    id: true,
+                    table: true,
+                    itens: {
+                        where: {
+                            preparation: false
+                        },
+                        select: {
+                            id: true,
+                            product: true,
+                            amount: true
+                        }
+                    }
+                }
             });
-            return orders;
+            return orderItemId;
         });
     }
 }
