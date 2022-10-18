@@ -5,11 +5,12 @@ class GetPaymentsOrderPaidController {
 
     async handle(req: Request, res: Response) {
 
-        const paymentPaidServices = new GetPaymentsOrderPaidServices();
+        const paymentServices = new GetPaymentsOrderPaidServices();
 
-        const paymentPaid = await paymentPaidServices.execute();
+        const payment = await paymentServices.execute();
 
-        return res.status(200).json(paymentPaid);
+
+        return res.status(200).json(payment);
     }
 
 

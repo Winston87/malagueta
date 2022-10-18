@@ -31,25 +31,7 @@ class CreateOrdersServices {
 
     }
 
-    async getTable({table}: CreateOrder) {
-
-        const getTable = await prismaClient.order.findFirst({
-
-            where: {
-                table: table
-            },
-           
-            select:{
-                id: true,
-                table: true,
-                status: true,
-                draft: true
-            }
-        });
-        return getTable;
-
-    }
-
+   
     async arrayTable({table}: CreateOrder) {
 
         const orderTable = await prismaClient.order.findMany({
@@ -78,7 +60,7 @@ class CreateOrdersServices {
                 id: ordem_id
             },
             data: {
-                table: 0 + table
+                table: table
             }
         });
 

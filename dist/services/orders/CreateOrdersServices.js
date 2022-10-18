@@ -33,22 +33,6 @@ class CreateOrdersServices {
             return orders;
         });
     }
-    getTable({ table }) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const getTable = yield prisma_1.default.order.findFirst({
-                where: {
-                    table: table
-                },
-                select: {
-                    id: true,
-                    table: true,
-                    status: true,
-                    draft: true
-                }
-            });
-            return getTable;
-        });
-    }
     arrayTable({ table }) {
         return __awaiter(this, void 0, void 0, function* () {
             const orderTable = yield prisma_1.default.order.findMany({
@@ -72,7 +56,7 @@ class CreateOrdersServices {
                     id: ordem_id
                 },
                 data: {
-                    table: 0 + table
+                    table: table
                 }
             });
             return upTable;

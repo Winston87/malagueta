@@ -15,11 +15,10 @@ class CreateOrdersController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { table, name } = req.body;
-            const ordersProductServices = new CreateOrdersServices_1.CreateOrdersServices();
-            const tableExiste = yield ordersProductServices.arrayTable({ table });
-            console.log(tableExiste.length);
+            const ordersServices = new CreateOrdersServices_1.CreateOrdersServices();
+            const tableExiste = yield ordersServices.arrayTable({ table });
             if (!tableExiste.length) {
-                const orders = yield ordersProductServices.execute({
+                const orders = yield ordersServices.execute({
                     table,
                     name
                 });

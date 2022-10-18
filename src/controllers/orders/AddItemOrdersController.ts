@@ -8,29 +8,15 @@ class AddItemController {
 
     async handle(req: Request, res: Response) {
 
-        const {  ordem_id, product_id, amount, table } = req.body;
+        const {  ordem_id, product_id, amount} = req.body;
         const user_id = req.user_id;
 
         const addItemServices = new AddItemOrdersServices();
         const commissionServices = new CreateCommissionServices();
-        const tableServices = new CreateOrdersServices()
-
-        const getTable = await tableServices.getTable({table});
-
-
-        if(getTable.table === table) {
-
-            createId(getTable.id);
-
-        }else {
-           createId(ordem_id);
-        }
-
-       async function createId (ordem_id: string) {
 
             const itens = await addItemServices.execute({
 
-                ordem_id: ordem_id,
+                ordem_id,
                 product_id,
                 amount,
                 preparation: false
@@ -60,7 +46,7 @@ class AddItemController {
         
     }
 
-}
+
 
 
 export { AddItemController }

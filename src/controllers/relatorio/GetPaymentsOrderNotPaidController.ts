@@ -7,9 +7,9 @@ class GetPaymentsOrderNotPaidController {
 
         const paymentsServces = new GetPaymentsOrderNotPaidServices();
 
-        const payments = await paymentsServces.execute();
+        const paymentsNotPaid = await paymentsServces.execute();
 
-        return res.status(200).json(payments);
+        return res.status(200).json(paymentsNotPaid);
     }
 
 }

@@ -14,9 +14,9 @@ const GetPaymentsOrderPaidServices_1 = require("../../services/relatorio/GetPaym
 class GetPaymentsOrderPaidController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const paymentPaidServices = new GetPaymentsOrderPaidServices_1.GetPaymentsOrderPaidServices();
-            const paymentPaid = yield paymentPaidServices.execute();
-            return res.status(200).json(paymentPaid);
+            const paymentServices = new GetPaymentsOrderPaidServices_1.GetPaymentsOrderPaidServices();
+            const payment = yield paymentServices.execute();
+            return res.status(200).json(payment);
         });
     }
 }
