@@ -18,11 +18,11 @@ class CreateOrdersController {
             const ordersServices = new CreateOrdersServices_1.CreateOrdersServices();
             const tableExiste = yield ordersServices.arrayTable({ table });
             if (!tableExiste.length) {
-                const orders = yield ordersServices.execute({
+                const order = yield ordersServices.execute({
                     table,
                     name
                 });
-                return res.status(201).json(orders);
+                return res.status(201).json(order);
             }
             else {
                 const order = {

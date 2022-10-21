@@ -14,14 +14,14 @@ class CreateOrdersController {
 
         if(!tableExiste.length) {
 
-            const orders = await ordersServices.execute({
+            const order = await ordersServices.execute({
 
                 table,
                 name
     
             });
 
-            return res.status(201).json(orders);
+            return res.status(201).json(order);
             
         }else{ 
 

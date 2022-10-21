@@ -23,8 +23,8 @@ class MenuController {
                     menu_product: true
                 }
             });
-            const url = `https://malagueta.herokuapp.com/files/menu/${menu.menu_product}`;
-            //const url = 'https://www.ilovepdf.com/pt/word_para_pdf';
+            //const url = `https://malagueta.herokuapp.com/files/menu/${menu.menu_product}`;
+            const url = `https://teste-rs.herokuapp.com/files/menu/${menu.menu_product}`;
             //const cardapio = menu.menu_product;
             //const url = `http://af17-45-179-106-105.ngrok.io/files/menu/${cardapio}`;
             const code = qr_image_1.default.image(url, { type: 'png' });

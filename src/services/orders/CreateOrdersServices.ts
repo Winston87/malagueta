@@ -31,7 +31,7 @@ class CreateOrdersServices {
 
     }
 
-   
+    // buscar tabelas para verificar se existe para abri uma nova 
     async arrayTable({table}: CreateOrder) {
 
         const orderTable = await prismaClient.order.findMany({
@@ -52,6 +52,7 @@ class CreateOrdersServices {
         return orderTable;
     }
 
+    // alterar a table do pedido
     async updatetable(table: number, ordem_id: string) {
 
         const upTable = await prismaClient.order.update({
