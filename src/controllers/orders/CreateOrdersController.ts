@@ -25,7 +25,14 @@ class CreateOrdersController {
             
         }else{ 
 
-            return res.status(201).json(tableExiste);
+            const order = {
+
+                id: tableExiste[0].id,
+                table: tableExiste[0].table
+
+            }
+
+            return res.status(201).json(order);
 
         }
     }
