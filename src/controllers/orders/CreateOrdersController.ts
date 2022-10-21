@@ -12,6 +12,12 @@ class CreateOrdersController {
 
         const tableExiste = await ordersServices.arrayTable({table});
 
+        // var orders = {
+        //     id: String,
+        //     table: Number,
+        //     order: Boolean
+        // }
+
         if(!tableExiste.length) {
 
             const order = await ordersServices.execute({
@@ -21,15 +27,22 @@ class CreateOrdersController {
     
             });
 
-            return res.status(201).json(order);
+            var orders = {
+                id: order.id,
+                table: table,
+                order: false
+            }
+
+            return res.status(201).json(orders);
             
         }else{ 
 
             const order = {
 
                 id: tableExiste[0].id,
-                table: tableExiste[0].table
-
+                table: tableExiste[0].table,
+                order:true
+                
             }
 
             return res.status(201).json(order);

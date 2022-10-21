@@ -17,17 +17,28 @@ class CreateOrdersController {
             const { table, name } = req.body;
             const ordersServices = new CreateOrdersServices_1.CreateOrdersServices();
             const tableExiste = yield ordersServices.arrayTable({ table });
+            // var orders = {
+            //     id: String,
+            //     table: Number,
+            //     order: Boolean
+            // }
             if (!tableExiste.length) {
                 const order = yield ordersServices.execute({
                     table,
                     name
                 });
-                return res.status(201).json(order);
+                var orders = {
+                    id: order.id,
+                    table: table,
+                    order: false
+                };
+                return res.status(201).json(orders);
             }
             else {
                 const order = {
                     id: tableExiste[0].id,
-                    table: tableExiste[0].table
+                    table: tableExiste[0].table,
+                    order: true
                 };
                 return res.status(201).json(order);
             }
