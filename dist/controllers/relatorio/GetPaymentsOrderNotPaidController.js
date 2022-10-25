@@ -16,9 +16,7 @@ class GetPaymentsOrderNotPaidController {
         return __awaiter(this, void 0, void 0, function* () {
             const order_id = req.query.order_id;
             const paymentsServces = new GetPaymentsOrderNotPaidServices_1.GetPaymentsOrderNotPaidServices();
-            const paymentsNotPaid = yield paymentsServces.execute({
-                order_id
-            });
+            const paymentsNotPaid = yield paymentsServces.execute();
             return res.status(200).json(paymentsNotPaid);
         });
     }

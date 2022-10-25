@@ -13,10 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetPaymentsOrderNotPaidServices = void 0;
-const client_1 = require(".prisma/client");
 const prisma_1 = __importDefault(require("../../prisma")); // listar pedido nao pagos 
 class GetPaymentsOrderNotPaidServices {
-    execute({ order_id }) {
+    execute() {
         return __awaiter(this, void 0, void 0, function* () {
             const order = yield prisma_1.default.order.findMany({
                 where: {
@@ -41,14 +40,15 @@ class GetPaymentsOrderNotPaidServices {
                     }
                 }
             });
-            const query = yield prisma_1.default.$queryRaw(client_1.Prisma.sql `select sum(relatorio.sales) as valor_total 
-             from relatorio
-             where relatorio.order_id = ${order_id} `);
-            const valueOrder = {
-                order,
-                query
-            };
-            return valueOrder;
+            //     const query = await prismaClient.$queryRaw(Prisma.sql
+            //         `select sum(relatorio.sales) as valor_total 
+            //          from relatorio
+            //          where relatorio.order_id = ${order_id} `)
+            //    const valueOrder = {
+            //          order,
+            //          query
+            //    }
+            return order;
         });
     }
 }

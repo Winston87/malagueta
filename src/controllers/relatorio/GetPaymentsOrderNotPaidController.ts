@@ -12,9 +12,7 @@ class GetPaymentsOrderNotPaidController {
 
         const paymentsServces = new GetPaymentsOrderNotPaidServices();
 
-        const paymentsNotPaid = await paymentsServces.execute({
-            order_id
-        });
+        const paymentsNotPaid = await paymentsServces.execute();
         
 
         return res.status(200).json(paymentsNotPaid);
@@ -23,3 +21,4 @@ class GetPaymentsOrderNotPaidController {
 }
 
 export { GetPaymentsOrderNotPaidController }
+

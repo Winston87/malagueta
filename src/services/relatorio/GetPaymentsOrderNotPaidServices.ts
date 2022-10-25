@@ -8,7 +8,7 @@ interface OrderId {
 
 class GetPaymentsOrderNotPaidServices {
 
-    async execute({order_id}: OrderId) {
+    async execute() {
 
         const order = await prismaClient.order.findMany({
 
@@ -42,18 +42,18 @@ class GetPaymentsOrderNotPaidServices {
             }
         });
 
-        const query = await prismaClient.$queryRaw(Prisma.sql
-            `select sum(relatorio.sales) as valor_total 
-             from relatorio
-             where relatorio.order_id = ${order_id} `)
+    //     const query = await prismaClient.$queryRaw(Prisma.sql
+    //         `select sum(relatorio.sales) as valor_total 
+    //          from relatorio
+    //          where relatorio.order_id = ${order_id} `)
 
-       const valueOrder = {
-             order,
-             query
+    //    const valueOrder = {
+    //          order,
+    //          query
          
-       }
+    //    }
        
-        return valueOrder;
+        return order;
         
 
 
