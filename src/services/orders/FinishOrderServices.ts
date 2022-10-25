@@ -45,7 +45,7 @@ class FinishOrderServices {
             
             where: {
                 
-                itens: {
+                item: {
                     some: {
                         preparation: false
                     }
@@ -55,7 +55,7 @@ class FinishOrderServices {
             select: {
                 id: true,
                 table: true,
-                itens: {
+                item: {
                     where: {
                         preparation: false
                     },

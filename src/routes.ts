@@ -108,7 +108,7 @@ router.put('/report', new PaidOrderController().handle)
 // rota menu
 router.get('/menu', new MenuController().handle); // visualizar cardapio
 router.get('/menu/product', new ListMenuController().handle); //
-router.post('/menu/upload',ValidAuth, menu.single('file'), new UploadMenuController().handle); // subie um cardapio pdf para o servidor
+router.put('/menu/upload',ValidAuth, menu.single('file'), new UploadMenuController().handle); // atualize cardapio pdf para o servidor
 
 
 //DATABASE_URL="postgresql://postgres:0000@localhost:5432/rsMalagueta?schema=public"

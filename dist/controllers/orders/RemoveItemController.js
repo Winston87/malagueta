@@ -11,13 +11,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RemoveItemController = void 0;
 const RemoveItemServices_1 = require("../../services/orders/RemoveItemServices");
-const RemoveCommissionServices_1 = require("../../services/commission/RemoveCommissionServices");
+const RemoveItemReporServices_1 = require("../../services/repor/RemoveItemReporServices");
 class RemoveItemController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const item_id = req.query.item_id;
             const itemRemoveServices = new RemoveItemServices_1.RemoveItemServices();
-            const commissionRemoveServices = new RemoveCommissionServices_1.RemoveCommission();
+            const commissionRemoveServices = new RemoveItemReporServices_1.RemoveRepor();
             const remove = yield itemRemoveServices.execute({
                 item_id
             });

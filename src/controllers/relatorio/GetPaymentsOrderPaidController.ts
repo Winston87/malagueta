@@ -9,7 +9,9 @@ class GetPaymentsOrderPaidController {
 
         const payment = await paymentServices.execute();
 
+        
 
+    
         return res.status(200).json(payment);
     }
 

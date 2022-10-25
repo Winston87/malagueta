@@ -25,6 +25,7 @@ class UploadMenuController {
             return res.json(product);
         }
 
+        
     }
 }
 export { UploadMenuController }

@@ -13,35 +13,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetPaymentsOrderNotPaidServices = void 0;
+const client_1 = require(".prisma/client");
 const prisma_1 = __importDefault(require("../../prisma")); // listar pedido nao pagos 
 class GetPaymentsOrderNotPaidServices {
-    execute() {
+    execute({ order_id }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const paiment = yield prisma_1.default.order.findMany({
+            const order = yield prisma_1.default.order.findMany({
                 where: {
-                    //status: true,
                     draft: false,
-                    itens: {
-                        some: {
-                            preparation: true
-                        }
-                    }
                 },
                 select: {
                     id: true,
                     table: true,
-                    draft: true,
-                    itens: {
+                    item: {
+                        where: {
+                            preparation: true
+                        },
                         select: {
                             product: true,
-                            amount: true
+                            amount: true,
+                            repor: {
+                                select: {
+                                    sales: true
+                                }
+                            },
                         }
                     }
                 }
             });
-            //const query = await prismaClient.$queryRaw(Prisma.sql`SELECT pedidos.id,itens.id as item_id,  pedidos.table, pedidos.status, pedidos.draft, pedidos.name, produtos.name, produtos.price, produtos.description, produtos.banner,itens.amount  FROM pedidos, itens, produtos`)
-            //const query = await prismaClient.$queryRaw(Prisma.sql('SELECT pedidos.id, table, status, draft, pedidos.name, itens.id as item_id, produtos.id as produtos_id, produtos.name, produtos.price, produtos.description, produtos.banner, produtos.category_id, itens.amount FROM pedidos, itens, produtos'));
-            return paiment;
+            const query = yield prisma_1.default.$queryRaw(client_1.Prisma.sql `select sum(relatorio.sales) as valor_total 
+             from relatorio
+             where relatorio.order_id = ${order_id} `);
+            const valueOrder = {
+                order,
+                query
+            };
+            return valueOrder;
         });
     }
 }

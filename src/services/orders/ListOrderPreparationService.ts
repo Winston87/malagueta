@@ -41,7 +41,7 @@ class ListOrderPreparationService {
             
             where: {
                 
-                itens: {
+                item: {
                     some: {
                         preparation: false
                     }
@@ -51,7 +51,7 @@ class ListOrderPreparationService {
             select: {
                 id: true,
                 table: true,
-                itens: {
+                item: {
                     where: {
                         preparation: false
                     },
@@ -63,7 +63,8 @@ class ListOrderPreparationService {
 
                     }
                 }
-            }
+            },
+            
             
         });
         

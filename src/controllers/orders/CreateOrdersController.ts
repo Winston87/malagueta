@@ -12,18 +12,13 @@ class CreateOrdersController {
 
         const tableExiste = await ordersServices.arrayTable({table});
 
-        // var orders = {
-        //     id: String,
-        //     table: Number,
-        //     order: Boolean
-        // }
-
         if(!tableExiste.length) {
 
             const order = await ordersServices.execute({
 
                 table,
-                name
+                name,
+                
     
             });
 
@@ -48,6 +43,8 @@ class CreateOrdersController {
             return res.status(201).json(order);
 
         }
+
+        
     }
 }
 

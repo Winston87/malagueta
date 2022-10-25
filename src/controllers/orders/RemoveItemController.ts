@@ -1,7 +1,7 @@
 //remover um item da mesa
 import { Request, Response } from "express";
 import { RemoveItemServices } from "../../services/orders/RemoveItemServices";
-import { RemoveCommission } from "../../services/commission/RemoveCommissionServices";
+import { RemoveRepor } from "../../services/repor/RemoveItemReporServices";
 
 class RemoveItemController {
 
@@ -10,7 +10,7 @@ class RemoveItemController {
        const  item_id  = req.query.item_id as string;
 
         const itemRemoveServices = new RemoveItemServices();
-        const commissionRemoveServices = new  RemoveCommission();
+        const commissionRemoveServices = new  RemoveRepor();
 
         const remove = await itemRemoveServices.execute({
             item_id

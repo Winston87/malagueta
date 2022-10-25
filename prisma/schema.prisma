@@ -24,36 +24,46 @@ model User {
     @@map("usuarios")
 
     permission_id String
-    commission Commission[]
+    repor_id Repor[]
 
 }
+
 
 //ALTER TABLE usuarios ADD permission_id VARCHAR(20) NULL
 
 model Permission {
 
     id String @id @default(uuid())
-    description String
+    description String 
 
     @@map("permissao")
 
     user User[]
+
+    
 }
 
 
-model Commission {
+model Repor {
 
     id String @id @default(uuid())
     amount Int
     price String
-    sales Float
+    sales Float 
     created_at DateTime? @default(now())
 
     user User @relation(fields: [user_id], references: [id])
-    @@map("comissao")
+    order Order @relation(fields: [order_id], references: [id])
+    item Item @relation(fields: [item_id], references: [id])
+    
+    @@map("relatorio")
 
     user_id String
+    order_id String
+    item_id String
+
 }
+
 
 model Category {
 
@@ -95,7 +105,8 @@ model Order { // lado 1 de muitos na relacão
 
     @@map("pedidos")
 
-    itens Item[]
+    item Item[]
+    repor Repor[]
 }
 
 model Item { // lado muitos na relacão
@@ -112,6 +123,8 @@ model Item { // lado muitos na relacão
     ordem_id String
     product_id String
 
+    repor Repor[]
+
 }
 
 model Menu {
@@ -123,3 +136,13 @@ model Menu {
     @@map("cardapio")
 }
 
+
+model Commission {
+
+    id String @id @default(uuid())
+    total Float
+    user_id String
+    creatd_at DateTime? @default(now())
+
+    @@map("comissao")
+}

@@ -1,47 +1,59 @@
 import { Prisma, PrismaClient } from '.prisma/client';
 import prismaClient from "../../prisma";// listar pedido nao pagos 
 
+interface OrderId {
+
+    order_id: string
+}
+
 class GetPaymentsOrderNotPaidServices {
 
-    async execute() {
+    async execute({order_id}: OrderId) {
 
-        const paiment = await prismaClient.order.findMany({
+        const order = await prismaClient.order.findMany({
 
             where: {
-                
-                //status: true,
-               draft:false,
-                itens: {
-                    some: {
-                        preparation: true
-                    }
-                }
-                
-               
+
+                draft: false,
+
             },
             select: {
+               
                 id: true,
                 table: true,
-                draft: true,
-                itens: {
-                    
+                item: {
+
+                    where: {
+                        preparation: true
+                    },
                     select: {
                         product: true,
-                        amount: true
-
+                        amount: true,
+                        repor: {
+                            
+                            select: {
+                                sales: true 
+                                
+                            }
+                        },
+                        
                     }
                 }
             }
-            
-
-            
-
         });
-        //const query = await prismaClient.$queryRaw(Prisma.sql`SELECT pedidos.id,itens.id as item_id,  pedidos.table, pedidos.status, pedidos.draft, pedidos.name, produtos.name, produtos.price, produtos.description, produtos.banner,itens.amount  FROM pedidos, itens, produtos`)
 
-        //const query = await prismaClient.$queryRaw(Prisma.sql('SELECT pedidos.id, table, status, draft, pedidos.name, itens.id as item_id, produtos.id as produtos_id, produtos.name, produtos.price, produtos.description, produtos.banner, produtos.category_id, itens.amount FROM pedidos, itens, produtos'));
+        const query = await prismaClient.$queryRaw(Prisma.sql
+            `select sum(relatorio.sales) as valor_total 
+             from relatorio
+             where relatorio.order_id = ${order_id} `)
 
-        return paiment;
+       const valueOrder = {
+             order,
+             query
+         
+       }
+       
+        return valueOrder;
         
 
 

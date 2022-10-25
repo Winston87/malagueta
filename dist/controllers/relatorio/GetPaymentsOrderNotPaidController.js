@@ -14,8 +14,11 @@ const GetPaymentsOrderNotPaidServices_1 = require("../../services/relatorio/GetP
 class GetPaymentsOrderNotPaidController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const order_id = req.query.order_id;
             const paymentsServces = new GetPaymentsOrderNotPaidServices_1.GetPaymentsOrderNotPaidServices();
-            const paymentsNotPaid = yield paymentsServces.execute();
+            const paymentsNotPaid = yield paymentsServces.execute({
+                order_id
+            });
             return res.status(200).json(paymentsNotPaid);
         });
     }

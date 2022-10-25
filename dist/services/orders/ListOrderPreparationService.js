@@ -42,7 +42,7 @@ class ListOrderPreparationService {
             // });
             const itens = yield prisma_1.default.order.findMany({
                 where: {
-                    itens: {
+                    item: {
                         some: {
                             preparation: false
                         }
@@ -51,7 +51,7 @@ class ListOrderPreparationService {
                 select: {
                     id: true,
                     table: true,
-                    itens: {
+                    item: {
                         where: {
                             preparation: false
                         },
@@ -61,7 +61,7 @@ class ListOrderPreparationService {
                             amount: true
                         }
                     }
-                }
+                },
             });
             return itens;
         });

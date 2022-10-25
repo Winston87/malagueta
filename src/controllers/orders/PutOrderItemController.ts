@@ -1,8 +1,8 @@
 //alterar quantidade de itens pedido
 import { Request, Response } from "express";
 import { PutOrderItemService } from "../../services/orders/PutOrderItemServices";
-import { DataItemCommission } from "../../services/commission/CreateCommissionServices";
-import { PutCommissionServices } from "../../services/commission/PutCommissionServices";
+import { DataItemRepor } from "../../services/repor/CreateReporServices";
+import { PutReporServices } from "../../services/repor/PutReporServices";
 
 
 class PutOrderItemController {
@@ -10,8 +10,8 @@ class PutOrderItemController {
     async handle(req: Request, res: Response) {
 
         const putItemServiices = new PutOrderItemService();
-        const dataServices = new DataItemCommission();
-        const putDataItemServices = new PutCommissionServices();
+        const dataServices = new DataItemRepor();
+        const putDataItemServices = new PutReporServices();
 
         const {item_id, amount } = req.body;
 
@@ -28,7 +28,7 @@ class PutOrderItemController {
 
         // atualizar comisssao caso tenha alteração nos itens
 
-        let sum = (parseFloat( dataItem.price) * amount);
+        let sum = ( parseFloat(dataItem.price) * amount);
 
         await putDataItemServices.execute({
             item_id,

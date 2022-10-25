@@ -17,15 +17,10 @@ class CreateOrdersController {
             const { table, name } = req.body;
             const ordersServices = new CreateOrdersServices_1.CreateOrdersServices();
             const tableExiste = yield ordersServices.arrayTable({ table });
-            // var orders = {
-            //     id: String,
-            //     table: Number,
-            //     order: Boolean
-            // }
             if (!tableExiste.length) {
                 const order = yield ordersServices.execute({
                     table,
-                    name
+                    name,
                 });
                 var orders = {
                     id: order.id,

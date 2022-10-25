@@ -4,10 +4,12 @@ import 'express-async-errors';
 import cors from 'cors';
 import path from 'path';
 
+
 /**para rodar o projeto em typescript tem que baixa uma biblioteca
  * ts-node-dev -D e fazer script no jsompackge
  */
 import { router } from "./routes";
+
 require("dotenv").config();
 
 
@@ -16,7 +18,6 @@ const app = express();
 app.use(express.json());
 
 app.use(cors());
-
 
 app.use(router);
 
@@ -50,7 +51,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     })
 
 })// fim
-
 
 //server
 app.listen(process.env.PORT, () => {console.log('servidor online!')})

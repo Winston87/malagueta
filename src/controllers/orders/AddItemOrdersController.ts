@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { AddItemOrdersServices } from "../../services/orders/AddItemOrdersServices";
-import { CreateCommissionServices } from "../../services/commission/CreateCommissionServices";
+import { CreateReporServices } from "../../services/repor/CreateReporServices";
 import { CreateOrdersServices } from "../../services/orders/CreateOrdersServices"
 
 
@@ -12,7 +12,7 @@ class AddItemController {
         const user_id = req.user_id;
 
         const addItemServices = new AddItemOrdersServices();
-        const commissionServices = new CreateCommissionServices();
+        const reporServices = new CreateReporServices();
 
             const itens = await addItemServices.execute({
 
@@ -23,18 +23,20 @@ class AddItemController {
 
             }); 
 
-            let sum = (parseFloat( itens.product.price) * amount);
+            let sum = (parseFloat(itens.product.price) * amount);
             let sum_commission = ((5.8 * sum) / 100);
 
-            await commissionServices.execute({
+            await reporServices.execute({
                 item_id: itens.id,
                 user_id: user_id,
                 amount: itens.amount,
                 price: itens.product.price,
-                sales: sum
+                sales: sum,
+                order_id: ordem_id
 
             });
 
+            
             const response = {
                 itens,
                 commission: sum_commission
