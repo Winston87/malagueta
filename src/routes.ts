@@ -29,6 +29,7 @@ import { GetProductsController } from "./controllers/products/GetProductsControl
 import { RemoveProductsController } from "./controllers/products/RemoveProductsController";
 
 // comission
+import { CreateCommissionController } from "./controllers/commission/CreateCommissionController";
 
 //order
 import { CreateOrdersController } from "./controllers/orders/CreateOrdersController";
@@ -42,9 +43,9 @@ import { FinishOrderController } from "./controllers/orders/FinishOrderControlle
 import { PutOrderItemController } from "./controllers/orders/PutOrderItemController";
 
 //report
-import { GetPaymentsOrderNotPaidController } from "./controllers/relatorio/GetPaymentsOrderNotPaidController";
-import { GetPaymentsOrderPaidController } from "./controllers/relatorio/GetPaymentsOrderPaidController";
-import { PaidOrderController } from "./controllers/relatorio/PaidOrderController";
+import { GetPaymentsOrderNotPaidController } from "./controllers/payments/GetPaymentsOrderNotPaidController";
+import { GetPaymentsOrderPaidController } from "./controllers/payments/GetPaymentsOrderPaidController";
+import { PaidOrderController } from "./controllers/payments/PaidOrderController";
 
 
 //menu
@@ -100,15 +101,19 @@ router.put('/order/item',ValidAuth, new PutOrderItemController().handle);// atua
 
 
 //relatorio
-router.get('/report/payment', new GetPaymentsOrderNotPaidController().handle);
-router.get('/report/paid', new GetPaymentsOrderPaidController().handle);
-router.put('/report', new PaidOrderController().handle)
+router.get('/report/payment',ValidAuth, new GetPaymentsOrderNotPaidController().handle);
+router.get('/report/paid',ValidAuth, new GetPaymentsOrderPaidController().handle);
+router.put('/report',ValidAuth, new PaidOrderController().handle)
 
 
 // rota menu
 router.get('/menu', new MenuController().handle); // visualizar cardapio
 router.get('/menu/product', new ListMenuController().handle); //
 router.put('/menu/upload',ValidAuth, menu.single('file'), new UploadMenuController().handle); // atualize cardapio pdf para o servidor
+
+
+// rota comissao
+router.post('/commission', new CreateCommissionController().handle );
 
 
 //DATABASE_URL="postgresql://postgres:0000@localhost:5432/rsMalagueta?schema=public"

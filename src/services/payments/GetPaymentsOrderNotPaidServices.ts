@@ -1,11 +1,6 @@
 import { Prisma, PrismaClient } from '.prisma/client';
 import prismaClient from "../../prisma";// listar pedido nao pagos 
 
-interface OrderId {
-
-    order_id: string
-}
-
 class GetPaymentsOrderNotPaidServices {
 
     async execute() {

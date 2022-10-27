@@ -13,9 +13,7 @@ class ListPermissionServices {
                 description: true
             }
         });
-
-        console.log(permission)
-
+        
         return permission;
         
     }

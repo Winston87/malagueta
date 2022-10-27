@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { GetPaymentsOrderPaidServices } from "../../services/relatorio/GetPaymentsOrderPaidServices";
+import { GetPaymentsOrderPaidServices } from "../../services/payments/GetPaymentsOrderPaidServices";
 
 class GetPaymentsOrderPaidController {
 

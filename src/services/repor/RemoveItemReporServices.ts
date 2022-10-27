@@ -9,7 +9,7 @@ class RemoveRepor {
 
     async execute({item_id}:ReporItemRemove ) {
 
-        const remove = await prismaClient.repor.delete({
+        const remove = await prismaClient.commission.delete({
 
             where: {
                 id: item_id
@@ -23,3 +23,4 @@ class RemoveRepor {
 }
 
 export { RemoveRepor }
+

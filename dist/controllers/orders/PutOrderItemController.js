@@ -24,6 +24,7 @@ class PutOrderItemController {
                 item_id,
                 amount
             });
+            // atualiza um item do pedido
             const dataItem = yield dataServices.data({
                 item_id
             });

@@ -17,7 +17,7 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class RemoveRepor {
     execute({ item_id }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const remove = yield prisma_1.default.repor.delete({
+            const remove = yield prisma_1.default.commission.delete({
                 where: {
                     id: item_id
                 }

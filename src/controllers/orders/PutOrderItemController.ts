@@ -22,12 +22,12 @@ class PutOrderItemController {
 
         });
 
+        // atualiza um item do pedido
         const dataItem = await dataServices.data({
             item_id
         });
 
         // atualizar comisssao caso tenha alteração nos itens
-
         let sum = ( parseFloat(dataItem.price) * amount);
 
         await putDataItemServices.execute({

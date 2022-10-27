@@ -17,11 +17,11 @@ class RemoveItemController {
 
         });
 
-        // remover item da comissao
-        await commissionRemoveServices.execute({
+        //remover item da comissao
+        // await commissionRemoveServices.execute({
 
-            item_id: remove.id
-        });
+        //     item_id: remove.id
+        // });
 
         return res.status(204).json(remove);
 

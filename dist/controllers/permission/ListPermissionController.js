@@ -16,7 +16,6 @@ class ListPermissionController {
         return __awaiter(this, void 0, void 0, function* () {
             const permissionServices = new ListPermissionServices_1.ListPermissionServices();
             const permission = yield permissionServices.execute();
-            console.log(permission);
             return res.status(200).json(permission);
         });
     }

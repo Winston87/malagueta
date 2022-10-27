@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { RemoveOrdersServices } from "../../services/orders/RemoveOrdersServices";
 
+/** remover uma mesa  */
 class RemoveOrdersController {
 
     async handle(req: Request, res: Response) {

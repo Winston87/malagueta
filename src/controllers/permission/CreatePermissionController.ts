@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { CreatePermissionServices } from "../../services/permission/CreatePermissionSevices";
+import { GetValidPermissionServices } from "../../services/permission/GetValidPermissionServices"
+import { Mensege, erros } from "../../exceptions/mensege/MensegeError"
 
 class CreatePermissionController {
 
@@ -8,16 +10,22 @@ class CreatePermissionController {
         const { description } = req.body;
 
         const permissionServices = new CreatePermissionServices();
+        const permissionServicesExiste = new GetValidPermissionServices();
 
-        const permission = await permissionServices.execute({
+        const validate = await permissionServicesExiste.execute();
 
-            description
-        });
+        if(description === 'admin' || description === validate.description){
 
-        return res.status(201).json(permission);
+            throw new Mensege(erros.NAO_PERMITIDO + description)
+        }else{
+
+            const permission = await permissionServices.execute({
+                description
+            });
+            return res.status(201).json(permission);
+        }
 
     }
-
 }
 
 export { CreatePermissionController }

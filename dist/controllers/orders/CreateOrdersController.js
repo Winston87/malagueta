@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateOrdersController = void 0;
 const CreateOrdersServices_1 = require("../../services/orders/CreateOrdersServices");
+/** classe de abrir uma mesa e verifica se ela existe e se estar aberta para fazer pedido caso false ela abre uma nova  */
 class CreateOrdersController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -22,20 +23,20 @@ class CreateOrdersController {
                     table,
                     name,
                 });
-                var orders = {
-                    id: order.id,
-                    table: table,
-                    order: false
-                };
-                return res.status(201).json(orders);
+                createOrder(order.id, table, false);
             }
             else {
-                const order = {
-                    id: tableExiste[0].id,
-                    table: tableExiste[0].table,
-                    order: true
-                };
-                return res.status(201).json(order);
+                createOrder(tableExiste[0].id, tableExiste[0].table, true);
+            }
+            function createOrder(id, table, order) {
+                return __awaiter(this, void 0, void 0, function* () {
+                    const orders = {
+                        id: id,
+                        table: table,
+                        order: order
+                    };
+                    return res.status(201).json(orders);
+                });
             }
         });
     }

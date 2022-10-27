@@ -11,15 +11,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreatePermissionController = void 0;
 const CreatePermissionSevices_1 = require("../../services/permission/CreatePermissionSevices");
+const GetValidPermissionServices_1 = require("../../services/permission/GetValidPermissionServices");
+const MensegeError_1 = require("../../exceptions/mensege/MensegeError");
 class CreatePermissionController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { description } = req.body;
             const permissionServices = new CreatePermissionSevices_1.CreatePermissionServices();
-            const permission = yield permissionServices.execute({
-                description
-            });
-            return res.status(201).json(permission);
+            const permissionServicesExiste = new GetValidPermissionServices_1.GetValidPermissionServices();
+            const validate = yield permissionServicesExiste.execute();
+            if (description === 'admin' || description === validate.description) {
+                throw new MensegeError_1.Mensege(MensegeError_1.erros.NAO_PERMITIDO + description);
+            }
+            else {
+                const permission = yield permissionServices.execute({
+                    description
+                });
+                return res.status(201).json(permission);
+            }
         });
     }
 }

@@ -9,7 +9,8 @@ enum erros  {
     FALHA_SALVA_IMAGEM = "Falha em salvar imagem, salve em jpeg ou png!",
     VALIDA_TOKEM = "Usuario não autorizado!",
     TOKEM_INVALIDO = "usuario não esta logado!",
-    USUARIO_NAO_PERMITIDO = "Usuario não permitido para login! "
+    USUARIO_NAO_PERMITIDO = "Usuario não permitido para login! ",
+    NAO_PERMITIDO =" 'NÂO AUTORIZADO', Existe uma permirsão cadastrada como / "
 }
 
 class Mensege extends Error {

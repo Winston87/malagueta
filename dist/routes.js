@@ -29,6 +29,7 @@ const PutProductController_1 = require("./controllers/products/PutProductControl
 const GetProductsController_1 = require("./controllers/products/GetProductsController");
 const RemoveProductsController_1 = require("./controllers/products/RemoveProductsController");
 // comission
+const CreateCommissionController_1 = require("./controllers/commission/CreateCommissionController");
 //order
 const CreateOrdersController_1 = require("./controllers/orders/CreateOrdersController");
 const RemoveOrdersController_1 = require("./controllers/orders/RemoveOrdersController");
@@ -40,9 +41,9 @@ const DetailOrderPaidController_1 = require("./controllers/orders/DetailOrderPai
 const FinishOrderController_1 = require("./controllers/orders/FinishOrderController");
 const PutOrderItemController_1 = require("./controllers/orders/PutOrderItemController");
 //report
-const GetPaymentsOrderNotPaidController_1 = require("./controllers/relatorio/GetPaymentsOrderNotPaidController");
-const GetPaymentsOrderPaidController_1 = require("./controllers/relatorio/GetPaymentsOrderPaidController");
-const PaidOrderController_1 = require("./controllers/relatorio/PaidOrderController");
+const GetPaymentsOrderNotPaidController_1 = require("./controllers/payments/GetPaymentsOrderNotPaidController");
+const GetPaymentsOrderPaidController_1 = require("./controllers/payments/GetPaymentsOrderPaidController");
+const PaidOrderController_1 = require("./controllers/payments/PaidOrderController");
 //menu
 const MenuController_1 = require("./controllers/menu/MenuController");
 const ListMenuController_1 = require("./controllers/menu/ListMenuController");
@@ -85,11 +86,13 @@ router.get('/order/detail', ValidAuthenticated_1.ValidAuth, new DetailOrderPaidC
 router.put('/order/finish', ValidAuthenticated_1.ValidAuth, new FinishOrderController_1.FinishOrderController().handler); // libera mesa pedido pago (baixa do valor total da mesa )
 router.put('/order/item', ValidAuthenticated_1.ValidAuth, new PutOrderItemController_1.PutOrderItemController().handle); // atualizar quantidade do item no pedido
 //relatorio
-router.get('/report/payment', new GetPaymentsOrderNotPaidController_1.GetPaymentsOrderNotPaidController().handle);
-router.get('/report/paid', new GetPaymentsOrderPaidController_1.GetPaymentsOrderPaidController().handle);
-router.put('/report', new PaidOrderController_1.PaidOrderController().handle);
+router.get('/report/payment', ValidAuthenticated_1.ValidAuth, new GetPaymentsOrderNotPaidController_1.GetPaymentsOrderNotPaidController().handle);
+router.get('/report/paid', ValidAuthenticated_1.ValidAuth, new GetPaymentsOrderPaidController_1.GetPaymentsOrderPaidController().handle);
+router.put('/report', ValidAuthenticated_1.ValidAuth, new PaidOrderController_1.PaidOrderController().handle);
 // rota menu
 router.get('/menu', new MenuController_1.MenuController().handle); // visualizar cardapio
 router.get('/menu/product', new ListMenuController_1.ListMenuController().handle); //
 router.put('/menu/upload', ValidAuthenticated_1.ValidAuth, menu.single('file'), new UploadMenuContreoller_1.UploadMenuController().handle); // atualize cardapio pdf para o servidor
+// rota comissao
+router.post('/commission', new CreateCommissionController_1.CreateCommissionController().handle);
 //# sourceMappingURL=routes.js.map

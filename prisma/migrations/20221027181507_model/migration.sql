@@ -88,11 +88,22 @@ CREATE TABLE "cardapio" (
 -- CreateTable
 CREATE TABLE "comissao" (
     "id" TEXT NOT NULL,
-    "total" DOUBLE PRECISION NOT NULL,
-    "user_id" TEXT NOT NULL,
+    "valor_commission" DOUBLE PRECISION,
+    "total_commission" DOUBLE PRECISION,
+    "user_id" TEXT,
     "creatd_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "commission_id" TEXT NOT NULL,
 
     CONSTRAINT "comissao_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "valor_comisao" (
+    "id" TEXT NOT NULL,
+    "valor" DOUBLE PRECISION NOT NULL,
+    "creatd_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "valor_comisao_pkey" PRIMARY KEY ("id")
 );
 
 -- AddForeignKey
@@ -115,3 +126,6 @@ ALTER TABLE "itens" ADD CONSTRAINT "itens_ordem_id_fkey" FOREIGN KEY ("ordem_id"
 
 -- AddForeignKey
 ALTER TABLE "itens" ADD CONSTRAINT "itens_product_id_fkey" FOREIGN KEY ("product_id") REFERENCES "produtos"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "comissao" ADD CONSTRAINT "comissao_commission_id_fkey" FOREIGN KEY ("commission_id") REFERENCES "valor_comisao"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

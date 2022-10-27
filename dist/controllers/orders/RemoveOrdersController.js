@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RemoveOrdersController = void 0;
 const RemoveOrdersServices_1 = require("../../services/orders/RemoveOrdersServices");
+/** remover uma mesa  */
 class RemoveOrdersController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {

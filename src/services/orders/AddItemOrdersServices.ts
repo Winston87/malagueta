@@ -3,9 +3,9 @@ import prismaClient from "../../prisma";
 
 interface AddItemOrders {
 
-    ordem_id?: string;
-    product_id?: string;
-    amount?: number;
+    ordem_id?: string
+    product_id?: string
+    amount?: number
     preparation?: boolean
 }
 
@@ -30,6 +30,7 @@ class AddItemOrdersServices {
             });
             return addItem;
     }
+
 
     
 }

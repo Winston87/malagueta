@@ -140,9 +140,25 @@ model Menu {
 model Commission {
 
     id String @id @default(uuid())
-    total Float
-    user_id String
+    valor_commission Float?
+    total_commission Float?
+    user_id String?
     creatd_at DateTime? @default(now())
 
+    commission valor_commission @relation(fields: [commission_id], references: [id])
+
     @@map("comissao")
+
+    commission_id String 
+}
+
+model valor_commission {
+
+    id String @id @default(uuid())
+    valor Float
+    creatd_at DateTime? @default(now())
+
+    @@map("valor_comisao")
+
+    commission Commission[]
 }
