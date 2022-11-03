@@ -8,7 +8,7 @@ class PaidOrderServices {
 
     async execute({order_id}: PaidOrder ) {
 
-        prismaClient.order.update({
+        await prismaClient.order.update({
             where: {
                 id: order_id
             },

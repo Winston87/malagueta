@@ -17,7 +17,7 @@ const prisma_1 = __importDefault(require("../../prisma"));
 class PaidOrderServices {
     execute({ order_id }) {
         return __awaiter(this, void 0, void 0, function* () {
-            prisma_1.default.order.update({
+            yield prisma_1.default.order.update({
                 where: {
                     id: order_id
                 },
