@@ -5,7 +5,7 @@ interface GetItem {
     item_id?: string
     order_id?: string
 }
-
+// busca item pela id da mesa e do item
 class GetItemServices {
 
     async itemExecute({order_id, item_id}: GetItem) {

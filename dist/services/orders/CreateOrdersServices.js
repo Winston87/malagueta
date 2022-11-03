@@ -33,7 +33,7 @@ class CreateOrdersServices {
             return orders;
         });
     }
-    // buscar tabelas para verificar se existe para abri uma nova 
+    // buscar mesas  para verificar se existe para atender ou para abri uma nova sem a repetir  
     arrayTable({ table }) {
         return __awaiter(this, void 0, void 0, function* () {
             const orderTable = yield prisma_1.default.order.findMany({
@@ -50,7 +50,7 @@ class CreateOrdersServices {
             return orderTable;
         });
     }
-    // alterar a table do pedido
+    // alterar a table do pedido de 100 + table
     updatetable(table, ordem_id) {
         return __awaiter(this, void 0, void 0, function* () {
             const upTable = yield prisma_1.default.order.update({

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { DetailOrderPaidServices } from "../../services/orders/DetailOrderPaidServices";
 
+// analisar para excluir
 class DetailOrderPaidController {
 
     async handler(req: Request, res: Response) {
@@ -19,4 +20,5 @@ class DetailOrderPaidController {
 }
 
 export { DetailOrderPaidController }
+
 

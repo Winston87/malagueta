@@ -23,7 +23,7 @@ class PaidOrderController {
         
         var table: number
         await tableServices.updatetable(
-            table = 100 + paymentOrder.table,
+            table + 100, //+ paymentOrder.table,
             order_id
         );// fimm
 

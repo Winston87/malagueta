@@ -12,31 +12,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetItemServices = void 0;
+exports.PutCategoryServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
-// busca item pela id da mesa e do item
-class GetItemServices {
-    itemExecute({ order_id, item_id }) {
+class PutCategoryServices {
+    execute({ category_id, name }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const items = yield prisma_1.default.item.findFirst({
+            const category = prisma_1.default.category.update({
                 where: {
-                    ordem_id: order_id,
-                    id: item_id
+                    id: category_id
                 },
-                select: {
-                    id: true,
-                    amount: true,
-                    product_id: true,
-                    product: {
-                        select: {
-                            price: true
-                        }
-                    }
+                data: {
+                    name: name
                 }
             });
-            return items;
+            return category;
         });
     }
 }
-exports.GetItemServices = GetItemServices;
-//# sourceMappingURL=GetItemServices.js.map
+exports.PutCategoryServices = PutCategoryServices;
+//# sourceMappingURL=PutCategoryServices.js.map

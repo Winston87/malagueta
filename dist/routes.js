@@ -16,7 +16,7 @@ const ListUserController_1 = require("./controllers/users/ListUserController");
 //permission
 const CreatePermissionController_1 = require("./controllers/permission/CreatePermissionController");
 const ListPermissionController_1 = require("./controllers/permission/ListPermissionController");
-const DeletetPermissionController_1 = require("./controllers/permission/DeletetPermissionController");
+const PutPermissionController_1 = require("./controllers/permission/PutPermissionController");
 //validar acesso via token
 const ValidAuthenticated_1 = require("./middleware/ValidAuthenticated");
 //category
@@ -64,8 +64,8 @@ router.put('/user/update', ValidAuthenticated_1.ValidAuth, new PutUserController
 router.get('/user/list', ValidAuthenticated_1.ValidAuth, new ListUserController_1.ListUserController().handle); // listar user
 //permission
 router.post('/permission', new CreatePermissionController_1.CreatePermissionController().handle); // criar permissao
-router.get('/permission/list', ValidAuthenticated_1.ValidAuth, new ListPermissionController_1.ListPermissionController().handle);
-router.delete('/permission/delete', ValidAuthenticated_1.ValidAuth, new DeletetPermissionController_1.DeletetPermissionController().handle);
+router.get('/permission/list', ValidAuthenticated_1.ValidAuth, new ListPermissionController_1.ListPermissionController().handle); // listar permissao
+router.put('/permission/put', ValidAuthenticated_1.ValidAuth, new PutPermissionController_1.PutPermissionController().handle); // atualizar uma permissao
 //rotas category
 router.post('/category', ValidAuthenticated_1.ValidAuth, new CreateCategoryController_1.CreateCategoryController().handle); // cadastrar categoria
 router.get('/categorys/list', ValidAuthenticated_1.ValidAuth, new ListCategoryController_1.ListCategoryController().handle); // listar categoria
@@ -81,18 +81,18 @@ router.delete('/order/remover/table', ValidAuthenticated_1.ValidAuth, new Remove
 router.post('/order/add', ValidAuthenticated_1.ValidAuth, new AddItemOrdersController_1.AddItemController().handle); // add um item a mesa
 router.delete('/order/remover/item', ValidAuthenticated_1.ValidAuth, new RemoveItemController_1.RemoveItemController().handle); // deletar um item da mesa
 router.put('/order/make', ValidAuthenticated_1.ValidAuth, new PutOrderSubmitController_1.PutOrderSubmitController().handle); // enviar pedido
-router.get('/order/listAll', ValidAuthenticated_1.ValidAuth, new ListOrderPreparationController_1.ListOrderPreparationController().handle); // listar pedidos feitos nao pagos
+router.get('/order/listAll', ValidAuthenticated_1.ValidAuth, new ListOrderPreparationController_1.ListOrderPreparationController().handle); // listar pedidos feitos nao pagos *************analisar para excluir
 router.get('/order/detail', ValidAuthenticated_1.ValidAuth, new DetailOrderPaidController_1.DetailOrderPaidController().handler); // detalhe do pedido pago*
 router.put('/order/finish', ValidAuthenticated_1.ValidAuth, new FinishOrderController_1.FinishOrderController().handler); // libera mesa pedido pago (baixa do valor total da mesa )
 router.put('/order/item', ValidAuthenticated_1.ValidAuth, new PutOrderItemController_1.PutOrderItemController().handle); // atualizar quantidade do item no pedido
 //relatorio
-router.get('/report/payment', ValidAuthenticated_1.ValidAuth, new GetPaymentsOrderNotPaidController_1.GetPaymentsOrderNotPaidController().handle);
-router.get('/report/paid', ValidAuthenticated_1.ValidAuth, new GetPaymentsOrderPaidController_1.GetPaymentsOrderPaidController().handle);
-router.put('/report', ValidAuthenticated_1.ValidAuth, new PaidOrderController_1.PaidOrderController().handle);
+router.get('/report/payment', ValidAuthenticated_1.ValidAuth, new GetPaymentsOrderNotPaidController_1.GetPaymentsOrderNotPaidController().handle); // pedido nao pago
+router.get('/report/paid', ValidAuthenticated_1.ValidAuth, new GetPaymentsOrderPaidController_1.GetPaymentsOrderPaidController().handle); // pedido pago
+router.put('/report', ValidAuthenticated_1.ValidAuth, new PaidOrderController_1.PaidOrderController().handle); // pagar pedido 
 // rota menu
 router.get('/menu', new MenuController_1.MenuController().handle); // visualizar cardapio
 router.get('/menu/product', new ListMenuController_1.ListMenuController().handle); //
 router.put('/menu/upload', ValidAuthenticated_1.ValidAuth, menu.single('file'), new UploadMenuContreoller_1.UploadMenuController().handle); // atualize cardapio pdf para o servidor
 // rota comissao
-router.post('/commission', new CreateCommissionController_1.CreateCommissionController().handle);
+router.post('/commission', new CreateCommissionController_1.CreateCommissionController().handle); // criar uma comissao
 //# sourceMappingURL=routes.js.map

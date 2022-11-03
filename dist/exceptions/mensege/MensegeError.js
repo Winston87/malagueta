@@ -15,6 +15,7 @@ var erros;
     erros["TOKEM_INVALIDO"] = "usuario n\u00E3o esta logado!";
     erros["USUARIO_NAO_PERMITIDO"] = "Usuario n\u00E3o permitido para login! ";
     erros["NAO_PERMITIDO"] = " 'N\u00C2O AUTORIZADO', Existe uma permirs\u00E3o cadastrada como / ";
+    erros["ATUALIZA\u00C7\u00C2O_N\u00C2O_PERMITIDA"] = " 'N\u00E3o atualizado', Nome existente ou permiss\u00E3o n\u00E3o pode ser atualizada.";
 })(erros || (erros = {}));
 exports.erros = erros;
 class Mensege extends Error {

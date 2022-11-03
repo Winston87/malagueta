@@ -5,6 +5,8 @@ import { FinishOrderPreparationServices } from "../../services/orders/FinishOrde
 import { CreateReporServices } from "../../services/repor/CreateReporServices";
 import { GetItemServices } from "../../services/orders/GetItemServices"
 
+
+// requisição para liberar um item na cozinha informando que o produto esta pronto
 class FinishOrderController {
 
     async handler(req:Request, res: Response) {
@@ -17,13 +19,14 @@ class FinishOrderController {
         const reporServices = new CreateReporServices();
         const itemServices = new GetItemServices();
 
+        // busca um item pela mesa e pelo id do item
         const itens = await itemServices.itemExecute({
             order_id,
             item_id
         });
   
 
-        /** metedo de salvar venda em relatorio apos preparado  */ // --- inicio
+        /** metado de salvar venda em relatorio apos preparado  */ // --- inicio
          let sum = (parseFloat(itens.product.price) * itens.amount);
          
          await reporServices.execute({

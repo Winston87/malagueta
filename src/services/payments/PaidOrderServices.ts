@@ -8,7 +8,7 @@ class PaidOrderServices {
 
     async execute({order_id}: PaidOrder ) {
 
-        const order = prismaClient.order.update({
+        prismaClient.order.update({
             where: {
                 id: order_id
             },
@@ -19,9 +19,43 @@ class PaidOrderServices {
 
         });
 
+        const order = await prismaClient.order.findMany({
+
+            where: {
+
+                draft: false,
+
+            },
+            select: {
+               
+                id: true,
+                table: true,
+                item: {
+
+                    where: {
+                        preparation: true
+                    },
+                    select: {
+                        product: true,
+                        amount: true,
+                        repor: {
+                            
+                            select: {
+                                sales: true 
+                                
+                            }
+                        },
+                        
+                    }
+                }
+            }
+        });
+
+
         return order;
     }
 
 }
+
 
 export { PaidOrderServices }

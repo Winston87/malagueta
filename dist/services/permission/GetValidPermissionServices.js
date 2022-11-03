@@ -25,6 +25,17 @@ class GetValidPermissionServices {
             return permissionAdmin;
         });
     }
+    permission() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const description = yield prisma_1.default.permission.findMany({
+                select: {
+                    id: true,
+                    description: true
+                }
+            });
+            return description;
+        });
+    }
 }
 exports.GetValidPermissionServices = GetValidPermissionServices;
 //# sourceMappingURL=GetValidPermissionServices.js.map

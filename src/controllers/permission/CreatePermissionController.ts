@@ -12,17 +12,31 @@ class CreatePermissionController {
         const permissionServices = new CreatePermissionServices();
         const permissionServicesExiste = new GetValidPermissionServices();
 
-        const validate = await permissionServicesExiste.execute();
+        const validate = await permissionServicesExiste.permission();
 
-        if(description === 'admin' || description === validate.description){
+        const descriptionText = description ;
 
-            throw new Mensege(erros.NAO_PERMITIDO + description)
-        }else{
+        var existe = false;
+        for(let i = 0 ; i < validate.length ; i++ ) {
 
-            const permission = await permissionServices.execute({
+            if(String(descriptionText).toUpperCase() === validate[i].description ) {
+                existe = true
+            }
+        }
+
+        if(existe === false) {
+
+            const permission =  permissionServices.execute({
                 description
             });
+            
             return res.status(201).json(permission);
+    
+           
+        }else{
+                    
+            throw new Mensege(erros.NAO_PERMITIDO + description)
+    
         }
 
     }

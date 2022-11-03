@@ -9,20 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DetailOrderPaidController = void 0;
-const DetailOrderPaidServices_1 = require("../../services/orders/DetailOrderPaidServices");
-// analisar para excluir
-class DetailOrderPaidController {
-    handler(req, res) {
+exports.PutCategoryController = void 0;
+const PutCategoryServices_1 = require("../../services/category/PutCategoryServices");
+class PutCategoryController {
+    handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const order_id = req.query.order_id;
-            const ordersServices = new DetailOrderPaidServices_1.DetailOrderPaidServices();
-            const listDetail = yield ordersServices.execute({
-                order_id
+            const { category_id, name } = req.body;
+            const categoryServices = new PutCategoryServices_1.PutCategoryServices();
+            const category = yield categoryServices.execute({
+                category_id,
+                name
             });
-            return res.status(200).json(listDetail);
+            return res.status(201).json(category);
         });
     }
 }
-exports.DetailOrderPaidController = DetailOrderPaidController;
-//# sourceMappingURL=DetailOrderPaidController.js.map
+exports.PutCategoryController = PutCategoryController;
+//# sourceMappingURL=PutCategoryController.js.map

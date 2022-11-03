@@ -14,6 +14,7 @@ const FinishOrderServices_1 = require("../../services/orders/FinishOrderServices
 const FinishOrderPreparationServices_1 = require("../../services/orders/FinishOrderPreparationServices");
 const CreateReporServices_1 = require("../../services/repor/CreateReporServices");
 const GetItemServices_1 = require("../../services/orders/GetItemServices");
+// requisição para liberar um item na cozinha informando que o produto esta pronto
 class FinishOrderController {
     handler(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -23,11 +24,12 @@ class FinishOrderController {
             const preparationServices = new FinishOrderPreparationServices_1.FinishOrderPreparationServices();
             const reporServices = new CreateReporServices_1.CreateReporServices();
             const itemServices = new GetItemServices_1.GetItemServices();
+            // busca um item pela mesa e pelo id do item
             const itens = yield itemServices.itemExecute({
                 order_id,
                 item_id
             });
-            /** metedo de salvar venda em relatorio apos preparado  */ // --- inicio
+            /** metado de salvar venda em relatorio apos preparado  */ // --- inicio
             let sum = (parseFloat(itens.product.price) * itens.amount);
             yield reporServices.execute({
                 item_id: item_id,

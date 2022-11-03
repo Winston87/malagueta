@@ -10,7 +10,8 @@ enum erros  {
     VALIDA_TOKEM = "Usuario não autorizado!",
     TOKEM_INVALIDO = "usuario não esta logado!",
     USUARIO_NAO_PERMITIDO = "Usuario não permitido para login! ",
-    NAO_PERMITIDO =" 'NÂO AUTORIZADO', Existe uma permirsão cadastrada como / "
+    NAO_PERMITIDO = " 'NÂO AUTORIZADO', Existe uma permirsão cadastrada como / ",
+    ATUALIZAÇÂO_NÂO_PERMITIDA = " 'Não atualizado', Nome existente ou permissão não pode ser atualizada."
 }
 
 class Mensege extends Error {

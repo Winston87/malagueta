@@ -28,7 +28,8 @@ class PaidOrderController {
                 order_id
             });
             var table;
-            yield tableServices.updatetable(table = 100 + paymentOrder.table, order_id); // fimm
+            yield tableServices.updatetable(table + 100, //+ paymentOrder.table,
+            order_id); // fimm
             /**salvar comissao apos pagar pedido */ //--- inicio 
             const itens = itemServices.itemExecute({ order_id });
             const valorCommission = yield commissionServices.executeValor();
