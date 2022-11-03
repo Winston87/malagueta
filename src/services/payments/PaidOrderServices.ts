@@ -8,16 +8,20 @@ class PaidOrderServices {
 
     async execute({order_id}: PaidOrder ) {
 
+        
         await prismaClient.order.update({
             where: {
                 id: order_id
+
             },
             data: {
 
                 draft: true
-            }
-
+            },
+            
+       
         });
+
 
         const order = await prismaClient.order.findMany({
 
@@ -30,9 +34,13 @@ class PaidOrderServices {
                
                 id: true,
                 table: true,
+
                 item: {
 
                     where: {
+                        order: {
+                            draft: false,
+                        },
                         preparation: true
                     },
                     select: {
@@ -49,8 +57,7 @@ class PaidOrderServices {
                     }
                 }
             }
-        });
-
+        })
 
         return order;
     }

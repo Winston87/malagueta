@@ -23,7 +23,7 @@ class PaidOrderServices {
                 },
                 data: {
                     draft: true
-                }
+                },
             });
             const order = yield prisma_1.default.order.findMany({
                 where: {
@@ -34,6 +34,9 @@ class PaidOrderServices {
                     table: true,
                     item: {
                         where: {
+                            order: {
+                                draft: false,
+                            },
                             preparation: true
                         },
                         select: {

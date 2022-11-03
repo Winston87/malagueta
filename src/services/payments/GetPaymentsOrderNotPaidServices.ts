@@ -10,6 +10,11 @@ class GetPaymentsOrderNotPaidServices {
             where: {
 
                 draft: false,
+                item: {
+                    every: {
+                        preparation: true
+                    }
+                }
 
             },
             select: {

@@ -20,10 +20,16 @@ class PaidOrderController {
         const paymentOrder = await paidOrderServices.execute({
             order_id
         });
+
+        // var table: number
+        // paymentOrder.forEach(function(value) {
+        //     table = value.table + 100
+
+        // });
         
-        var table: number
+        
         await tableServices.updatetable(
-            table + 100, //+ paymentOrder.table,
+           // table  ,
             order_id
         );// fimm
 

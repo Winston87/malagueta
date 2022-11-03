@@ -20,6 +20,11 @@ class GetPaymentsOrderNotPaidServices {
             const order = yield prisma_1.default.order.findMany({
                 where: {
                     draft: false,
+                    item: {
+                        every: {
+                            preparation: true
+                        }
+                    }
                 },
                 select: {
                     id: true,
