@@ -10,12 +10,6 @@ interface ValidaUser {
     password?: string
 }
 
-// interface ValidarLogout  {
-
-//     email: string
-//     password: string
-// }
-
 class InternalError {
     //validar campos de cadastro
     async execute({email, name, password}: ValidaUser) {

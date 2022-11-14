@@ -11,17 +11,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateOrdersController = void 0;
 const CreateOrdersServices_1 = require("../../services/orders/CreateOrdersServices");
+const date_1 = require("../../dataFormat/date");
 /** classe de abrir uma mesa e verifica se ela existe e se estar aberta para fazer pedido caso false ela abre uma nova  */
 class CreateOrdersController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { table, name } = req.body;
             const ordersServices = new CreateOrdersServices_1.CreateOrdersServices();
+            const dateFormat = new date_1.DateFormat();
+            const date = yield dateFormat.data();
             const tableExiste = yield ordersServices.arrayTable({ table });
             if (!tableExiste.length) {
                 const order = yield ordersServices.execute({
                     table,
                     name,
+                    created_at: date
                 });
                 createOrder(order.id, table, false);
             }

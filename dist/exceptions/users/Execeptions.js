@@ -16,10 +16,6 @@ exports.InternalError = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 const bcryptjs_1 = require("bcryptjs");
 const MensegeError_1 = require("../../exceptions/mensege/MensegeError");
-// interface ValidarLogout  {
-//     email: string
-//     password: string
-// }
 class InternalError {
     //validar campos de cadastro
     execute({ email, name, password }) {

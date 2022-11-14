@@ -1,4 +1,3 @@
-import { Prisma, PrismaClient } from '.prisma/client';
 import prismaClient from "../../prisma";// listar pedido nao pagos 
 
 class GetPaymentsOrderNotPaidServices {
@@ -23,11 +22,24 @@ class GetPaymentsOrderNotPaidServices {
                 table: true,
                 item: {
 
+
                     where: {
-                        preparation: true
+                        preparation: true,
+                        
                     },
+                    
                     select: {
-                        product: true,
+                        
+                        product: {
+                            select: {
+                                id: true,
+                                name: true,
+                                description: true,
+                                price: true,
+                                banner: true,
+                                category_id: true
+                            }
+                        },
                         amount: true,
                         repor: {
                             
@@ -37,24 +49,19 @@ class GetPaymentsOrderNotPaidServices {
                             }
                         },
                         
-                    }
+                    },
+                    
                 }
             }
         });
 
-    //     const query = await prismaClient.$queryRaw(Prisma.sql
-    //         `select sum(relatorio.sales) as valor_total 
-    //          from relatorio
-    //          where relatorio.order_id = ${order_id} `)
-
-    //    const valueOrder = {
-    //          order,
-    //          query
-         
-    //    }
     
+
+
        
-        return order;
+          
+       
+        return order ;
         
 
 
@@ -63,3 +70,5 @@ class GetPaymentsOrderNotPaidServices {
 }
 
 export { GetPaymentsOrderNotPaidServices }
+
+

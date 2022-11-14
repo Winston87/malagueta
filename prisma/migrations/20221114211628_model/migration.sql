@@ -4,8 +4,8 @@ CREATE TABLE "usuarios" (
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TEXT NOT NULL,
+    "updated_at" TEXT NOT NULL,
     "permission_id" TEXT NOT NULL,
 
     CONSTRAINT "usuarios_pkey" PRIMARY KEY ("id")
@@ -22,10 +22,10 @@ CREATE TABLE "permissao" (
 -- CreateTable
 CREATE TABLE "relatorio" (
     "id" TEXT NOT NULL,
-    "amount" INTEGER NOT NULL,
+    "amount" BIGINT NOT NULL,
     "price" TEXT NOT NULL,
     "sales" DOUBLE PRECISION NOT NULL,
-    "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TEXT NOT NULL,
     "user_id" TEXT NOT NULL,
     "order_id" TEXT NOT NULL,
     "item_id" TEXT NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE "pedidos" (
     "status" BOOLEAN NOT NULL DEFAULT false,
     "draft" BOOLEAN NOT NULL DEFAULT true,
     "name" TEXT,
-    "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TEXT NOT NULL,
 
     CONSTRAINT "pedidos_pkey" PRIMARY KEY ("id")
 );
@@ -80,7 +80,7 @@ CREATE TABLE "itens" (
 CREATE TABLE "cardapio" (
     "id" TEXT NOT NULL,
     "menu_product" TEXT NOT NULL,
-    "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TEXT NOT NULL,
 
     CONSTRAINT "cardapio_pkey" PRIMARY KEY ("id")
 );
@@ -88,10 +88,10 @@ CREATE TABLE "cardapio" (
 -- CreateTable
 CREATE TABLE "comissao" (
     "id" TEXT NOT NULL,
-    "valor_commission" DOUBLE PRECISION,
-    "total_commission" DOUBLE PRECISION,
-    "user_id" TEXT,
-    "creatd_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "valor_commission" DOUBLE PRECISION NOT NULL,
+    "total_commission" DOUBLE PRECISION NOT NULL,
+    "user_id" TEXT NOT NULL,
+    "creatd_at" TEXT NOT NULL,
     "commission_id" TEXT NOT NULL,
 
     CONSTRAINT "comissao_pkey" PRIMARY KEY ("id")
@@ -101,7 +101,7 @@ CREATE TABLE "comissao" (
 CREATE TABLE "valor_comisao" (
     "id" TEXT NOT NULL,
     "valor" DOUBLE PRECISION NOT NULL,
-    "creatd_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "creatd_at" TEXT NOT NULL,
 
     CONSTRAINT "valor_comisao_pkey" PRIMARY KEY ("id")
 );

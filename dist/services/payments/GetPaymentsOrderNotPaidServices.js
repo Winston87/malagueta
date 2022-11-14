@@ -31,28 +31,29 @@ class GetPaymentsOrderNotPaidServices {
                     table: true,
                     item: {
                         where: {
-                            preparation: true
+                            preparation: true,
                         },
                         select: {
-                            product: true,
+                            product: {
+                                select: {
+                                    id: true,
+                                    name: true,
+                                    description: true,
+                                    price: true,
+                                    banner: true,
+                                    category_id: true
+                                }
+                            },
                             amount: true,
                             repor: {
                                 select: {
                                     sales: true
                                 }
                             },
-                        }
+                        },
                     }
                 }
             });
-            //     const query = await prismaClient.$queryRaw(Prisma.sql
-            //         `select sum(relatorio.sales) as valor_total 
-            //          from relatorio
-            //          where relatorio.order_id = ${order_id} `)
-            //    const valueOrder = {
-            //          order,
-            //          query
-            //    }
             return order;
         });
     }

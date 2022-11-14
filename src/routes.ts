@@ -46,6 +46,7 @@ import { PutOrderItemController } from "./controllers/orders/PutOrderItemControl
 import { GetPaymentsOrderNotPaidController } from "./controllers/payments/GetPaymentsOrderNotPaidController";
 import { GetPaymentsOrderPaidController } from "./controllers/payments/GetPaymentsOrderPaidController";
 import { PaidOrderController } from "./controllers/payments/PaidOrderController";
+import { ListTotalReporController } from "./controllers/repor/ListTotalReporController";
 
 
 //menu
@@ -100,10 +101,12 @@ router.put('/order/item',ValidAuth, new PutOrderItemController().handle);// atua
 
 
 
+
 //relatorio
 router.get('/report/payment',ValidAuth, new GetPaymentsOrderNotPaidController().handle);// pedido nao pago
 router.get('/report/paid',ValidAuth, new GetPaymentsOrderPaidController().handle);// pedido pago
-router.put('/report',ValidAuth, new PaidOrderController().handle)// pagar pedido 
+router.put('/report',ValidAuth, new PaidOrderController().handle);// pagar pedido 
+router.get('/repor/sales', new ListTotalReporController().handle); // relatorio de vendas de produtos
 
 
 // rota menu

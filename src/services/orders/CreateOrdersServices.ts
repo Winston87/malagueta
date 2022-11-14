@@ -4,17 +4,20 @@ interface CreateOrder {
 
     table?: number,
     name?: string
+    created_at?: string
 }
 
 class CreateOrdersServices {
 
-    async execute({table, name}: CreateOrder) {
+    async execute({table, name, created_at}: CreateOrder) {
 
         const orders = await prismaClient.order.create({
 
             data: {
                 table: table,
-                name: name
+                name: name,
+                created_at: created_at
+
             },
             select: {
                 id: true,

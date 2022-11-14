@@ -8,11 +8,12 @@ interface CreateReporOrder {
     price: string
     sales: number
     order_id: string
+    created_at: string
 }
 
 class CreateReporServices {
 
-    async execute({item_id, user_id, amount , price, sales, order_id}: CreateReporOrder) {
+    async execute({item_id, user_id, amount , price, sales, order_id, created_at}: CreateReporOrder) {
 
         const repor = prismaClient.repor.create({
 
@@ -23,7 +24,8 @@ class CreateReporServices {
                 price: price,
                 sales: sales,
                 order_id: order_id,
-                item_id: item_id
+                item_id: item_id,
+                created_at: created_at
                 
             },
             select: {

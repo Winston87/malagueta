@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DataItemRepor = exports.CreateReporServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CreateReporServices {
-    execute({ item_id, user_id, amount, price, sales, order_id }) {
+    execute({ item_id, user_id, amount, price, sales, order_id, created_at }) {
         return __awaiter(this, void 0, void 0, function* () {
             const repor = prisma_1.default.repor.create({
                 data: {
@@ -25,7 +25,8 @@ class CreateReporServices {
                     price: price,
                     sales: sales,
                     order_id: order_id,
-                    item_id: item_id
+                    item_id: item_id,
+                    created_at: created_at
                 },
                 select: {
                     id: true,

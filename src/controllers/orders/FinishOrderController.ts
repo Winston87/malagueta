@@ -4,7 +4,7 @@ import { FinishOrderServices } from "../../services/orders/FinishOrderServices";
 import { FinishOrderPreparationServices } from "../../services/orders/FinishOrderPreparationServices"
 import { CreateReporServices } from "../../services/repor/CreateReporServices";
 import { GetItemServices } from "../../services/orders/GetItemServices"
-
+import { DateFormat } from "../../dataFormat/date"
 
 // requisição para liberar um item na cozinha informando que o produto esta pronto
 class FinishOrderController {
@@ -18,6 +18,9 @@ class FinishOrderController {
         const preparationServices = new FinishOrderPreparationServices();
         const reporServices = new CreateReporServices();
         const itemServices = new GetItemServices();
+        const dateFormat = new DateFormat();
+
+        const date = await dateFormat.data();
 
         // busca um item pela mesa e pelo id do item
         const itens = await itemServices.itemExecute({
@@ -35,10 +38,11 @@ class FinishOrderController {
                 amount: itens.amount,
                 price: itens.product.price,
                 sales: sum,
-                order_id: order_id
+                order_id: order_id,
+                created_at: date
 
         
-            }); // --- fim
+        }); // --- fim
 
 
         /** pega um item que esta para preparo na cozinha e seta ela como produto preparado */ // -- inicio

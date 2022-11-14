@@ -44,6 +44,7 @@ const PutOrderItemController_1 = require("./controllers/orders/PutOrderItemContr
 const GetPaymentsOrderNotPaidController_1 = require("./controllers/payments/GetPaymentsOrderNotPaidController");
 const GetPaymentsOrderPaidController_1 = require("./controllers/payments/GetPaymentsOrderPaidController");
 const PaidOrderController_1 = require("./controllers/payments/PaidOrderController");
+const ListTotalReporController_1 = require("./controllers/repor/ListTotalReporController");
 //menu
 const MenuController_1 = require("./controllers/menu/MenuController");
 const ListMenuController_1 = require("./controllers/menu/ListMenuController");
@@ -89,6 +90,7 @@ router.put('/order/item', ValidAuthenticated_1.ValidAuth, new PutOrderItemContro
 router.get('/report/payment', ValidAuthenticated_1.ValidAuth, new GetPaymentsOrderNotPaidController_1.GetPaymentsOrderNotPaidController().handle); // pedido nao pago
 router.get('/report/paid', ValidAuthenticated_1.ValidAuth, new GetPaymentsOrderPaidController_1.GetPaymentsOrderPaidController().handle); // pedido pago
 router.put('/report', ValidAuthenticated_1.ValidAuth, new PaidOrderController_1.PaidOrderController().handle); // pagar pedido 
+router.get('/repor/sales', new ListTotalReporController_1.ListTotalReporController().handle); // relatorio de vendas de produtos
 // rota menu
 router.get('/menu', new MenuController_1.MenuController().handle); // visualizar cardapio
 router.get('/menu/product', new ListMenuController_1.ListMenuController().handle); //

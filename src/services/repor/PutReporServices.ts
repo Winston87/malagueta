@@ -20,8 +20,6 @@ class PutReporServices {
             data: {
                 amount: amount,
                 sales: sales
-
-
             }
         });
 
