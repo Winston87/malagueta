@@ -1,15 +1,13 @@
 import prismaClient from "../../prisma";
 interface PaidOrder {
 
-    order_id: string,
-    creatd_at: string
+    order_id?: string,
+    creatd_at?: string
 }
 
 class PaidOrderServices {
 
     async execute({order_id, creatd_at}: PaidOrder ) {
-
-        
         await prismaClient.order.update({
             where: {
                 id: order_id
@@ -21,7 +19,6 @@ class PaidOrderServices {
                 created_at: creatd_at
             },
             
-       
         });
 
 
@@ -62,6 +59,21 @@ class PaidOrderServices {
         })
 
         return order;
+    }
+
+    async getTable({order_id}: PaidOrder ) {
+
+        const table = await prismaClient.order.findFirst({
+
+            where: {
+                id: order_id
+            },
+            select: {
+                table: true
+            }
+        });
+
+        return table;
     }
 
 }

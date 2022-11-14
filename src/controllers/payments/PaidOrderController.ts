@@ -19,7 +19,6 @@ class PaidOrderController {
         const commissionServices = new CreateComissionServices();
         const itemServices = new GetItemServices();
         const dateFormat = new DateFormat();
-
         const date = await dateFormat.data();
 
         /**pagar um pedido */  // ---  inicio
@@ -28,20 +27,16 @@ class PaidOrderController {
             creatd_at: date
         });
 
-        // var table: number
-        // paymentOrder.forEach(function(value) {
-        //     table = value.table + 100
 
-        // });
-        
-        
+        const table = await paidOrderServices.getTable({order_id});
         await tableServices.updatetable(
-           // table  ,
-            order_id
+    
+            order_id,
+            table.table + 100
         );// fimm
 
-        
 
+        
         /**salvar comissao apos pagar pedido */ //--- inicio 
         const itens = itemServices.itemExecute({order_id})
 

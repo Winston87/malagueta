@@ -31,13 +31,8 @@ class PaidOrderController {
                 order_id,
                 creatd_at: date
             });
-            // var table: number
-            // paymentOrder.forEach(function(value) {
-            //     table = value.table + 100
-            // });
-            yield tableServices.updatetable(
-            // table  ,
-            order_id); // fimm
+            const table = yield paidOrderServices.getTable({ order_id });
+            yield tableServices.updatetable(order_id, table.table + 100); // fimm
             /**salvar comissao apos pagar pedido */ //--- inicio 
             const itens = itemServices.itemExecute({ order_id });
             const valorCommission = yield commissionServices.executeValor();

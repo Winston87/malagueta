@@ -52,14 +52,14 @@ class CreateOrdersServices {
         });
     }
     // alterar a table do pedido de 100 + table
-    updatetable(ordem_id) {
+    updatetable(ordem_id, table) {
         return __awaiter(this, void 0, void 0, function* () {
             const upTable = yield prisma_1.default.order.update({
                 where: {
                     id: ordem_id
                 },
                 data: {
-                    table: 100
+                    table: table
                 }
             });
             return upTable;

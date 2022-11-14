@@ -57,7 +57,7 @@ class CreateOrdersServices {
     }
 
     // alterar a table do pedido de 100 + table
-    async updatetable( ordem_id: string) {
+    async updatetable( ordem_id: string, table: number) {
 
         const upTable = await prismaClient.order.update({
            
@@ -65,7 +65,7 @@ class CreateOrdersServices {
                 id: ordem_id
             },
             data: {
-                table: 100
+                table: table
             }
         });
 

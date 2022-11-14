@@ -55,6 +55,19 @@ class PaidOrderServices {
             return order;
         });
     }
+    getTable({ order_id }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const table = yield prisma_1.default.order.findFirst({
+                where: {
+                    id: order_id
+                },
+                select: {
+                    table: true
+                }
+            });
+            return table;
+        });
+    }
 }
 exports.PaidOrderServices = PaidOrderServices;
 //# sourceMappingURL=PaidOrderServices.js.map
