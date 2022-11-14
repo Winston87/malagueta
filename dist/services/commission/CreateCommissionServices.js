@@ -56,33 +56,31 @@ class CreateComissionServices {
             return valorCommission;
         });
     }
-    createExecute({ user_id, valor, total, commission_id }) {
+    // async createExecute({user_id, valor, total, commission_id, creatd_at}: CreateCommission) {
+    //     create({user_id, valor, total, commission_id, creatd_at });
+    // }
+    create({ user_id, valor, total, commission_id, creatd_at }) {
         return __awaiter(this, void 0, void 0, function* () {
-            create({ user_id, valor, total, commission_id });
+            const commission = yield prisma_1.default.commission.create({
+                data: {
+                    user_id: user_id,
+                    valor_commission: valor,
+                    total_commission: total,
+                    commission_id: commission_id,
+                    creatd_at: creatd_at
+                },
+                select: {
+                    id: true,
+                    user_id: true,
+                    valor_commission: true,
+                    total_commission: true,
+                    commission_id: true,
+                    creatd_at: true
+                }
+            });
+            return commission;
         });
     }
 }
 exports.CreateComissionServices = CreateComissionServices;
-function create({ user_id, valor, total, commission_id, creatd_at }) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const commission = yield prisma_1.default.commission.create({
-            data: {
-                user_id: user_id,
-                valor_commission: valor,
-                total_commission: total,
-                commission_id: commission_id,
-                creatd_at: creatd_at
-            },
-            select: {
-                id: true,
-                user_id: true,
-                valor_commission: true,
-                total_commission: true,
-                commission_id: true,
-                creatd_at: true
-            }
-        });
-        return commission;
-    });
-}
 //# sourceMappingURL=CreateCommissionServices.js.map

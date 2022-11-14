@@ -1,12 +1,13 @@
 import prismaClient from "../../prisma";
 interface PaidOrder {
 
-    order_id: string
+    order_id: string,
+    creatd_at: string
 }
 
 class PaidOrderServices {
 
-    async execute({order_id}: PaidOrder ) {
+    async execute({order_id, creatd_at}: PaidOrder ) {
 
         
         await prismaClient.order.update({
@@ -16,7 +17,8 @@ class PaidOrderServices {
             },
             data: {
 
-                draft: true
+                draft: true,
+                created_at: creatd_at
             },
             
        
