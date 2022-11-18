@@ -8,13 +8,11 @@ interface UserRequest {
     email: string
     password: string
     permission_id: string
-    created_at: string
-    updated_at: string
 }
 
 class CreateUserServices {
 
-    async execute({ name, email, password, permission_id, created_at, updated_at }: UserRequest) {
+    async execute({ name, email, password, permission_id }: UserRequest) {
 
         const userExcption = new InternalError();
 
@@ -29,8 +27,6 @@ class CreateUserServices {
                 email: email.toLowerCase(),
                 permission_id: permission_id,
                 password: passwordHash,
-                created_at:  created_at,
-                updated_at: updated_at
 
             },
             select:{

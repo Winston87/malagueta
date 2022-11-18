@@ -11,21 +11,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreatUserController = void 0;
 const CreateUserServices_1 = require("../../services/users/CreateUserServices");
-const date_1 = require("../../dataFormat/date");
 class CreatUserController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { name, email, permission_id, password } = req.body; // recebendo requisição
             const userServices = new CreateUserServices_1.CreateUserServices();
-            const dateFormat = new date_1.DateFormat();
-            const date = yield dateFormat.data();
             const user = yield userServices.execute({
                 name,
                 email,
                 permission_id,
-                password,
-                created_at: date,
-                updated_at: date
+                password
             });
             return res.status(201).json(user);
         });

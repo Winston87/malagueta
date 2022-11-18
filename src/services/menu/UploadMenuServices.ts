@@ -2,13 +2,12 @@ import prismaClient from "../../prisma";
 
 interface Menu {
     menu_product: string
-    created_at: string
 
 }
 
 class UploadMenuServices {
 
-    async execute({menu_product , created_at}: Menu) {
+    async execute({menu_product }: Menu) {
 
         const menuId = await prismaClient.menu.findFirst({
 
@@ -22,7 +21,6 @@ class UploadMenuServices {
 
             data: {
                 menu_product: menu_product,
-                created_at: created_at
             },
             select: {
                 menu_product: true

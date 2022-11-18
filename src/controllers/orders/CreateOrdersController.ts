@@ -1,7 +1,6 @@
 // abrir mesa
 import { Request, Response } from "express";
 import { CreateOrdersServices } from "../../services/orders/CreateOrdersServices";
-import { DateFormat } from "../../dataFormat/date"
 /** classe de abrir uma mesa e verifica se ela existe e se estar aberta para fazer pedido caso false ela abre uma nova  */
 
 class CreateOrdersController {
@@ -11,8 +10,6 @@ class CreateOrdersController {
         const { table, name } = req.body;
 
         const ordersServices = new CreateOrdersServices();
-        const dateFormat = new DateFormat();
-        const date = await dateFormat.data();
 
         const tableExiste = await ordersServices.arrayTable({table});
 
@@ -22,7 +19,6 @@ class CreateOrdersController {
 
                 table,
                 name,
-                created_at: date
             });
 
             createOrder(order.id, table, false);

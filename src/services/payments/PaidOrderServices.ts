@@ -2,12 +2,11 @@ import prismaClient from "../../prisma";
 interface PaidOrder {
 
     order_id?: string,
-    creatd_at?: string
 }
 
 class PaidOrderServices {
 
-    async execute({order_id, creatd_at}: PaidOrder ) {
+    async execute({order_id}: PaidOrder ) {
         await prismaClient.order.update({
             where: {
                 id: order_id
@@ -16,7 +15,6 @@ class PaidOrderServices {
             data: {
 
                 draft: true,
-                created_at: creatd_at
             },
             
         });

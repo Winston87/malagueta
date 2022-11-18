@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UploadMenuServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class UploadMenuServices {
-    execute({ menu_product, created_at }) {
+    execute({ menu_product }) {
         return __awaiter(this, void 0, void 0, function* () {
             const menuId = yield prisma_1.default.menu.findFirst({
                 select: {
@@ -25,7 +25,6 @@ class UploadMenuServices {
             const menu = yield prisma_1.default.menu.create({
                 data: {
                     menu_product: menu_product,
-                    created_at: created_at
                 },
                 select: {
                     menu_product: true

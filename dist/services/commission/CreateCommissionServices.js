@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateComissionServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CreateComissionServices {
-    execute({ valor, creatd_at }) {
+    execute({ valor }) {
         return __awaiter(this, void 0, void 0, function* () {
             const idCommission = yield prisma_1.default.valor_commission.findFirst({
                 select: {
@@ -25,8 +25,7 @@ class CreateComissionServices {
             if (!idCommission) {
                 yield prisma_1.default.valor_commission.create({
                     data: {
-                        valor: valor,
-                        creatd_at: creatd_at
+                        valor: valor
                     },
                     select: {
                         valor: true
@@ -59,7 +58,7 @@ class CreateComissionServices {
     // async createExecute({user_id, valor, total, commission_id, creatd_at}: CreateCommission) {
     //     create({user_id, valor, total, commission_id, creatd_at });
     // }
-    create({ user_id, valor, total, commission_id, creatd_at }) {
+    create({ user_id, valor, total, commission_id }) {
         return __awaiter(this, void 0, void 0, function* () {
             const commission = yield prisma_1.default.commission.create({
                 data: {
@@ -67,7 +66,6 @@ class CreateComissionServices {
                     valor_commission: valor,
                     total_commission: total,
                     commission_id: commission_id,
-                    creatd_at: creatd_at
                 },
                 select: {
                     id: true,
@@ -75,7 +73,6 @@ class CreateComissionServices {
                     valor_commission: true,
                     total_commission: true,
                     commission_id: true,
-                    creatd_at: true
                 }
             });
             return commission;

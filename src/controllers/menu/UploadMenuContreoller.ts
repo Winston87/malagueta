@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { UploadMenuServices } from '../../services/menu/UploadMenuServices';
 import { Mensege, erros } from '../../exceptions/mensege/MensegeError'
-import { DateFormat } from "../../dataFormat/date"
 
 
 class UploadMenuController {
@@ -9,8 +8,6 @@ class UploadMenuController {
     async handle(req: Request, res: Response) {
 
         const menuProduct = new UploadMenuServices();
-        const dateFormat = new  DateFormat();
-        const date = await dateFormat.data();
 
         if(!req.file) {
 
@@ -22,8 +19,7 @@ class UploadMenuController {
 
             const product = await menuProduct.execute({
 
-                menu_product,
-                created_at: date
+                menu_product
                 
             });
 

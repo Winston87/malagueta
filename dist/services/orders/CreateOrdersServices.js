@@ -15,13 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateOrdersServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CreateOrdersServices {
-    execute({ table, name, created_at }) {
+    execute({ table, name }) {
         return __awaiter(this, void 0, void 0, function* () {
             const orders = yield prisma_1.default.order.create({
                 data: {
                     table: table,
                     name: name,
-                    created_at: created_at
                 },
                 select: {
                     id: true,

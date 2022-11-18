@@ -16,15 +16,20 @@ exports.ListTotalReporServices = void 0;
 const client_1 = require(".prisma/client");
 const prisma_1 = __importDefault(require("../../prisma"));
 class ListTotalReporServices {
-    execute() {
+    execute({ created_at, created_fn }) {
         return __awaiter(this, void 0, void 0, function* () {
             const repor = prisma_1.default.$queryRaw(client_1.Prisma.sql `select produtos.id, produtos.name, produtos.price, sum(relatorio.amount) as amount, sum(relatorio.sales) total_sale, relatorio.created_at
             from produtos inner join itens on produtos.id = itens.product_id
-            inner join relatorio on itens.id = relatorio.item_id
+            inner join relatorio on itens.id = relatorio.item_id 
             group by produtos.id, produtos.name, produtos.price, relatorio.created_at`);
             return repor;
         });
     }
 }
 exports.ListTotalReporServices = ListTotalReporServices;
+// select produtos.id, produtos.name, produtos.price, sum(relatorio.amount) as amount, sum(relatorio.sales) total_sale, relatorio.created_at
+// from produtos inner join itens on produtos.id = itens.product_id
+// inner join relatorio on itens.id = relatorio.item_id
+// and relatorio.created_at in('14/11/2022','0')
+// group by produtos.id, produtos.name, produtos.price, relatorio.created_at
 //# sourceMappingURL=ListTotalReporServices.js.map

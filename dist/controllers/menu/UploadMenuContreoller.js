@@ -12,21 +12,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UploadMenuController = void 0;
 const UploadMenuServices_1 = require("../../services/menu/UploadMenuServices");
 const MensegeError_1 = require("../../exceptions/mensege/MensegeError");
-const date_1 = require("../../dataFormat/date");
 class UploadMenuController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const menuProduct = new UploadMenuServices_1.UploadMenuServices();
-            const dateFormat = new date_1.DateFormat();
-            const date = yield dateFormat.data();
             if (!req.file) {
                 throw new MensegeError_1.Mensege(MensegeError_1.erros.FALHA_SALVA_IMAGEM);
             }
             else {
                 const { originalname, filename: menu_product } = req.file;
                 const product = yield menuProduct.execute({
-                    menu_product,
-                    created_at: date
+                    menu_product
                 });
                 return res.json(product);
             }

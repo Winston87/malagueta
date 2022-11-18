@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PaidOrderServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class PaidOrderServices {
-    execute({ order_id, creatd_at }) {
+    execute({ order_id }) {
         return __awaiter(this, void 0, void 0, function* () {
             yield prisma_1.default.order.update({
                 where: {
@@ -23,7 +23,6 @@ class PaidOrderServices {
                 },
                 data: {
                     draft: true,
-                    created_at: creatd_at
                 },
             });
             const order = yield prisma_1.default.order.findMany({

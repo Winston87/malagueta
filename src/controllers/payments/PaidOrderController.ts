@@ -4,7 +4,6 @@ import { PaidOrderServices } from "../../services/payments/PaidOrderServices"
 import { CreateOrdersServices } from "../../services/orders/CreateOrdersServices"
 import { CreateComissionServices } from "../../services/commission/CreateCommissionServices"
 import { GetItemServices } from "../../services/orders/GetItemServices"
-import { DateFormat } from "../../dataFormat/date"
 
 
 class PaidOrderController {
@@ -18,13 +17,10 @@ class PaidOrderController {
         const tableServices = new CreateOrdersServices();
         const commissionServices = new CreateComissionServices();
         const itemServices = new GetItemServices();
-        const dateFormat = new DateFormat();
-        const date = await dateFormat.data();
 
         /**pagar um pedido */  // ---  inicio
         const paymentOrder = await paidOrderServices.execute({
             order_id,
-            creatd_at: date
         });
 
 
@@ -51,7 +47,6 @@ class PaidOrderController {
             valor: valorCommission.valor,
             total: sum_commission,
             commission_id: valorCommission.id,
-            creatd_at: date
         });// ---- fim
 
         return res.status(201).json(paymentOrder);

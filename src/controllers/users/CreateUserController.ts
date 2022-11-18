@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { CreateUserServices } from "../../services/users/CreateUserServices";
-import { DateFormat } from "../../dataFormat/date"
 
 class CreatUserController {
 
@@ -10,16 +9,12 @@ class CreatUserController {
 
 
         const userServices = new CreateUserServices();
-        const dateFormat = new DateFormat();
-        const date = await dateFormat.data();
 
         const user = await userServices.execute({ 
             name, 
             email, 
             permission_id, 
-            password,
-            created_at: date,
-            updated_at: date
+            password
          });
 
         return res.status(201).json(user)

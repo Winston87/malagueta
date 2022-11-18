@@ -14,7 +14,6 @@ const PaidOrderServices_1 = require("../../services/payments/PaidOrderServices")
 const CreateOrdersServices_1 = require("../../services/orders/CreateOrdersServices");
 const CreateCommissionServices_1 = require("../../services/commission/CreateCommissionServices");
 const GetItemServices_1 = require("../../services/orders/GetItemServices");
-const date_1 = require("../../dataFormat/date");
 class PaidOrderController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -24,12 +23,9 @@ class PaidOrderController {
             const tableServices = new CreateOrdersServices_1.CreateOrdersServices();
             const commissionServices = new CreateCommissionServices_1.CreateComissionServices();
             const itemServices = new GetItemServices_1.GetItemServices();
-            const dateFormat = new date_1.DateFormat();
-            const date = yield dateFormat.data();
             /**pagar um pedido */ // ---  inicio
             const paymentOrder = yield paidOrderServices.execute({
                 order_id,
-                creatd_at: date
             });
             const table = yield paidOrderServices.getTable({ order_id });
             yield tableServices.updatetable(order_id, table.table + 100); // fimm
@@ -43,7 +39,6 @@ class PaidOrderController {
                 valor: valorCommission.valor,
                 total: sum_commission,
                 commission_id: valorCommission.id,
-                creatd_at: date
             }); // ---- fim
             return res.status(201).json(paymentOrder);
         });

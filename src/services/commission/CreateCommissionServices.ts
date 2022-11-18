@@ -6,12 +6,11 @@ interface CreateCommission {
     valor?: number
     total?: number
     commission_id?: string
-    creatd_at?: string
 }
 
 class CreateComissionServices {
 
-    async execute({ valor, creatd_at }: CreateCommission) {
+    async execute({ valor }: CreateCommission) {
 
         const idCommission = await prismaClient.valor_commission.findFirst({
 
@@ -27,8 +26,7 @@ class CreateComissionServices {
 
                 data: {
 
-                    valor: valor,
-                    creatd_at: creatd_at
+                    valor: valor
                 },
                 select: {
                     valor: true
@@ -65,7 +63,7 @@ class CreateComissionServices {
 
     //     create({user_id, valor, total, commission_id, creatd_at });
     // }
-    async  create({user_id, valor, total, commission_id, creatd_at}: CreateCommission) {
+    async  create({user_id, valor, total, commission_id}: CreateCommission) {
 
         const commission = await prismaClient.commission.create({
     
@@ -74,7 +72,6 @@ class CreateComissionServices {
                 valor_commission: valor,
                 total_commission: total,
                 commission_id: commission_id,
-                creatd_at: creatd_at
             },
             select: {
                 id: true,
@@ -82,7 +79,6 @@ class CreateComissionServices {
                 valor_commission: true,
                 total_commission: true,
                 commission_id: true,
-                creatd_at: true
             }
         });
     

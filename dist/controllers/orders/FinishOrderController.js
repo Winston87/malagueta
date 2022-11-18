@@ -14,7 +14,6 @@ const FinishOrderServices_1 = require("../../services/orders/FinishOrderServices
 const FinishOrderPreparationServices_1 = require("../../services/orders/FinishOrderPreparationServices");
 const CreateReporServices_1 = require("../../services/repor/CreateReporServices");
 const GetItemServices_1 = require("../../services/orders/GetItemServices");
-const date_1 = require("../../dataFormat/date");
 // requisição para liberar um item na cozinha informando que o produto esta pronto
 class FinishOrderController {
     handler(req, res) {
@@ -25,8 +24,6 @@ class FinishOrderController {
             const preparationServices = new FinishOrderPreparationServices_1.FinishOrderPreparationServices();
             const reporServices = new CreateReporServices_1.CreateReporServices();
             const itemServices = new GetItemServices_1.GetItemServices();
-            const dateFormat = new date_1.DateFormat();
-            const date = yield dateFormat.data();
             // busca um item pela mesa e pelo id do item
             const itens = yield itemServices.itemExecute({
                 order_id,
@@ -40,8 +37,7 @@ class FinishOrderController {
                 amount: itens.amount,
                 price: itens.product.price,
                 sales: sum,
-                order_id: order_id,
-                created_at: date
+                order_id: order_id
             }); // --- fim
             /** pega um item que esta para preparo na cozinha e seta ela como produto preparado */ // -- inicio
             yield preparationServices.execute({
