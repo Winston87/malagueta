@@ -2,15 +2,10 @@ import { Prisma } from '.prisma/client';
 import prismaClient from "../../prisma";
 import { parseDate } from 'pdf-lib';
 
-interface GetDate {
-
-    created_at: string,
-    created_fn: string
-}
 
 class ListTotalReporServices {
 
-    async execute({created_at, created_fn}:GetDate) {
+    async execute() {
 
         
         const repor = prismaClient.$queryRaw(Prisma.sql

@@ -14,11 +14,8 @@ const ListTotalReporServices_1 = require("../../services/repor/ListTotalReporSer
 class ListTotalReporController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { created_at, created_fn } = req.body;
             const reporServices = new ListTotalReporServices_1.ListTotalReporServices();
-            const repor = yield reporServices.execute({
-                created_at, created_fn
-            });
+            const repor = yield reporServices.execute();
             //     const rt = [{name:'leo'}, {name:'caio'}, {name:'lisa', id: 3}, {name:'julio'}, {name:'lisa', id: 1},{name:'caio'} ]
             //     const args =  Array.from(rt);
             //     var name: string

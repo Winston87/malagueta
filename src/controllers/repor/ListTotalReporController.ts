@@ -7,14 +7,8 @@ class ListTotalReporController {
     async handle(req: Request, res: Response) {
 
 
-
-        const { created_at, created_fn } = req.body
-
         const reporServices = new ListTotalReporServices();
-        const repor = await reporServices.execute({
-            created_at,created_fn
-
-        });
+        const repor = await reporServices.execute();
 
     //     const rt = [{name:'leo'}, {name:'caio'}, {name:'lisa', id: 3}, {name:'julio'}, {name:'lisa', id: 1},{name:'caio'} ]
         
