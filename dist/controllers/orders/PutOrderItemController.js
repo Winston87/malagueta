@@ -11,29 +11,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PutOrderItemController = void 0;
 const PutOrderItemServices_1 = require("../../services/orders/PutOrderItemServices");
-const CreateReporServices_1 = require("../../services/repor/CreateReporServices");
-const PutReporServices_1 = require("../../services/repor/PutReporServices");
 class PutOrderItemController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const putItemServiices = new PutOrderItemServices_1.PutOrderItemService();
-            const dataServices = new CreateReporServices_1.DataItemRepor();
-            const putDataItemServices = new PutReporServices_1.PutReporServices();
             const { item_id, amount } = req.body;
             const item = yield putItemServiices.execute({
                 item_id,
                 amount
-            });
-            // atualiza um item do pedido
-            const dataItem = yield dataServices.data({
-                item_id
-            });
-            // atualizar comisssao caso tenha alteração nos itens
-            let sum = (parseFloat(dataItem.price) * amount);
-            yield putDataItemServices.execute({
-                item_id,
-                amount,
-                sales: sum
             });
             return res.status(201).json(item);
         });

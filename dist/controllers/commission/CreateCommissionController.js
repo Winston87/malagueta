@@ -17,7 +17,7 @@ class CreateCommissionController {
             const { valor } = req.body;
             const commissionServices = new CreateCommissionServices_1.CreateComissionServices();
             const commission = yield commissionServices.execute({
-                valor,
+                valor
             });
             return res.status(201).json(commission);
         });

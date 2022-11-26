@@ -17,7 +17,6 @@ const prisma_1 = __importDefault(require("../../prisma")); // listar pedidos par
 class ListOrderPreparationService {
     execute() {
         return __awaiter(this, void 0, void 0, function* () {
-            // const itens = await prismaClient.item.findMany({
             //     where: {
             //      preparation: false
             //     },
@@ -42,6 +41,8 @@ class ListOrderPreparationService {
             // });
             const itens = yield prisma_1.default.order.findMany({
                 where: {
+                    draft: false,
+                    status: false,
                     item: {
                         some: {
                             preparation: false

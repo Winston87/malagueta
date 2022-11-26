@@ -1,7 +1,5 @@
 import { Prisma } from '.prisma/client';
 import prismaClient from "../../prisma";
-import { parseDate } from 'pdf-lib';
-
 
 class ListTotalReporServices {
 
@@ -14,7 +12,7 @@ class ListTotalReporServices {
             inner join relatorio on itens.id = relatorio.item_id 
             group by produtos.id, produtos.name, produtos.price, relatorio.created_at`);
 
-            
+             
     
     return repor;
     

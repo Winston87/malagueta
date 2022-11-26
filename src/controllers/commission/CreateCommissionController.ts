@@ -10,7 +10,7 @@ class CreateCommissionController {
         const commissionServices = new CreateComissionServices();
 
         const commission = await commissionServices.execute({
-            valor,
+            valor
         });
 
         return res.status(201).json(commission);

@@ -6,7 +6,6 @@ class ListOrderPreparationService {
 
     async execute() {
 
-        // const itens = await prismaClient.item.findMany({
 
         //     where: {
         //      preparation: false
@@ -40,6 +39,9 @@ class ListOrderPreparationService {
 
             
             where: {
+
+                draft: false,
+                status: false,
                 
                 item: {
                     some: {
