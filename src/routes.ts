@@ -112,7 +112,7 @@ router.get('/repor/sales', new ListTotalReporController().handle); // relatorio 
 // rota menu
 router.get('/menu', new MenuController().handle); // visualizar cardapio
 router.get('/menu/product', new ListMenuController().handle); //
-router.put('/menu/upload',ValidAuth, menu.single('file'), new UploadMenuController().handle); // atualize cardapio pdf para o servidor
+router.put('/menu/upload', menu.single('file'), new UploadMenuController().handle); // atualize cardapio pdf para o servidor
 
 
 // rota comissao

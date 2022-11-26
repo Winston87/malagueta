@@ -94,7 +94,7 @@ router.get('/repor/sales', new ListTotalReporController_1.ListTotalReporControll
 // rota menu
 router.get('/menu', new MenuController_1.MenuController().handle); // visualizar cardapio
 router.get('/menu/product', new ListMenuController_1.ListMenuController().handle); //
-router.put('/menu/upload', ValidAuthenticated_1.ValidAuth, menu.single('file'), new UploadMenuContreoller_1.UploadMenuController().handle); // atualize cardapio pdf para o servidor
+router.put('/menu/upload', menu.single('file'), new UploadMenuContreoller_1.UploadMenuController().handle); // atualize cardapio pdf para o servidor
 // rota comissao
 router.post('/commission', new CreateCommissionController_1.CreateCommissionController().handle); // criar uma comissao
 //# sourceMappingURL=routes.js.map
