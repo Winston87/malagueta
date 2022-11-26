@@ -24,6 +24,7 @@ class CreateProductsServices {
                 category_id: category_id,
             },
             select: {
+                id: true,
                 name: true,
                 price: true,
                 description: true,
