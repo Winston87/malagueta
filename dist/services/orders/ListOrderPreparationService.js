@@ -42,7 +42,7 @@ class ListOrderPreparationService {
             const itens = yield prisma_1.default.order.findMany({
                 where: {
                     draft: false,
-                    status: false,
+                    //  status: false,
                     item: {
                         some: {
                             preparation: false
