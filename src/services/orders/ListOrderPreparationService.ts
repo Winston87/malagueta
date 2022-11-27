@@ -41,7 +41,6 @@ class ListOrderPreparationService {
             where: {
 
                 draft: false,
-              //  status: false,
                 
                 item: {
                     some: {

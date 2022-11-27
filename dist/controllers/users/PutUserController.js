@@ -11,17 +11,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PutUserController = void 0;
 const PutUserServices_1 = require("../../services/users/PutUserServices");
+const bcryptjs_1 = require("bcryptjs");
 class PutUserController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { user_id, name, permission_id } = req.body;
+            const { user_id, name, permission_id, password } = req.body;
             const userServices = new PutUserServices_1.PutUserServices();
-            const user = yield userServices.execute({
-                user_id: user_id,
-                name,
-                permission_id
-            });
-            return res.status(201).json(user);
+            if (password) {
+                const passwordHash = yield (0, bcryptjs_1.hash)(password, 8);
+                putUser(user_id, name, permission_id, passwordHash);
+            }
+            else {
+                putUser(user_id, name, permission_id);
+            }
+            function putUser(user_id, name, permission_id, password) {
+                return __awaiter(this, void 0, void 0, function* () {
+                    const user = yield userServices.execute({
+                        user_id: user_id,
+                        name,
+                        permission_id,
+                        password: password
+                    });
+                    return res.status(201).json(user);
+                });
+            }
         });
     }
 }

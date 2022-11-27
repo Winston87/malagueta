@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PutUserServices = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class PutUserServices {
-    execute({ user_id, name, permission_id }) {
+    execute({ user_id, name, permission_id, password }) {
         return __awaiter(this, void 0, void 0, function* () {
             const user = yield prisma_1.default.user.update({
                 where: {
@@ -23,7 +23,8 @@ class PutUserServices {
                 },
                 data: {
                     name: name.toUpperCase(),
-                    permission_id: permission_id
+                    permission_id: permission_id,
+                    password: password
                 },
                 select: {
                     name: true,
