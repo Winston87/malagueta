@@ -25,7 +25,7 @@ class AuthUserServie {
             name: user.name,
             email: user.email
         },
-            ""+process.env.JWT_KEY,
+            " "+process.env.JWT_KEY,
             {
                 subject: user.id,
                 expiresIn: '30d'

@@ -17,7 +17,7 @@ export function ValidAuth(req: Request, res: Response, next: NextFunction) {
         res.status(401).json(erros.TOKEM_INVALIDO).end();
     }
 
-    const [,tokemUser] = tokem.split(""); 
+    const [,tokemUser] = tokem.split(" "); 
 
     try {
 
