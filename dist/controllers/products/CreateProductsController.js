@@ -22,9 +22,16 @@ class CreateProductsController {
                 throw new MensegeError_1.Mensege(MensegeError_1.erros.FALHA_SALVA_IMAGEM);
             }
             else {
+                // tranforma ponto em virgula
+                let preco;
+                if (!isNaN(parseInt(price)) && price.split(',').length < 3) {
+                    if (price.includes(",")) {
+                        preco = price.replace(",", ".");
+                    }
+                }
                 const product = yield productServices.execute({
                     name,
-                    price,
+                    price: preco,
                     description,
                     banner,
                     category_id,

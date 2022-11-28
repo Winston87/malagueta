@@ -17,9 +17,17 @@ class CreateProductsController {
 
         }else{
 
+            // tranforma ponto em virgula
+            let preco: string
+            if(!isNaN(parseInt(price)) && price.split(',').length < 3){
+                if(price.includes(",")) {
+                    preco = price.replace(",", ".");
+                }
+            }
+
             const product = await productServices.execute({
                 name,
-                price,
+                price: preco,
                 description,
                 banner,
                 category_id,
