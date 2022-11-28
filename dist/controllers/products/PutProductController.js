@@ -22,10 +22,17 @@ class PutProductController {
             }
             else {
                 const { originalname, filename: banner } = req.file;
+                // tranforma ponto em virgula
+                let preco;
+                if (!isNaN(parseInt(price)) && price.split(',').length < 3) {
+                    if (price.includes(",")) {
+                        preco = price.replace(",", ".");
+                    }
+                }
                 const product = yield productServices.execute({
                     product_id,
                     name,
-                    price,
+                    price: preco,
                     description,
                     banner,
                     category_id

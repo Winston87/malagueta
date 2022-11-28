@@ -19,11 +19,19 @@ class PutProductController {
 
             const { originalname, filename: banner } = req.file;
 
+            // tranforma ponto em virgula
+            let preco: string
+            if(!isNaN(parseInt(price)) && price.split(',').length < 3){
+                if(price.includes(",")) {
+                    preco = price.replace(",", ".");
+                }
+            }
+
             const product =  await productServices.execute({
 
                 product_id,
                 name,
-                price,
+                price: preco,
                 description,
                 banner,
                 category_id
