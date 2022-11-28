@@ -58,8 +58,8 @@ const foto = (0, multer_1.default)(multer_2.default.upload("imgBanner")); // loc
 const menu = (0, multer_1.default)(multer_2.default.upload("imgMenu"));
 // rotas user
 router.post('/users', new CreateUserController_1.CreatUserController().handle); // cadastrar usuario
-router.post('/session', ValidAuthenticated_1.ValidAuth, new AuthUserAdminController_1.AuthUserAdminController().handle); // login usuario
-router.post('/session/collaborator', ValidAuthenticated_1.ValidAuth, new AuthUserCollboratorController_1.AuthUserCollaboratorController().handle); // login garcon
+router.post('/session', new AuthUserAdminController_1.AuthUserAdminController().handle); // login usuario
+router.post('/session/collaborator', new AuthUserCollboratorController_1.AuthUserCollaboratorController().handle); // login garcon
 router.get('/detail', ValidAuthenticated_1.ValidAuth, new DetailUserController_1.DetailUserController().handle); // detalhe usuario
 router.put('/user/update', ValidAuthenticated_1.ValidAuth, new PutUserController_1.PutUserController().handle); // atualizar user
 router.get('/user/list', ValidAuthenticated_1.ValidAuth, new ListUserController_1.ListUserController().handle); // listar user

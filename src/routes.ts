@@ -65,8 +65,8 @@ const menu = multer(upLoadConfig.upload("imgMenu"));
 
 // rotas user
 router.post('/users', new CreatUserController().handle);// cadastrar usuario
-router.post('/session',ValidAuth, new AuthUserAdminController().handle);// login usuario
-router.post('/session/collaborator',ValidAuth, new AuthUserCollaboratorController().handle);// login garcon
+router.post('/session', new AuthUserAdminController().handle);// login usuario
+router.post('/session/collaborator', new AuthUserCollaboratorController().handle);// login garcon
 router.get('/detail',ValidAuth, new DetailUserController().handle ); // detalhe usuario
 router.put('/user/update', ValidAuth, new PutUserController().handle );// atualizar user
 router.get('/user/list', ValidAuth, new ListUserController().handle);// listar user
