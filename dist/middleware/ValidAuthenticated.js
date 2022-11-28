@@ -8,7 +8,7 @@ function ValidAuth(req, res, next) {
     if (!tokem) {
         res.status(401).json(MensegeError_1.erros.TOKEM_INVALIDO).end();
     }
-    const [, tokemUser] = tokem.split(" ");
+    const [, tokemUser] = tokem.split("");
     try {
         //validar o tokem
         const { sub } = (0, jsonwebtoken_1.verify)(tokemUser, process.env.JWT_KEY); //<= afirma que esse verify vai me devolver um payload e este devolve um id do user logado
