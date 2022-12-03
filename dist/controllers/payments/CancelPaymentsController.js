@@ -22,7 +22,7 @@ class CancelpaymentsOrderController {
             const tableServices = new CreateOrdersServices_1.CreateOrdersServices();
             const table = yield paidOrderServices.getTable({ order_id });
             // colocar pedido pago ou cencelado na tela de pedidos pago
-            yield paidOrderServices.execute({
+            const order = yield paidOrderServices.execute({
                 order_id,
             });
             yield tableServices.updatetable(order_id, table.table + 100); // fimm
@@ -32,7 +32,7 @@ class CancelpaymentsOrderController {
                 id = reporId.id;
                 cancelOrderServices.execute({ id });
             });
-            return res.status(201).send();
+            return res.status(201).json(order);
         });
     }
 }

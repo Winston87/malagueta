@@ -17,7 +17,7 @@ class CancelpaymentsOrderController {
         const table = await paidOrderServices.getTable({order_id});
 
         // colocar pedido pago ou cencelado na tela de pedidos pago
-        await paidOrderServices.execute({
+        const order = await paidOrderServices.execute({
             order_id,
         });
 
@@ -37,7 +37,7 @@ class CancelpaymentsOrderController {
         });
        
         
-        return res.status(201).send();
+        return res.status(201).json(order);
     }
 }
 
