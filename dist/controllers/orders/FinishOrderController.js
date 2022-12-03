@@ -24,7 +24,7 @@ class FinishOrderController {
             const preparationServices = new FinishOrderPreparationServices_1.FinishOrderPreparationServices();
             const reporServices = new CreateReporServices_1.CreateReporServices();
             const itemServices = new GetItemServices_1.GetItemServices();
-            // busca um item pela mesa e pelo id do item
+            // busca uma mesa e um  item 
             const itens = yield itemServices.itemExecute({
                 order_id,
                 item_id
@@ -43,6 +43,7 @@ class FinishOrderController {
             yield preparationServices.execute({
                 item_id
             });
+            // busca uma mesa existente e retorna a mesa com seus itens caso existe algo na mesa
             const order = yield ordersServices.exeute({
                 order_id
             });

@@ -47,6 +47,7 @@ import { GetPaymentsOrderNotPaidController } from "./controllers/payments/GetPay
 import { GetPaymentsOrderPaidController } from "./controllers/payments/GetPaymentsOrderPaidController";
 import { PaidOrderController } from "./controllers/payments/PaidOrderController";
 import { ListTotalReporController } from "./controllers/repor/ListTotalReporController";
+import { CancelpaymentsOrderController } from "./controllers/payments/CancelPaymentsController";
 
 
 //menu
@@ -107,6 +108,7 @@ router.get('/report/payment',ValidAuth, new GetPaymentsOrderNotPaidController().
 router.get('/report/paid',ValidAuth, new GetPaymentsOrderPaidController().handle);// pedido pago
 router.put('/report',ValidAuth, new PaidOrderController().handle);// pagar pedido 
 router.get('/repor/sales', new ListTotalReporController().handle); // relatorio de vendas de produtos
+router.put('/repor/cancel', new CancelpaymentsOrderController().handle); // cancelar pedido
 
 
 // rota menu

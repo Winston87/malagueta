@@ -12,17 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaidOrderServices = void 0;
+exports.CancelPaymentsOrderServices = void 0;
+// cancelar um pedido
 const prisma_1 = __importDefault(require("../../prisma"));
-class PaidOrderServices {
-    execute({ order_id }) {
+class CancelPaymentsOrderServices {
+    execute({ id }) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield prisma_1.default.order.update({
+            yield prisma_1.default.repor.updateMany({
                 where: {
-                    id: order_id
+                    id: id
                 },
                 data: {
-                    draft: true,
+                    sales: 0.00,
                 },
             });
             const order = yield prisma_1.default.order.findMany({
@@ -54,24 +55,6 @@ class PaidOrderServices {
             return order;
         });
     }
-    getTable({ order_id }) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const table = yield prisma_1.default.order.findFirst({
-                where: {
-                    id: order_id
-                },
-                select: {
-                    table: true,
-                    repor: {
-                        select: {
-                            id: true
-                        }
-                    }
-                }
-            });
-            return table;
-        });
-    }
 }
-exports.PaidOrderServices = PaidOrderServices;
-//# sourceMappingURL=PaidOrderServices.js.map
+exports.CancelPaymentsOrderServices = CancelPaymentsOrderServices;
+//# sourceMappingURL=CancelPaymentsOrderServices.js.map

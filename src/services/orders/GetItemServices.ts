@@ -20,9 +20,11 @@ class GetItemServices {
 
                 id: true,
                 amount: true,
+                ordem_id: true,
                 product_id: true,
                 product: {
                     select: {
+                        id: true,
                         price: true
                     }
                 }
@@ -31,6 +33,28 @@ class GetItemServices {
         });
 
         return items;
+    }
+
+    async getItem({order_id}: GetItem) {
+
+        const item =  await prismaClient.item.findMany({
+
+            where: {
+                id: order_id
+            },
+            select: {
+                id: true,
+                product: {
+                    select: {
+                        id: true,
+                        name: true
+                    }
+                }
+                
+            }
+        });
+
+        return item;
     }
 
 

@@ -23,21 +23,7 @@ class FinishOrderServices {
                 },
                 data: {
                     status: true,
-                },
-                // select: {
-                //     id: true,
-                //     table: true,
-                //     itens: {
-                //         where: {
-                //             preparation: false
-                //         },
-                //         select: {
-                //             id: true,
-                //             product: true,
-                //             amount: true
-                //         }
-                //     }
-                // }
+                }
             });
             const itens = yield prisma_1.default.order.findMany({
                 where: {

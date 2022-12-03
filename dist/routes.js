@@ -45,6 +45,7 @@ const GetPaymentsOrderNotPaidController_1 = require("./controllers/payments/GetP
 const GetPaymentsOrderPaidController_1 = require("./controllers/payments/GetPaymentsOrderPaidController");
 const PaidOrderController_1 = require("./controllers/payments/PaidOrderController");
 const ListTotalReporController_1 = require("./controllers/repor/ListTotalReporController");
+const CancelPaymentsController_1 = require("./controllers/payments/CancelPaymentsController");
 //menu
 const MenuController_1 = require("./controllers/menu/MenuController");
 const ListMenuController_1 = require("./controllers/menu/ListMenuController");
@@ -91,6 +92,7 @@ router.get('/report/payment', ValidAuthenticated_1.ValidAuth, new GetPaymentsOrd
 router.get('/report/paid', ValidAuthenticated_1.ValidAuth, new GetPaymentsOrderPaidController_1.GetPaymentsOrderPaidController().handle); // pedido pago
 router.put('/report', ValidAuthenticated_1.ValidAuth, new PaidOrderController_1.PaidOrderController().handle); // pagar pedido 
 router.get('/repor/sales', new ListTotalReporController_1.ListTotalReporController().handle); // relatorio de vendas de produtos
+router.put('/repor/cancel', new CancelPaymentsController_1.CancelpaymentsOrderController().handle); // cancelar pedido
 // rota menu
 router.get('/menu', new MenuController_1.MenuController().handle); // visualizar cardapio
 router.get('/menu/product', new ListMenuController_1.ListMenuController().handle); //

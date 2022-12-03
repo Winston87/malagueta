@@ -19,12 +19,12 @@ class FinishOrderController {
         const itemServices = new GetItemServices();
 
 
-        // busca um item pela mesa e pelo id do item
+        // busca uma mesa e um  item 
         const itens = await itemServices.itemExecute({
             order_id,
             item_id
         });
-  
+
 
         /** metado de salvar venda em relatorio apos preparado  */ // --- inicio
          let sum = (parseFloat(itens.product.price) * itens.amount);
@@ -45,7 +45,7 @@ class FinishOrderController {
         await preparationServices.execute({
             item_id
         });
-
+        // busca uma mesa existente e retorna a mesa com seus itens caso existe algo na mesa
         const order = await ordersServices.exeute({
 
             order_id

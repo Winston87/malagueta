@@ -1,21 +1,25 @@
+// cancelar um pedido
 import prismaClient from "../../prisma";
-interface PaidOrder {
 
-    order_id?: string,
+interface CancelOrder {
+
+    id?: string,
 }
 
+class CancelPaymentsOrderServices {
 
-class PaidOrderServices {
+    async execute({id}: CancelOrder) {
+    
+        await prismaClient.repor.updateMany({
 
-    async execute({order_id}: PaidOrder ) {
-        await prismaClient.order.update({
             where: {
-                id: order_id
+                id: id
 
             },
             data: {
 
-                draft: true,
+                sales: 0.00,
+
             },
             
         });
@@ -60,27 +64,6 @@ class PaidOrderServices {
         return order;
     }
 
-    async getTable({order_id}: PaidOrder ) {
-
-        const table = await prismaClient.order.findFirst({
-
-            where: {
-                id: order_id
-            },
-            select: {
-                table: true,
-                repor: {
-                    select: {
-                        id: true
-                    }
-                }
-            }
-        });
-
-        return table;
-    }
-
 }
 
-
-export { PaidOrderServices }
+export {  CancelPaymentsOrderServices }

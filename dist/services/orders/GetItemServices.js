@@ -26,15 +26,36 @@ class GetItemServices {
                 select: {
                     id: true,
                     amount: true,
+                    ordem_id: true,
                     product_id: true,
                     product: {
                         select: {
+                            id: true,
                             price: true
                         }
                     }
                 }
             });
             return items;
+        });
+    }
+    getItem({ order_id }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const item = yield prisma_1.default.item.findMany({
+                where: {
+                    id: order_id
+                },
+                select: {
+                    id: true,
+                    product: {
+                        select: {
+                            id: true,
+                            name: true
+                        }
+                    }
+                }
+            });
+            return item;
         });
     }
 }
